@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/vishnu-project/clientlibs"/>
+    <filter root="/apps/vishnu-project/components"/>
+    <filter root="/apps/vishnu-project/i18n"/>
+</workspaceFilter>

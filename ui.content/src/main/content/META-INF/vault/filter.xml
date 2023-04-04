@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/vishnu-project" mode="merge"/>
+    <filter root="/content/vishnu-project" mode="merge"/>
+    <filter root="/content/dam/vishnu-project" mode="merge">
+        <exclude pattern="/content/dam/vishnu-project(/.*)?"/>
+        <include pattern="/content/dam/vishnu-project/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/vishnu-project/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/vishnu-project" mode="merge"/>
+</workspaceFilter>
