@@ -43,14 +43,17 @@ protected  void init(){
         return linkModify;
     }
     public void processData(){
+    Resource child=resource.getChild("fieldData");
+    if(child!=null) {
+        Iterator<Resource> resourceIterator = child.listChildren();
 
-        Iterator<Resource> resourceIterator = resource.getChild("fieldData").listChildren();
-        while(resourceIterator.hasNext()){
-            Resource eachResource=resourceIterator.next();
-            ValueMap valueMap=eachResource.getValueMap();
-            TestComponent testComponent=new TestComponent(valueMap.get("link","deva"),valueMap.get("text","shree"));
+        while (resourceIterator.hasNext()) {
+            Resource eachResource = resourceIterator.next();
+            ValueMap valueMap = eachResource.getValueMap();
+            TestComponent testComponent = new TestComponent(valueMap.get("link", "deva"), valueMap.get("text", "shree"));
             properties.add(testComponent);
         }
+    }
     }
     public List<TestComponent> getProperties(){
     return this.properties;
