@@ -1,7 +1,6 @@
 package com.aurx.core.models;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.commons.io.IOUtils;
@@ -24,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class SlingModelOfProducts {
+public class ProductDetailsModel {
 
     @Inject
     @Named("numberOfProducts")
@@ -34,7 +33,7 @@ public class SlingModelOfProducts {
     @SlingObject
     private Resource resource;
 
-    Logger logger = LoggerFactory.getLogger(SlingModelOfProducts.class);
+    Logger logger = LoggerFactory.getLogger(ProductDetailsModel.class);
 
 
     @PostConstruct
