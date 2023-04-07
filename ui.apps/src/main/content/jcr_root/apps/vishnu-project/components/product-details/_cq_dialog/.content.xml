@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Product Details"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items jcr:primaryType="nt:unstructured">
+                    <container2
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="List Of Products "
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <container
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Title"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter the title which will be visible on top of the products"
+                                                fieldLabel="Title"
+                                                maxlength="{Long}1000"
+                                                name="./title"
+                                                required="{Boolean}true"/>
+                                            <headingType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                emptyText="select the heading type"
+                                                fieldDescription="Select any on the heading type."
+                                                fieldLabel="Heading Type"
+                                                name="./headingType">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <H3
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H3"
+                                                        value="h3"/>
+                                                    <H2
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H2"
+                                                        value="h2"/>
+                                                    <H1
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="H1"
+                                                        value="h1"/>
+                                                </items>
+                                            </headingType>
+                                            <products
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Number Field"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldDescription="Field to enter the number of products to be visible on the page."
+                                                fieldLabel="Number of Products"
+                                                max="{Long}30"
+                                                min="{Long}1"
+                                                name="./numberOfProducts"
+                                                required="{Boolean}true"
+                                                value="{Long}2"/>
+                                        </items>
+                                    </container>
+                                </items>
+                            </column>
+                        </items>
+                    </container2>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
