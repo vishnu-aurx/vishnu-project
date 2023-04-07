@@ -1,6 +1,9 @@
 package com.aurx.core.models;
 
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.apache.commons.io.IOUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -10,7 +13,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -26,23 +36,21 @@ public class Vishnu {
     String linkModify;
 
 
-
     @SlingObject
     private Resource resource;
 private List<TestComponent> properties;
 
 @PostConstruct
-protected  void init(){
+ protected  void init(){
     properties=new ArrayList<>();
-    processData();
-    logger.info("hello hello");
+
    linkModify=this.link+"this is init method";
 }
 
     public String getLink() {
         return linkModify;
     }
-    public void processData(){
+/*    public void processData(){
     Resource child=resource.getChild("fieldData");
     if(child!=null) {
         Iterator<Resource> resourceIterator = child.listChildren();
@@ -54,8 +62,11 @@ protected  void init(){
             properties.add(testComponent);
         }
     }
-    }
+    }*/
     public List<TestComponent> getProperties(){
     return this.properties;
     }
+
+
+
 }
