@@ -1,0 +1,20 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-use.model="com.aurx.core.models.ProductDetailsModel"/>
+<sly data-sly-test.productList="${model.getNumberOfProductsList}" />
+<sly data-sly-test.headingTag="${properties.headingType}" />
+<sly data-sly-test.heading="${properties.title}" />
+
+
+<sly data-sly-test="${productList}">
+<h1 data-sly-element="${headingTag}">${heading}</h1>
+   <div data-sly-list.product="${productList}">
+       <div>
+          <img src=${product.image}>
+          <h6>id=${product.id}</h6>
+          <h6>Title=${product.title}</h6>
+          <h6>Price=${product.price}</h6>
+          <h6>description=${product.description}</h6>
+       </div>
+    </div>
+</sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !productList, classAppend='cmp-text'}"></sly>
