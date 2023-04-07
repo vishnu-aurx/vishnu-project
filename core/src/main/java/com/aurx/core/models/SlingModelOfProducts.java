@@ -22,7 +22,8 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-@Model(adaptables = Resource.class,defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+
+@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class SlingModelOfProducts {
 
     @Inject
@@ -36,33 +37,31 @@ public class SlingModelOfProducts {
     Logger logger = LoggerFactory.getLogger(SlingModelOfProducts.class);
 
 
-
     @PostConstruct
-    protected  void init(){
+    protected void init() {
         logger.info("Start of init method with number of products:{}", numberOfProducts);
 
-getJSONData();
+        getJSONData();
 
     }
 
-    public JsonArray getJsonObject()throws IOException {
+    public JsonArray getJsonObject() throws IOException {
         String baseURL = "https://dummyjson.com/products/";
-    URL url = new URL(baseURL);
-    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-    connection.setRequestProperty("accept", "application/json");
-    InputStream responseStream = connection.getInputStream();
-    String response = IOUtils.toString(responseStream, StandardCharsets.UTF_8);
-    JsonParser parser = new JsonParser();
-//Creating JSONObject from String using parser
-    return parser.parse(response).getAsJsonObject().get("products").getAsJsonArray();
+        URL url = new URL(baseURL);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestProperty("accept", "application/json");
+        InputStream responseStream = connection.getInputStream();
+        String response = IOUtils.toString(responseStream, StandardCharsets.UTF_8);
+        JsonParser parser = new JsonParser();
+        return parser.parse(response).getAsJsonObject().get("products").getAsJsonArray();
     }
 
-    public void getJSONData(){
-        if(numberOfProducts != 0) {
-            numberOfProductList=new ArrayList<>();
-            try{
-                JsonArray productsArray=getJsonObject();
-                for(int i=0; i< numberOfProducts; i++) {
+    public void getJSONData() {
+        if (numberOfProducts != 0) {
+            numberOfProductList = new ArrayList<>();
+            try {
+                JsonArray productsArray = getJsonObject();
+                for (int i = 0; i < numberOfProducts; i++) {
 
                     JsonObject jsonObject = productsArray.get(i).getAsJsonObject();
                     numberOfProductList.add(new Products(jsonObject.get("id").toString(),
@@ -72,7 +71,7 @@ getJSONData();
                             jsonObject.get("images").getAsJsonArray().get(0).getAsString()));
                 }
 
-            }catch (IOException e){
+            } catch (IOException e) {
 
             }
         }
