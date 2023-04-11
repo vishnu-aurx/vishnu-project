@@ -1,5 +1,6 @@
 package com.aurx.core.models;
 
+import com.aurx.core.services.MoviesService;
 import com.aurx.core.services.ProductDetailService;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -22,7 +23,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ProductDetailsModel {
@@ -33,9 +36,15 @@ public class ProductDetailsModel {
 
     @OSGiService
     private ProductDetailService productDetailService;
+
+    @OSGiService
+    private MoviesService moviesService;
+
     private List<Products> numberOfProductList;
+
     @SlingObject
     private Resource resource;
+
 
     Logger logger = LoggerFactory.getLogger(ProductDetailsModel.class);
 
@@ -65,7 +74,17 @@ public class ProductDetailsModel {
         }
     }
 
+
+    public String[] getMovieName() {
+        if (moviesService.isEnabled()){
+            return moviesService.fetchAllMoviesName();
+        }
+        return null;
+    }
+
     public List<Products> getNumberOfProductsList() {
         return numberOfProductList;
     }
+
+
 }
