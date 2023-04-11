@@ -94,6 +94,12 @@
                             <type>zip</type>
                             <target>/apps/vishnu-project-vendor-packages/application/install</target>
                         </embedded>
+                        <embedded>
+                            <groupId>org.jsoup</groupId>
+                            <artifactId>jsoup</artifactId>
+                            <type>jar</type>
+                            <target>/apps/vishnu-project-vendor-packages/application/install</target>
+                        </embedded>
                     </embeddeds>
                 </configuration>
             </plugin>
@@ -212,5 +218,12 @@
             <artifactId>core.wcm.components.config</artifactId>
             <type>zip</type>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <type>jar</type>
+        </dependency>
+
     </dependencies>
 </project>
