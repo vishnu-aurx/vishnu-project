@@ -1,5 +1,6 @@
 package com.aurx.core.models;
 
+import com.aurx.core.services.MoviesService;
 import com.aurx.core.services.ProductDetailService;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -22,7 +23,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ProductDetailsModel {
@@ -33,9 +36,15 @@ public class ProductDetailsModel {
 
     @OSGiService
     private ProductDetailService productDetailService;
+
+    @OSGiService
+    private MoviesService moviesService;
+
     private List<Products> numberOfProductList;
+
     @SlingObject
     private Resource resource;
+
 
     Logger logger = LoggerFactory.getLogger(ProductDetailsModel.class);
 
@@ -54,18 +63,28 @@ public class ProductDetailsModel {
             try {
                 JsonArray productsArray = productDetailService.fetchAllProducts();
                 for (int i = 0; i < numberOfProducts; i++) {
-
-                    JsonObject jsonObject = productsArray.get(i).getAsJsonObject();
-                    numberOfProductList.add(new Products(jsonObject.get("id").toString(), jsonObject.get("price").toString(), jsonObject.get("title").getAsString(), jsonObject.get("description").getAsString(), jsonObject.get("images").getAsJsonArray().get(0).getAsString()));
+                    if (productsArray.size() > i) {
+                        JsonObject jsonObject = productsArray.get(i).getAsJsonObject();
+                        numberOfProductList.add(new Products(jsonObject.get("id").toString(), jsonObject.get("price").toString(), jsonObject.get("title").getAsString(), jsonObject.get("description").getAsString(), jsonObject.get("images").getAsJsonArray().get(0).getAsString()));
+                    }
                 }
-
             } catch (IOException e) {
-
+                logger.error(e.getMessage());
             }
         }
+    }
+
+
+    public String[] getMovieName() {
+        if (moviesService.isEnabled()) {
+            return moviesService.fetchAllMoviesName();
+        }
+        return null;
     }
 
     public List<Products> getNumberOfProductsList() {
         return numberOfProductList;
     }
+
+
 }
