@@ -58,6 +58,7 @@ public class ProductDetailsModel {
 
 
     public void getJSONData() {
+        logger.info("getJSONData Method start numberOfProducts :{}", numberOfProducts);
         if (numberOfProducts != 0) {
             numberOfProductList = new ArrayList<>();
             try {
@@ -66,8 +67,10 @@ public class ProductDetailsModel {
                     if (productsArray.size() > i) {
                         JsonObject jsonObject = productsArray.get(i).getAsJsonObject();
                         numberOfProductList.add(new Products(jsonObject.get("id").toString(), jsonObject.get("price").toString(), jsonObject.get("title").getAsString(), jsonObject.get("description").getAsString(), jsonObject.get("images").getAsJsonArray().get(0).getAsString()));
+
                     }
                 }
+                logger.info("getJSONData methode end");
             } catch (IOException e) {
                 logger.error(e.getMessage());
             }
@@ -76,10 +79,13 @@ public class ProductDetailsModel {
 
 
     public String[] getMovieName() {
+        logger.info("Start of getMovieName method");
+        String[] moviesName = null;
         if (moviesService.isEnabled()) {
-            return moviesService.fetchAllMoviesName();
+            moviesName = moviesService.fetchAllMoviesName();
         }
-        return null;
+        logger.info("End of getMovieName method with moviesName: {}", moviesName);
+        return moviesName;
     }
 
     public List<Products> getNumberOfProductsList() {

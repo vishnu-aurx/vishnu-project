@@ -28,6 +28,7 @@ public class LinkExtractModel {
     List<String> linksList;
     @PostConstruct
     protected void init(){
+        logger.info("start init method");
        linksList =new ArrayList<>();
         if(htmlTextfield !=null) {
             Document doc = Jsoup.parse(htmlTextfield);
@@ -38,6 +39,7 @@ public class LinkExtractModel {
                 this.linksList.add(href);
             }
         }
+        logger.info("end init method");
 
     }
     public List getLinks(){
