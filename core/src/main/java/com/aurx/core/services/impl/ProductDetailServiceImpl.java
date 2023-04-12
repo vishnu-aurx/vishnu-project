@@ -2,13 +2,10 @@ package com.aurx.core.services.impl;
 
 import com.aurx.core.services.MoviesService;
 import com.aurx.core.services.ProductDetailService;
-import com.aurx.core.services.config.MoviesConfiguration;
 import com.aurx.core.services.config.ProductDetailsConfiguration;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.commons.io.IOUtils;
-import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
@@ -20,7 +17,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -29,7 +25,7 @@ import java.util.Arrays;
 @Designate(ocd = ProductDetailsConfiguration.class)
 @Component(service = ProductDetailService.class, immediate = true)
 public class ProductDetailServiceImpl implements ProductDetailService {
-    private JsonArray jasonObject;
+    private JsonArray jsonObject;
     @Reference
     private MoviesService moviesService;
     private ProductDetailsConfiguration configuration;
@@ -42,7 +38,7 @@ public class ProductDetailServiceImpl implements ProductDetailService {
         try {
             populateProductDetails();
         } catch (IOException e) {
-
+            logger.error(e.getMessage());
         }
     }
 
@@ -52,6 +48,7 @@ public class ProductDetailServiceImpl implements ProductDetailService {
         try {
             populateProductDetails();
         } catch (IOException e) {
+            logger.error(e.getMessage());
 
         }
     }
@@ -67,9 +64,9 @@ public class ProductDetailServiceImpl implements ProductDetailService {
             response = IOUtils.toString(responseStream, StandardCharsets.UTF_8);
             if (!response.trim().equals("")) {
                 JsonParser parser = new JsonParser();
-                jasonObject = parser.parse(response).getAsJsonObject().get("products").getAsJsonArray();
+                jsonObject = parser.parse(response).getAsJsonObject().get("products").getAsJsonArray();
             } else {
-                jasonObject = new JsonArray();
+                jsonObject = new JsonArray();
             }
         }
     }
@@ -77,7 +74,6 @@ public class ProductDetailServiceImpl implements ProductDetailService {
     @Override
     public JsonArray fetchAllProducts() {
         logger.info(Arrays.toString(moviesService.fetchAllMoviesName()));
-       // logger.info("Movies : "+ Arrays.toString(moviesService.fetchAllMoviesNameInProductServiceImpl()));
-        return jasonObject;
+        return jsonObject;
     }
 }

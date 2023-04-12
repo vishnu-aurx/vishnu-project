@@ -22,37 +22,15 @@ public class MoviesServiceImp implements MoviesService {
     @Activate
     protected void activate(MoviesConfiguration moviesConfiguration) {
         this.moviesConfiguration = moviesConfiguration;
-//        movies=this.moviesConfiguration.movies();
         movies = moviesConfiguration.movies();
-       // movies = toUpperCaseMovieName();
         isEnabled = moviesConfiguration.isEnable();
-       // productMovies = getMovieName();
     }
 
     @Modified
     protected void modified(MoviesConfiguration moviesConfiguration) {
         this.moviesConfiguration = moviesConfiguration;
-//        movies=this.moviesConfiguration.movies();
-//        movies = toUpperCaseMovieName();
         isEnabled = moviesConfiguration.isEnable();
         movies = moviesConfiguration.movies();
-//        productMovies = getMovieName();
-    }
-
-
-    private String[] toUpperCaseMovieName() {
-
-        if (this.moviesConfiguration.isEnable()) {
-            String[] upperCaseMovieName = this.moviesConfiguration.movies();
-            int i = 0;
-            while (i < upperCaseMovieName.length) {
-                if (upperCaseMovieName[i] != null) upperCaseMovieName[i] = upperCaseMovieName[i].toUpperCase();
-                i++;
-            }
-
-            return upperCaseMovieName;
-        }
-        return null;
     }
 
 
