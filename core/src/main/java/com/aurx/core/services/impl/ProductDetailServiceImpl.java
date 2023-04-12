@@ -3,7 +3,6 @@ package com.aurx.core.services.impl;
 import com.aurx.core.services.ProductDetailService;
 import com.aurx.core.services.config.ProductDetailsConfiguration;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.commons.io.IOUtils;
 import org.osgi.service.component.annotations.Activate;
@@ -21,7 +20,7 @@ import java.nio.charset.StandardCharsets;
 @Designate(ocd = ProductDetailsConfiguration.class)
 @Component(service = ProductDetailService.class, immediate = true)
 public class ProductDetailServiceImpl implements ProductDetailService {
-    private JsonArray ob;
+    private JsonArray jsonElements;
 
     private ProductDetailsConfiguration configuration;
 
@@ -53,11 +52,11 @@ public class ProductDetailServiceImpl implements ProductDetailService {
         InputStream responseStream = connection.getInputStream();
         String response = IOUtils.toString(responseStream, StandardCharsets.UTF_8);
         JsonParser parser = new JsonParser();
-        ob = parser.parse(response).getAsJsonObject().get("products").getAsJsonArray();
+        jsonElements = parser.parse(response).getAsJsonObject().get("products").getAsJsonArray();
     }
 
     @Override
     public JsonArray fetchAllProducts() {
-        return ob;
+        return jsonElements;
     }
 }
