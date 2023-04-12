@@ -36,9 +36,11 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 
     @Activate
     protected void activate(ProductDetailsConfiguration configuration) {
+        logger.info("activate method start");
         this.configuration = configuration;
         try {
             populateProductDetails();
+
         } catch (IOException e) {
             logger.error(e.getMessage());
         }
@@ -46,6 +48,7 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 
     @Modified
     protected void modified(ProductDetailsConfiguration configuration) {
+        logger.info("modified method start");
         this.configuration = configuration;
         try {
             populateProductDetails();
@@ -56,8 +59,10 @@ public class ProductDetailServiceImpl implements ProductDetailService {
     }
 
     private void populateProductDetails() throws IOException {
+
         String response = "";
         String baseURL = configuration.url();
+        logger.info("populateProductDetails method start url :{}",baseURL);
         if(baseURL.startsWith("https")||baseURL.startsWith("http")) {
             URL url = new URL(baseURL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
