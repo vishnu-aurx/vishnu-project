@@ -63,20 +63,20 @@ public class ProductDetailsModel {
             try {
                 JsonArray productsArray = productDetailService.fetchAllProducts();
                 for (int i = 0; i < numberOfProducts; i++) {
-
-                    JsonObject jsonObject = productsArray.get(i).getAsJsonObject();
-                    numberOfProductList.add(new Products(jsonObject.get("id").toString(), jsonObject.get("price").toString(), jsonObject.get("title").getAsString(), jsonObject.get("description").getAsString(), jsonObject.get("images").getAsJsonArray().get(0).getAsString()));
+                    if (productsArray.size() > i) {
+                        JsonObject jsonObject = productsArray.get(i).getAsJsonObject();
+                        numberOfProductList.add(new Products(jsonObject.get("id").toString(), jsonObject.get("price").toString(), jsonObject.get("title").getAsString(), jsonObject.get("description").getAsString(), jsonObject.get("images").getAsJsonArray().get(0).getAsString()));
+                    }
                 }
-
             } catch (IOException e) {
-
+                logger.error(e.getMessage());
             }
         }
     }
 
 
     public String[] getMovieName() {
-        if (moviesService.isEnabled()){
+        if (moviesService.isEnabled()) {
             return moviesService.fetchAllMoviesName();
         }
         return null;

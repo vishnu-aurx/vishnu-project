@@ -25,7 +25,9 @@ import java.util.Arrays;
 @Designate(ocd = ProductDetailsConfiguration.class)
 @Component(service = ProductDetailService.class, immediate = true)
 public class ProductDetailServiceImpl implements ProductDetailService {
-    private JsonArray jsonObject;
+    private JsonArray jsonElements = new JsonArray();
+
+
     @Reference
     private MoviesService moviesService;
     private ProductDetailsConfiguration configuration;
@@ -62,18 +64,15 @@ public class ProductDetailServiceImpl implements ProductDetailService {
             connection.setRequestProperty("accept", "application/json");
             InputStream responseStream = connection.getInputStream();
             response = IOUtils.toString(responseStream, StandardCharsets.UTF_8);
-            if (!response.trim().equals("")) {
+            if (response!= null && !response.trim().equals("")) {
                 JsonParser parser = new JsonParser();
-                jsonObject = parser.parse(response).getAsJsonObject().get("products").getAsJsonArray();
-            } else {
-                jsonObject = new JsonArray();
+                jsonElements = parser.parse(response).getAsJsonObject().get("products").getAsJsonArray();
             }
         }
     }
 
     @Override
     public JsonArray fetchAllProducts() {
-        logger.info(Arrays.toString(moviesService.fetchAllMoviesName()));
-        return jsonObject;
+        return jsonElements;
     }
 }
