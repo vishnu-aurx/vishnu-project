@@ -22,7 +22,7 @@ public class PagePropertieDetailsModel {
     @ChildResource(name = "pathData")
     private List<Resource> pathResourceList;
     private List<String> pageTitleList;
-    private Logger logger = LoggerFactory.getLogger(ProductDetailsModel.class);
+    private final Logger logger = LoggerFactory.getLogger(ProductDetailsModel.class);
 
     @PostConstruct
     protected void init() {
