@@ -2,13 +2,17 @@
 <sly data-sly-use.pagePathModel="com.aurx.core.models.PagePropertieDetailsModel"/>
 <sly data-sly-test.pageTitleList="${pagePathModel.pageTitleList}"/>
 
+<sly data-sly-test.allPageTitleList="${pagePathModel.getAllPageTitleList}"/>
+
 <sly data-sly-test="${pageTitleList}">
     <div data-sly-list.pageTitle="${pageTitleList}">
-        <div>
-            <h3>${pageTitle}</h3>
-        </div>
+        <h4>${pageTitle}</h4>
     </div>
 </sly>
+
+
+
+
 <sly data-sly-call="${templates.placeholder @ isEmpty = !pageTitleList, classAppend='cmp-text'}"/>
 
 

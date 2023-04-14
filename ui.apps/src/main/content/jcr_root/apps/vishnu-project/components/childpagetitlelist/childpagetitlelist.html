@@ -1,0 +1,29 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-use.pagePathModel="com.aurx.core.models.PagePropertieDetailsModel"/>
+<sly data-sly-test.pageTitleList="${pagePathModel.pageTitleList}"/>
+
+<sly data-sly-test.allPageTitleList="${pagePathModel.getAllPageTitleList}"/>
+
+<sly data-sly-test="${allPageTitleList}">
+
+    <sly data-sly-list.allPageTitleMap="${allPageTitleList}">
+        <sly data-sly-test="${allPageTitleMap}">
+            <ol data-sly-list.allPageTitle = "${allPageTitleMap.keySet.iterator}">
+                <li>
+                    <h4>${allPageTitle}</h4>
+
+                    <ul data-sly-list.childPageTitle="${allPageTitleMap[allPageTitle]}">
+                        <li>${childPageTitle}</li>
+                    </ul>
+                </li>
+            </ol>
+        </sly>
+    </sly>
+</sly>
+
+
+
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !allPageTitleList, classAppend='cmp-text'}"/>
+
+
