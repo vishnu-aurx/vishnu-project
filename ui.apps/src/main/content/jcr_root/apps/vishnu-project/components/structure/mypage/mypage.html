@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>${properties.jcr:title}</title>
+    <sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html">
+        <sly data-sly-call="${clientlib.css @ categories='product-details-style'}"/>
+    </sly>
+</head>
+<body>
+<h1>this is body of my page </h1>
+<sly data-sly-use.templatedContainer="com.day.cq.wcm.foundation.TemplatedContainer"
+     data-sly-repeat.child="${templatedContainer.structureResources}"
+     data-sly-resource="${child.path @ resourceType=child.resourceType, decorationTagName='div'}"></sly>
+<sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='product-details-style'}"/>
+</sly>
+</body>
+</html>
