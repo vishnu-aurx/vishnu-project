@@ -1,0 +1,7 @@
+<input type="hidden" class="currentpath" value="${currentNode.path}" />
+    <input type="hidden" class="numberOfDays" value="${properties.days}" />
+
+  <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+
+      <div class="weather-container"></div>
+  <sly data-sly-call="${templates.placeholder @ isEmpty = !properties.days, classAppend='cmp-text'}"></sly>
