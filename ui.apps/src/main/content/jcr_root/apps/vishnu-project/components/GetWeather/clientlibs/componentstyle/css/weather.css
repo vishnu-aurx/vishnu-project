@@ -1,0 +1,23 @@
+
+  .weather{  background: #e8c3f2;
+    padding: 21px;
+    display: flex;
+    margin: 22px;
+    border: 6px solid;
+    box-shadow: 14px 14px 11px #723e8d;
+}
+.weatherData{ 
+    margin-right: 37px;
+    border-radius: 7px;
+    align-content: center;
+    background: #dea8e4;
+    box-shadow: 14px 14px 11px #723e8d;
+
+}
+.icons{
+        box-shadow: 14px 14px 11px #723e8d;
+        height: 100px;
+        width: 100px;
+        border-radius: 150px;
+
+}

@@ -2,27 +2,42 @@
     .title{
     color :red;
     }
+
     .container{
          margin-bottom: 10%;
-    }
+        }
     .heading{
         text-align: center;
         color: #4f41e0;
         font-size: 40px;
         background: #d5e3ee;
-    }
+            }
+
     .image-section{
         display: inline-block;
-        width: 33%;
+    width: 33%;
+
     }
-     .detail-section{
-         float: right;
-         width: 50%;
+
+        .detail-section{
+               float: right;
+    width: 50%;
+
     }
-   .main-container{
-        margin-left: 6%;
-        margin-right: 6%;
+
+    .product-title{
+
+	}
+
+    .product-details-style{
+
     }
-   .hide{
+
+.main-container{
+    margin-left: 6%;
+    margin-right: 6%;
+    }
+
+.hide{
 	display: none;
-   }
+}

@@ -1,0 +1,4 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+<div class="weather-container" id="${resource.path.hashCode}" data-path="${resource.path}">
+</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !properties.days, classAppend='cmp-text'}"></sly>
