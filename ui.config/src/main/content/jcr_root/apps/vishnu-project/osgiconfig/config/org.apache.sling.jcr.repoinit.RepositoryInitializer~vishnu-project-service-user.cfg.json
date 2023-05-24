@@ -1,0 +1,5 @@
+{
+    "scripts": [
+        "create service user vishnu-project-test\nset ACL on /apps/vishnu-project, /conf/vishnu-project\nallow jcr:all for vishnu-project-test\nend"
+    ]
+}
