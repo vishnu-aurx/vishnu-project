@@ -7,6 +7,6 @@ import org.apache.sling.api.resource.Resource;
 public interface ComponentReportService {
    List<Resource> fetchComponents();
    void fetchTitle();
-   public List<ComponentReport> comopnentList();
+   List<ComponentReport> comopnentList();
 
 }

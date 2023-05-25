@@ -1,6 +1,5 @@
 package com.aurx.core.servlets;
 
-import com.aurx.core.pojo.ComponentReport;
 import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
@@ -8,8 +7,6 @@ import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
 import com.google.gson.Gson;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +39,7 @@ public class ComponentReportServlet extends SlingAllMethodsServlet {
   protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response)
       throws ServletException, IOException {
     String resourceTypeValue = request.getParameter("resourceType");
-    logger.info("this is resourece: {}", resourceTypeValue);
+    logger.info("this is resource: {}", resourceTypeValue);
     ResourceResolver resourceResolver = request.getResourceResolver();
     Set<String> paths = fetchPageDetails(resourceResolver, resourceTypeValue);
     Gson gson = new Gson();
@@ -71,14 +68,12 @@ public class ComponentReportServlet extends SlingAllMethodsServlet {
       List<Hit> hits = result.getHits();
       for (Hit hit : hits) {
         try {
-          String path = hit.getPath();
-          String[] path1 = path.split("/jcr:content");
-          String pagePath = path1[0];
-          Resource resource1 = resourceResolver.getResource(pagePath + "/jcr:content");
-          if (resource1 != null) {
-            ValueMap valueMap = resource1.getValueMap();
+          Resource pageResource = hit.getResource();
+          if (pageResource != null) {
+            String path = pageResource.getPath();
+            String pagePath = path.split("/jcr:content")[0];
+            ValueMap valueMap = pageResource.getValueMap();
             String title = valueMap.get("jcr:title", "");
-            pagePath = pagePath.split("/jcr:content")[0];
             String pagePathAndTitle = pagePath + "#" + title;
             logger.info("this is page and title : {}", pagePathAndTitle);
             paths.add(pagePathAndTitle);

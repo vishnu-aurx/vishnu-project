@@ -4,9 +4,7 @@ import static com.aurx.core.utils.ResolverUtils.getResourceResolver;
 
 import com.aurx.core.pojo.ComponentReport;
 import com.aurx.core.services.ComponentReportService;
-import com.aurx.core.services.ProductDetailService;
 import com.aurx.core.services.config.MoviesConfiguration;
-import com.aurx.core.services.config.ProductDetailsConfiguration;
 import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
@@ -23,13 +21,10 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.api.resource.ValueMap;
-import org.apache.sling.models.annotations.DefaultInjectionStrategy;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,8 +32,7 @@ import org.slf4j.LoggerFactory;
 public class ComponentReportServiceImpl implements ComponentReportService {
 final Logger logger = LoggerFactory.getLogger(ComponentReportServiceImpl.class);
 private List<ComponentReport> comopnentHierachyList;
-  @SlingObject
-  private Resource resource;
+
   @Reference
   private ResourceResolverFactory resourceResolverFactory;
   @Activate
@@ -47,7 +41,6 @@ private List<ComponentReport> comopnentHierachyList;
     fetchTitle();
 
   }
-
   @Modified
   protected void modified(MoviesConfiguration moviesConfiguration) {
     logger.info("inside the modified methode component  service : ");
@@ -64,7 +57,7 @@ private List<ComponentReport> comopnentHierachyList;
       } catch (LoginException e) {
         logger.info("this is  Exception : {}",e.getMessage());
       }
-      ;
+
       Map<String, String> predicateMap = new HashMap<>();
       predicateMap.put("path", "/apps/vishnu-project/components");
       predicateMap.put("type", "cq:Component");

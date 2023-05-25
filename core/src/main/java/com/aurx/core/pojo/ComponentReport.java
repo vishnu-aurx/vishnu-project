@@ -9,9 +9,7 @@ public class ComponentReport implements Comparator<ComponentReport> {
  private String group;
  private String pathOfComponent;
 
-  public ComponentReport() {
-
-  }
+  public ComponentReport() {}
 
   public ComponentReport(String title, String group, String pathOfComponent) {
     this.title = title;
@@ -71,11 +69,11 @@ public class ComponentReport implements Comparator<ComponentReport> {
   }
 
   @Override
-  public int compare(ComponentReport o1, ComponentReport o2) {
-    int grp=o1.group.compareToIgnoreCase(o2.group);
-    if(grp ==0){
-      return  o1.getTitle().compareToIgnoreCase(o2.getTitle());
+  public int compare(ComponentReport componentReport1, ComponentReport componentReport2) {
+    int compareGroup=componentReport1.group.compareToIgnoreCase(componentReport2.group);
+    if(compareGroup ==0){
+      return  componentReport1.getTitle().compareToIgnoreCase(componentReport2.getTitle());
     }else
-    return grp ;
+    return compareGroup ;
   }
 }

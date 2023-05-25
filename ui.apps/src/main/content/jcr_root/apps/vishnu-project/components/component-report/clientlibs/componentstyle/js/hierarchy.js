@@ -3,7 +3,6 @@ $(".submit-btn").click(function(){
      var resourceType=  $(this).closest('.component-report-container').find('.select-component').val();
     if(resourceType !=null){
      resourceType=resourceType.replace("/apps/", "")
-     console.info("this is "+resourceType);
 		 let path= $(this).closest('.component-report-container').data("path");
      let id= $(this).closest('.component-report-container').attr("id");
      console.info("path : "+path)
@@ -15,9 +14,7 @@ $(".submit-btn").click(function(){
                          resourceType: resourceType
                       },
                       success: function (result) {
-                        console.info(result);
                        var pagePathObject = $.parseJSON(result);
-                        console.info(pagePathObject.length);
                      if(pagePathObject.length>0){
                        for (i = 0; i < pagePathObject.length; i++) {
                                $(".component-report-container[id='"+this.id+"']").append("<div class='report' >"+
