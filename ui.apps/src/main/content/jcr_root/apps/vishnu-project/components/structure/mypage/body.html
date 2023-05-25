@@ -1,9 +1,0 @@
-
-<sly data-sly-use.pageViewsModel="com.aurx.core.models.PageViewsModel"/>
-    <div class="views" data-is-author="${pageViewsModel.author ? 'true' : 'false'}">
-      <b>views : ${properties.pageLoadCount}</b>
-    </div>
-<sly data-sly-use.templatedContainer="com.day.cq.wcm.foundation.TemplatedContainer"
-     data-sly-repeat.child="${templatedContainer.structureResources}"
-     data-sly-resource="${child.path @ resourceType=child.resourceType, decorationTagName='div'}">
- </sly>
