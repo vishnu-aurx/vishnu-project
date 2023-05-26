@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+  jcr:primaryType="nt:unstructured"
+  jcr:title="fetch path prop"
+  sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+      jcr:primaryType="nt:unstructured"
+      sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+              jcr:primaryType="nt:unstructured"
+              sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items jcr:primaryType="nt:unstructured">
+                    <content
+                      jcr:primaryType="nt:unstructured"
+                      jcr:title="Fetch property"
+                      sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <container
+                                      jcr:primaryType="nt:unstructured"
+                                      sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <pagepath
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                              fieldDescription="please enter the path"
+                                              fieldLabel="Page Path Lable"
+                                              name="./pagepathlable"/>
+                                            <property-value-lable
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                              fieldDescription="please enter the value"
+                                              fieldLabel="Page value Lable"
+                                              name="./propertyvaluelable"/>
+                                            <fetch-btn-lalble
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                              fieldDescription="please enter the message"
+                                              fieldLabel="Fetch Lable"
+                                              name="./fetchbuttonlable"/>
+                                            <save-btn-lable
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                              fieldDescription="please enter the message"
+                                              fieldLabel="Save Button Lable"
+                                              name="./savebuttonlable"/>
+                                            <invalid-path
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                              fieldDescription="please enter the message"
+                                              fieldLabel="Invalid path message"
+                                              name="./pathmsg"/>
+                                            <data-fetch-msg
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                              fieldDescription="please enter the message"
+                                              fieldLabel="Fetch Data Massage"
+                                              name="./fetchmassage"/>
+                                            <save-data-msg
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                              fieldDescription="please enter the message"
+                                              fieldLabel="Save data massage"
+                                              name="./savemassage"/>
+                                            <error-msg
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                              fieldDescription="please enter the message"
+                                              fieldLabel="Error Massage"
+                                              name="./errormsg"/>
+                                        </items>
+                                    </container>
+                                </items>
+                            </column>
+                        </items>
+                    </content>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
