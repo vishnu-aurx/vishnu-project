@@ -36,7 +36,7 @@ public class GetWeatherServlet extends SlingAllMethodsServlet {
   private static final Logger log = LoggerFactory.getLogger(GetWeatherServlet.class);
 
   @Reference
-  private WeatherReportService weatherReportService;
+  private transient WeatherReportService weatherReportService;
   @Override
   protected void doPost(SlingHttpServletRequest request,SlingHttpServletResponse response)
       throws ServletException, IOException {
