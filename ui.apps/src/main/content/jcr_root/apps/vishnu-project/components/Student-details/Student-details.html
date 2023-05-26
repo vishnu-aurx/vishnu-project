@@ -1,0 +1,12 @@
+  <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+  <sly data-sly-use.studentDetailsModel="com.aurx.core.models.StudentDetailsModel"/>
+  <sly data-sly-test.students="${studentDetailsModel.getStudents}"/>
+   <div data-sly-list.student="${students}">
+      <div class="student-container">
+        <h1 class="name">name = ${student.getName}</h1>
+        <h1 class="roll-number">roll number = ${student.getRollNumber}</h1>
+        <h1 class="marks">marks =${student.marks}</h1>
+        <h1 class="avrg">average = ${student.getAverageMarks}</h1>
+      </div>
+    </div>
+  <sly data-sly-call="${templates.placeholder @ isEmpty = !students, classAppend='cmp-text'}"></sly>
