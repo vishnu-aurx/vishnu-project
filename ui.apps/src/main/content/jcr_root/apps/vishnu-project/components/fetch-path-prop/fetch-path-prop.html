@@ -1,0 +1,13 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-test.isAuthored="${properties.pagepathlable}">
+  <div class="fetch-container" data-invalid-path-msg="${properties.pathmsg}"
+       data-error-msg="${properties.errormsg}" data-fetch-path-msg="${properties.fetchmassage}"
+       data-save-path-msg="${properties.savemassage}" id="${resource.path.hashCode}">
+    <h3>${properties.pagepathlable}</h3> : <input type="text" class="path"/><br><br>
+    <h3>${properties.propertyvaluelable} </h3> : <input type="number" class="prop"/><br><br>
+    <button class="fetch" type="submit"> ${properties.fetchbuttonlable}</button>
+    <button class="save"> ${properties.savebuttonlable}</button>
+    <div class="msg"></div>
+  </div>
+</sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !isAuthored, classAppend='cmp-text'}"></sly>
