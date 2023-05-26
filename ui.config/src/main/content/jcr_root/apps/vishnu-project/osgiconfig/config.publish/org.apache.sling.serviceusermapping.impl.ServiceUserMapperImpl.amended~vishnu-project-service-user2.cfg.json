@@ -1,0 +1,6 @@
+{
+  "service.ranking": "0",
+  "user.mapping":[
+   "vishnu-project.core:vishnuprojectuser2=test-config-service-user"
+]
+}

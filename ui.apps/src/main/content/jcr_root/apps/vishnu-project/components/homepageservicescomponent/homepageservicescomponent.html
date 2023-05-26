@@ -1,0 +1,18 @@
+
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+   <sly data-sly-use.homePageServicesComponentModel="com.aurx.core.models.HomePageServicesComponentModel"/>
+   <sly data-sly-test.homePageServicesComponentList="${homePageServicesComponentModel.homePageServicesComponentList}"/>
+       <div>
+       		<h1>${homePageServicesComponentModel.getTitle}</h1>
+       </div>
+      <sly data-sly-list.homePageServicesComponent="${homePageServicesComponentList}">
+        <div>
+          	${homePageServicesComponent.getImage}
+         </div>
+        <div>
+         <h1>${homePageServicesComponent.getImageLabel}</h1>
+          </div>
+      </sly>
+
+
+<sly data-sly-call="${templates.placeholder @ isEmpty = !homePageServicesComponentList, classAppend='cmp-text'}"></sly>

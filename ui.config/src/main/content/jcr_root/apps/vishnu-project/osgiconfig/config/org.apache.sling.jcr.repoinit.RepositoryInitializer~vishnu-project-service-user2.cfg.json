@@ -1,0 +1,5 @@
+{
+  "scripts": [
+    "create service user test-config-service-user\nset ACL on /content/vishnu-project, /apps \nallow jcr:read,jcr:all for test-config-service-user\ndeny jcr:write for test-config-service-user\nend"
+  ]
+}

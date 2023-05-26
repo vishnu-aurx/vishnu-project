@@ -1,0 +1,9 @@
+.student-container{
+background: #bbddcf;
+    display: flex;
+    width: auto;
+    margin:30px;
+    }
+    h1{
+    margin-left: 60px;
+    }
