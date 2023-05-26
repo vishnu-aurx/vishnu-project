@@ -1,58 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+  xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+  xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+  jcr:primaryType="nt:unstructured"
+  jcr:title="components-hierarchy-component"
+  sling:resourceType="cq/gui/components/authoring/dialog">
+  <content
     jcr:primaryType="nt:unstructured"
-    jcr:title="components-hierarchy-component"
-    sling:resourceType="cq/gui/components/authoring/dialog">
-    <content
+    sling:resourceType="granite/ui/components/coral/foundation/container">
+    <items jcr:primaryType="nt:unstructured">
+      <tabs
         jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/container">
+        sling:resourceType="granite/ui/components/coral/foundation/tabs">
         <items jcr:primaryType="nt:unstructured">
-            <tabs
+          <content
+            jcr:primaryType="nt:unstructured"
+            jcr:title="components"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+            <items jcr:primaryType="nt:unstructured">
+              <column
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                 <items jcr:primaryType="nt:unstructured">
-                    <content
+                  <container
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                    <items jcr:primaryType="nt:unstructured">
+
+                      <dropdown-lable
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="components"
-                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                        <items jcr:primaryType="nt:unstructured">
-                            <column
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <container
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <submit-button-lable
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="please enter the button lable"
-                                                fieldLabel="button  Lable"
-                                                name="./btnlable"
-                                                required="{Boolean}true"/>
-                                            <dropdown-lable
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="please enter the drop down lable"
-                                                fieldLabel="drop down Lable"
-                                                name="./dropdownlable"
-                                                required="{Boolean}true"/>
-                                            <dropdown-default
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="please enter the default value of dropdown"
-                                                fieldLabel="dropdown value"
-                                                name="./dropdownvalue"
-                                                required="{Boolean}true"/>
-                                        </items>
-                                    </container>
-                                </items>
-                            </column>
-                        </items>
-                    </content>
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter the drop down label"
+                        fieldLabel="Title"
+                        name="./dropdownlable"
+                        required="{Boolean}true"/>
+                      <dropdown-default
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="please enter the default value of dropdown"
+                        fieldLabel="Enter dropdown place holder"
+                        name="./dropdownvalue"
+                        required="{Boolean}true"/>
+                      <submit-button-lable
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter the button label"
+                        fieldLabel="Button Title"
+                        name="./btnlable"
+                        required="{Boolean}true"/>
+                    </items>
+                  </container>
                 </items>
-            </tabs>
+              </column>
+            </items>
+          </content>
         </items>
-    </content>
+      </tabs>
+    </items>
+  </content>
 </jcr:root>
