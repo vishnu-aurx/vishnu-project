@@ -46,7 +46,7 @@ public class ProductDetailsModel {
     private Resource resource;
 
 
-    Logger logger = LoggerFactory.getLogger(ProductDetailsModel.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProductDetailsModel.class);
 
 
     @PostConstruct
@@ -67,7 +67,6 @@ public class ProductDetailsModel {
                     if (productsArray.size() > i) {
                         JsonObject jsonObject = productsArray.get(i).getAsJsonObject();
                         numberOfProductList.add(new Products(jsonObject.get("id").toString(), jsonObject.get("price").toString(), jsonObject.get("title").getAsString(), jsonObject.get("description").getAsString(), jsonObject.get("images").getAsJsonArray().get(0).getAsString()));
-
                     }
                 }
                 logger.info("getJSONData methode end");
