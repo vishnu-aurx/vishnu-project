@@ -1,6 +1,6 @@
 {
   "service.ranking": "0",
   "user.mapping":[
-   "vishnu-project.core:vishnuproject=vishnu-project-test"
+   "vishnu-project.core:vishnuproject=content-reader-vishnu-project"
 ]
 }
