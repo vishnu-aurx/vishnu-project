@@ -44,7 +44,7 @@ public class GetWeatherServlet extends SlingAllMethodsServlet {
      JsonObject jsonObject;
     String lat= request.getParameter("userLat");
     String lon= request.getParameter("userLon");
-    String days= request.getResource().getValueMap().get("days", "10");
+    int days= Integer.parseInt(request.getResource().getValueMap().get("days", "10"));
     String APP_ID= weatherReportService.getWeatherAppId();
     log.info("lon : {}",lon);
     log.info("lat : {}",lat);
@@ -53,7 +53,13 @@ public class GetWeatherServlet extends SlingAllMethodsServlet {
     String urlData = "";
     String baseURL = weatherReportService.getWeatherUrl();
     if(baseURL.startsWith("https")||baseURL.startsWith("http")) {
-      baseURL = baseURL + "?lat=" + lat + "&lon=" + lon + "&cnt=" + days + "&appid=" + APP_ID;
+      if(days==1){
+        baseURL = baseURL + "?lat=" + lat + "&lon=" + lon + "&cnt=" + days + "&appid=" + APP_ID;
+
+      }else {
+        baseURL = baseURL + "?lat=" + lat + "&lon=" + lon + "&cnt=" + ((days-1)*8) + "&appid=" + APP_ID;
+      }
+
       log.info(" method start url :{}", baseURL);
       URL url = new URL(baseURL);
       HttpURLConnection connection = (HttpURLConnection) url.openConnection();
