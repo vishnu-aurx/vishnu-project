@@ -36,13 +36,13 @@ private List<ComponentReport> comopnentHierachyList;
   @Reference
   private ResourceResolverFactory resourceResolverFactory;
   @Activate
-  protected void activate(MoviesConfiguration moviesConfiguration) {
+  protected void activate() {
     logger.info("inside the active methode component  service : ");
     fetchTitle();
 
   }
   @Modified
-  protected void modified(MoviesConfiguration moviesConfiguration) {
+  protected void modified() {
     logger.info("inside the modified methode component  service : ");
     fetchTitle();
 
