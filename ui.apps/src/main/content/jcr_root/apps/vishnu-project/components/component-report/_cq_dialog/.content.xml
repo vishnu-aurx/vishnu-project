@@ -49,6 +49,22 @@
                         name="./btnlable"
                         value="submit"
                        />
+                      <no-component-found-error-msg
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please Enter the Massage"
+                        fieldLabel="No Component Found Error Massage"
+                        name="./nocomponentfound"
+                        required="{Boolean}true"/>
+                      />
+                      <default-selection-error-msg
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please Enter the Massage"
+                        fieldLabel="Default Selection Error Massage"
+                        name="./defaulterrormsg"
+                        required="{Boolean}true"/>
+                      />
                     </items>
                   </container>
                 </items>
