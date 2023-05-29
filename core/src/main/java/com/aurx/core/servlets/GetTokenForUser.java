@@ -25,8 +25,6 @@ import org.slf4j.LoggerFactory;
 })
 public class GetTokenForUser extends SlingSafeMethodsServlet {
 
-//  private final String path = "/content/vishnu-project/jcr:content";
-
   private final static String apiKeyPath = "/etc/api-data/api-key";
   private final static String appIdPath = "/etc/api-data/app-id";
 
@@ -46,11 +44,8 @@ public class GetTokenForUser extends SlingSafeMethodsServlet {
        ModifiableValueMap modifiableValueMap = resource.adaptTo(ModifiableValueMap.class);
       Set<Entry<String, Object>> entries = resource.getValueMap().entrySet();
       if(modifiableValueMap !=null && modifiableValueMap.containsKey(appKey)){
-          //abhinav
           modifiableValueMap.put(appKey, token);
-        //vishnu
-//        modifiableValueMap.put(token, appKey);
-        resourceResolver.commit();
+          resourceResolver.commit();
           response.getWriter().write("this is my token :  " + token);
       }else
           response.getWriter().write("this is invalid key  ");
