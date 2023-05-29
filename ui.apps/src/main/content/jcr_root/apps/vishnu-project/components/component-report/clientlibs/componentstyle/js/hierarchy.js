@@ -24,7 +24,7 @@ $(".submit-btn").click(function(){
                        }
                      }else{
                      $(this).closest('.component-report-container').find('.report').html("");
-                      setTimeout(function() { alert("choose an appropriate alternative component that will never be used on any page. "); }, 50);
+                      setTimeout(function() { alert("Selected component not used on the any pages . "); }, 50);''
                      }
                          },
                       error: function (error) {
@@ -32,7 +32,7 @@ $(".submit-btn").click(function(){
                       }
                   });
        }else{
-                              setTimeout(function() { alert("choose any component ")}, 50);
+                              setTimeout(function() { alert("Please first  select any component from dropdown c ")}, 50);
                                }
    });
 
