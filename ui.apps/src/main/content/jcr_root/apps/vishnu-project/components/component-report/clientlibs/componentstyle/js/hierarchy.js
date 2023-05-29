@@ -24,13 +24,15 @@ $(".submit-btn").click(function(){
                        }
                      }else{
                      $(this).closest('.component-report-container').find('.report').html("");
-                      setTimeout(function() { alert("Not using this component on any page"); }, 50);
+                      setTimeout(function() { alert("choose an appropriate alternative component that will never be used on any page. "); }, 50);
                      }
                          },
                       error: function (error) {
                           console.log("in error");
                       }
                   });
-       }
+       }else{
+                              setTimeout(function() { alert("choose any component ")}, 50);
+                               }
    });
 
