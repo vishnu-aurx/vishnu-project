@@ -47,7 +47,8 @@
                         fieldDescription="Please enter the button label"
                         fieldLabel="Button Title"
                         name="./btnlable"
-                        required="{Boolean}true"/>
+                        value="submit"
+                       />
                     </items>
                   </container>
                 </items>
