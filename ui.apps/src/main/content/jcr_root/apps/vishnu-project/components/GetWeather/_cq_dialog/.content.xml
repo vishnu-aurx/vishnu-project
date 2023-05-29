@@ -29,7 +29,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
                                                 fieldDescription="please enter the number of days weather report"
                                                 fieldLabel="Number of days report"
-                                                max="{Long}50"
+                                                max="{Long}5"
                                                 min="{Long}1"
                                                 name="./days"/>
                                         </items>
