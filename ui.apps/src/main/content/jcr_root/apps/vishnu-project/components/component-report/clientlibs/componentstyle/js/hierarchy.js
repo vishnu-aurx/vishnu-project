@@ -1,6 +1,10 @@
 $(".submit-btn").click(function(){
      $(this).closest('.component-report-container').find('.report').html("");
      var resourceType=  $(this).closest('.component-report-container').find('.select-component').val();
+     var noComponentError=  $(this).closest('.component-report-container').data("no-component-error-msg");
+     var defaultError = $(this).closest('.component-report-container').data("default-selection-error-msg");
+     console.info("defaultError : "+defaultError);
+     console.info("noComponentError : "+noComponentError);
     if(resourceType !=null){
      resourceType=resourceType.replace("/apps/", "")
 		 let path= $(this).closest('.component-report-container').data("path");
@@ -24,7 +28,7 @@ $(".submit-btn").click(function(){
                        }
                      }else{
                      $(this).closest('.component-report-container').find('.report').html("");
-                      setTimeout(function() { alert("choose an appropriate alternative component that will never be used on any page. "); }, 50);
+                      setTimeout(function() { alert(noComponentError); }, 50);
                      }
                          },
                       error: function (error) {
@@ -32,7 +36,7 @@ $(".submit-btn").click(function(){
                       }
                   });
        }else{
-                              setTimeout(function() { alert("choose any component ")}, 50);
+                              setTimeout(function() { alert(defaultError)}, 50);
                                }
    });
 

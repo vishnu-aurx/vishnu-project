@@ -5,7 +5,8 @@
 
 <sly data-sly-test="${isAuthored}">
   <div class="component-report-container" data-path="${resource.path}"
-       id="${resource.path.hashCode}">
+       id="${resource.path.hashCode}" data-no-component-error-msg="${properties.nocomponentfound}"
+       data-default-selection-error-msg="${properties.defaulterrormsg}">
     <sly data-sly-test="${comopnentHierachyList}">
       <h2 class="dropdown-lable">${properties.dropdownlable}</h2>
       <select class="select-component" data-sly-list.components="${comopnentHierachyList}">
