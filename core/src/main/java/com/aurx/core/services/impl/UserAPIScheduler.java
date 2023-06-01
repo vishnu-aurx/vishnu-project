@@ -24,29 +24,26 @@ import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Component(service = Runnable.class,immediate = true)
+@Component(service = Runnable.class, immediate = true)
 @Designate(ocd = UserAPIConfiguration.class)
-public class  UserAPIScheduler implements Runnable{
-@Reference
+public class UserAPIScheduler implements Runnable {
+  @Reference
   Scheduler scheduler;
-@Reference
+  @Reference
   ResourceResolverFactory resourceResolverFactory;
-private static final Logger logger= LoggerFactory.getLogger(UserAPIScheduler.class);
-private int schedulerId;
-
-
+  private static final Logger logger = LoggerFactory.getLogger(UserAPIScheduler.class);
+  private int schedulerId;
   @Activate
   @Modified
-  protected void activate(UserAPIConfiguration userAPIConfiguration){
+  protected void activate(UserAPIConfiguration userAPIConfiguration) {
     logger.info("inside the active methode");
-    schedulerId=userAPIConfiguration.schedulerName().hashCode();
-    logger.info("=================================this is scheduler name : {}",userAPIConfiguration.schedulerName());
+    schedulerId = userAPIConfiguration.schedulerName().hashCode();
+    logger.info("=================================this is scheduler name : {}",
+        userAPIConfiguration.schedulerName());
     addScheduler(userAPIConfiguration);
   }
-
   @Deactivate
   protected void deactivate(UserAPIConfiguration userAPIConfiguration) {
-
     removeScheduler();
   }
   @Override
@@ -64,38 +61,40 @@ private int schedulerId;
       scheduleOptions.canRunConcurrently(false);
       scheduler.schedule(this, scheduleOptions);
       logger.info("=======this is scheduler add methode");
-    }else{
+    } else {
       logger.info("============Schedule Service is disable===========");
     }
   }
-  private void removeScheduler(){
+  private void removeScheduler() {
     scheduler.unschedule(String.valueOf(schedulerId));
   }
-private void removeTokens(){
-  try {
-    ResourceResolver resourceResolver = getResourceResolver(resourceResolverFactory);
 
-    if(resourceResolver!=null) {
+  private void removeTokens() {
+    try {
+      ResourceResolver resourceResolver = getResourceResolver(resourceResolverFactory);
 
-      Resource resource = resourceResolver.getResource(APP_ID_TIME_PATH);
-      if(resource !=null){
-        ValueMap valueMap = resource.getValueMap();
-        ModifiableValueMap modifiableValueMap = resource.adaptTo(ModifiableValueMap.class);
-        if (modifiableValueMap !=null) {
-          Set<Entry<String, Object>> entries = valueMap.entrySet();
-          for (Entry<String,Object> entry: entries){
-            if(!entry.getKey().equals("jcr:primaryType")) {
-              modifiableValueMap.remove(entry.getKey());
-              resourceResolver.commit();
-              logger.info("token removed");
+      if (resourceResolver != null) {
+
+        Resource resource = resourceResolver.getResource(APP_ID_TIME_PATH);
+        if (resource != null) {
+          ValueMap valueMap = resource.getValueMap();
+          ModifiableValueMap modifiableValueMap = resource.adaptTo(ModifiableValueMap.class);
+          if (modifiableValueMap != null) {
+            Set<Entry<String, Object>> entries = valueMap.entrySet();
+            for (Entry<String, Object> entry : entries) {
+              if (!entry.getKey().equals("jcr:primaryType")) {
+                modifiableValueMap.remove(entry.getKey());
+                resourceResolver.commit();
+                logger.info("token removed");
+              }
+
             }
-
           }
+
         }
-        
       }
+    } catch (LoginException | PersistenceException e) {
+      logger.error(e.getMessage());
     }
-  } catch (LoginException | PersistenceException e) {
-logger.error(e.getMessage());  }
-}
+  }
 }

@@ -2,6 +2,8 @@ package com.aurx.core.servlets;
 
 import static com.aurx.core.utils.ResolverUtils.API_KEY;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.util.Map.Entry;
 import java.util.Random;
@@ -24,50 +26,55 @@ import org.osgi.service.component.annotations.Component;
     "sling.servlet.extensions=json"
     })
 public class GenerateUserAPIKey extends SlingSafeMethodsServlet {
-
+  Random rand = new Random();
   @Override
   protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
       throws ServletException, IOException {
+    Gson gson = new Gson();
+    JsonObject jsonObject = new JsonObject();
     String user = request.getParameter("username");
     String email = request.getParameter("email");
-    user = user + ":" + email;
-    Random rand = new Random();
-    int keyNumber = rand.nextInt(9999999);
+    if (email != null) {
+      user = user + ":" + email;
 
-    String username = "user" + keyNumber ;
-    ResourceResolver resourceResolver = request.getResourceResolver();
-    Resource resource = resourceResolver.getResource(API_KEY);
-    if (resource != null) {
-      ValueMap valueMap = resource.getValueMap();
-      Set<Entry<String, Object>> entries = valueMap.entrySet();
-
-      if (entries.size() > 2) {
-        boolean flag = false;
-        for (Entry<String, Object> entry : entries) {
-          String apiKey = entry.getKey();
-          String apiKeyValue = entry.getValue().toString();
-          if (!apiKey.equals("jcr:primaryType") && !apiKey.equals("jcr:mixinTypes")) {
-            String[] apiValue = apiKeyValue.split(":");
-            if (apiValue[1].equals(email)) {
-              flag = true;
-              response.getWriter().write("Your API Key  : " + apiKey);
-              break;
+      int keyNumber = rand.nextInt(9999999);
+      String username = "user" + keyNumber;
+      ResourceResolver resourceResolver = request.getResourceResolver();
+      Resource resource = resourceResolver.getResource(API_KEY);
+      if (resource != null) {
+        ValueMap valueMap = resource.getValueMap();
+        Set<Entry<String, Object>> entries = valueMap.entrySet();
+        if (entries.size() > 2) {
+          boolean isAuthor = false;
+          for (Entry<String, Object> entry : entries) {
+            String apiKey = entry.getKey();
+            String apiKeyValue = entry.getValue().toString();
+            if (!apiKey.equals("jcr:primaryType") && !apiKey.equals("jcr:mixinTypes")) {
+              String[] apiValue = apiKeyValue.split(":");
+              if (apiValue[1].equals(email)) {
+                isAuthor = true;
+                jsonObject.addProperty("api_Key",apiKey);
+                break;
+              }
             }
           }
-        }
-        if (!flag) {
+          if (!isAuthor) {
+            ModifiableValueMap modifiableValueMap = resource.adaptTo(ModifiableValueMap.class);
+            modifiableValueMap.put(username, user);
+            resourceResolver.commit();
+            jsonObject.addProperty("api_key",username);
+            }
+        } else {
           ModifiableValueMap modifiableValueMap = resource.adaptTo(ModifiableValueMap.class);
           modifiableValueMap.put(username, user);
           resourceResolver.commit();
-          response.getWriter().write("Your API Key : " + username);
-        }
-      } else {
-        ModifiableValueMap modifiableValueMap = resource.adaptTo(ModifiableValueMap.class);
-        modifiableValueMap.put(username, user);
-        resourceResolver.commit();
-        response.getWriter().write("Your API Key : " + username);
-      }
-    }
+          jsonObject.addProperty("api_Key",username);
 
+        }
+      }
+    } else {
+      jsonObject.addProperty("error_Massage","invalid email");
+       }
+    response.getWriter().write(gson.toJson(jsonObject));
   }
 }

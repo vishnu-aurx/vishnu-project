@@ -18,10 +18,10 @@
                       url: url,
                       id :id,
                       success: function (result) {
-
-                          console.info(result)
+                         var obj = $.parseJSON(result);
+                         console.info(obj.api_Key)
                           $(".api-key-container[id='"+this.id+"']").find('.massage').html('');
-                          $(".api-key-container[id='"+this.id+"']").append("<div class='massage'><h3>"+result+"</h3></div>");
+                          $(".api-key-container[id='"+this.id+"']").append("<div class='massage'><h3> Your API Key :  "+(obj.api_Key)+"</h3></div>");
 
                          },
                       error: function (error) {
