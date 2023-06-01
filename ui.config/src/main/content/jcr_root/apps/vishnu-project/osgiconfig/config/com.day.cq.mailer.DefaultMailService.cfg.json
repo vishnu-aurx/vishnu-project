@@ -1,0 +1,9 @@
+{
+  "smtp.host": "smtp.office365.com",
+    "smtp.port": "587",
+    "smtp.user": "vishnu.prasad@aurx.co",
+  "smtp.password": "{4a3fe8ea65dfbafb481257957860655cba7f9d71fceb99f60fc78048073122dd}",
+  "from.address" : "vishnu.prasad@aurx.co",
+  "smtp.starttls": "true",
+  "debug.email": "true"
+}
