@@ -19,14 +19,16 @@ import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.service.component.annotations.Component;
 
-@Component(service = Servlet.class,immediate = true,property = {
+@Component(service = Servlet.class, immediate = true, property = {
     "sling.servlet.methods=GET",
     "sling.servlet.paths=/bin/api-key",
     "sling.servlet.selectors=getAPIKey",
     "sling.servlet.extensions=json"
-    })
+})
 public class GenerateUserAPIKey extends SlingSafeMethodsServlet {
+
   Random rand = new Random();
+
   @Override
   protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
       throws ServletException, IOException {
@@ -53,7 +55,7 @@ public class GenerateUserAPIKey extends SlingSafeMethodsServlet {
               String[] apiValue = apiKeyValue.split(":");
               if (apiValue[1].equals(email)) {
                 isAuthor = true;
-                jsonObject.addProperty("api_Key",apiKey);
+                jsonObject.addProperty("api_Key", apiKey);
                 break;
               }
             }
@@ -62,19 +64,19 @@ public class GenerateUserAPIKey extends SlingSafeMethodsServlet {
             ModifiableValueMap modifiableValueMap = resource.adaptTo(ModifiableValueMap.class);
             modifiableValueMap.put(username, user);
             resourceResolver.commit();
-            jsonObject.addProperty("api_key",username);
-            }
+            jsonObject.addProperty("api_key", username);
+          }
         } else {
           ModifiableValueMap modifiableValueMap = resource.adaptTo(ModifiableValueMap.class);
           modifiableValueMap.put(username, user);
           resourceResolver.commit();
-          jsonObject.addProperty("api_Key",username);
+          jsonObject.addProperty("api_Key", username);
 
         }
       }
     } else {
-      jsonObject.addProperty("error_Massage","invalid email");
-       }
+      jsonObject.addProperty("error_Massage", "invalid email");
+    }
     response.getWriter().write(gson.toJson(jsonObject));
   }
 }

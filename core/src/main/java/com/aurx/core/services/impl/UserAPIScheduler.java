@@ -27,12 +27,14 @@ import org.slf4j.LoggerFactory;
 @Component(service = Runnable.class, immediate = true)
 @Designate(ocd = UserAPIConfiguration.class)
 public class UserAPIScheduler implements Runnable {
+
   @Reference
   Scheduler scheduler;
   @Reference
   ResourceResolverFactory resourceResolverFactory;
   private static final Logger logger = LoggerFactory.getLogger(UserAPIScheduler.class);
   private int schedulerId;
+
   @Activate
   @Modified
   protected void activate(UserAPIConfiguration userAPIConfiguration) {
@@ -42,16 +44,19 @@ public class UserAPIScheduler implements Runnable {
         userAPIConfiguration.schedulerName());
     addScheduler(userAPIConfiguration);
   }
+
   @Deactivate
   protected void deactivate(UserAPIConfiguration userAPIConfiguration) {
     removeScheduler();
   }
+
   @Override
   public void run() {
 
     logger.info("===============run methode of scheduler===========");
     removeTokens();
   }
+
   private void addScheduler(UserAPIConfiguration userAPIConfiguration) {
     logger.info("=================================this is cron expression : {}",
         userAPIConfiguration.cronExpression());
@@ -65,6 +70,7 @@ public class UserAPIScheduler implements Runnable {
       logger.info("============Schedule Service is disable===========");
     }
   }
+
   private void removeScheduler() {
     scheduler.unschedule(String.valueOf(schedulerId));
   }
