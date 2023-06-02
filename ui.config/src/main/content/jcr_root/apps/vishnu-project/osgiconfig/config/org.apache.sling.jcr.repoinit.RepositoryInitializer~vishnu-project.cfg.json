@@ -1,6 +1,9 @@
 {
     "scripts": [
         "create path (sling:OrderedFolder) /content/dam/vishnu-project",
+        "create path (nt:unstructured) /etc/api-data/api-key",
+        "create path (nt:unstructured) /etc/api-data/app-id",
+        "create path (nt:unstructured) /etc/api-data/app-id-time",
         "create path (nt:unstructured) /content/dam/vishnu-project/jcr:content",
         "set properties on /content/dam/vishnu-project/jcr:content\n  set cq:conf{String} to /conf/vishnu-project\n  set jcr:title{String} to \"Vishnu Project\"\nend"
     ]

@@ -1,0 +1,8 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-use.pageViewsModel="com.aurx.core.models.PageViewsModel"/>
+<div class="api-key-container" id="${resource.path.hashCode}" data-is-author="${pageViewsModel.author ? 'true' : 'false'}">
+  UserName :<input type="text" class="username" />
+  Email :<input type="email" class="email" />
+  <button type="button" class="user-submit-btn">Submit</button>
+</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !isAuthored, classAppend='cmp-text'}"></sly>
