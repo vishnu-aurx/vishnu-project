@@ -3,13 +3,15 @@ package com.aurx.core.pojo;
 import java.util.Comparator;
 
 public class ComponentReport implements Comparator<ComponentReport> {
+
   private String pagePath;
   private String page;
- private String title;
- private String group;
- private String pathOfComponent;
+  private String title;
+  private String group;
+  private String pathOfComponent;
 
-  public ComponentReport() {}
+  public ComponentReport() {
+  }
 
   public ComponentReport(String title, String group, String pathOfComponent) {
     this.title = title;
@@ -70,10 +72,11 @@ public class ComponentReport implements Comparator<ComponentReport> {
 
   @Override
   public int compare(ComponentReport componentReport1, ComponentReport componentReport2) {
-    int compareGroup=componentReport1.group.compareToIgnoreCase(componentReport2.group);
-    if(compareGroup ==0){
-      return  componentReport1.getTitle().compareToIgnoreCase(componentReport2.getTitle());
-    }else
-    return compareGroup ;
+    int compareGroup = componentReport1.group.compareToIgnoreCase(componentReport2.group);
+    if (compareGroup == 0) {
+      return componentReport1.getTitle().compareToIgnoreCase(componentReport2.getTitle());
+    } else {
+      return compareGroup;
+    }
   }
 }

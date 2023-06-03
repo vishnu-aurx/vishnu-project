@@ -1,8 +1,14 @@
 package com.aurx.core.servlets;
 
-import com.day.cq.search.PredicateGroup;
-import com.day.cq.search.Query;
-import com.day.cq.search.QueryBuilder;
+import static com.aurx.core.utils.ComponentUtils.CONTENT;
+import static com.aurx.core.utils.ComponentUtils.JCR_TITLE;
+import static com.aurx.core.utils.ComponentUtils.PATH;
+import static com.aurx.core.utils.ComponentUtils.PROPERTY;
+import static com.aurx.core.utils.ComponentUtils.PROPERTY_VALUE;
+import static com.aurx.core.utils.ComponentUtils.P_LIMIT;
+import static com.aurx.core.utils.ComponentUtils.SLING_RESOURCE_TYPE;
+
+import com.aurx.core.utils.QueryBuilderUtilImpl;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
 import com.google.gson.Gson;
@@ -13,7 +19,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import javax.jcr.RepositoryException;
-import javax.jcr.Session;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -33,7 +38,7 @@ import org.slf4j.LoggerFactory;
 })
 public class ComponentReportServlet extends SlingAllMethodsServlet {
 
-  private final Logger logger = LoggerFactory.getLogger(ComponentReportServlet.class);
+  private static final  Logger logger = LoggerFactory.getLogger(ComponentReportServlet.class);
 
   @Override
   protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response)
@@ -52,18 +57,14 @@ public class ComponentReportServlet extends SlingAllMethodsServlet {
 
     Set<String> paths = new TreeSet<>();
     Map<String, String> predicateMap = new HashMap<>();
-    predicateMap.put("path", "/content");
-    predicateMap.put("property", "sling:resourceType");
-    predicateMap.put("property.value", resourceTypeValue);
-    predicateMap.put("p.limit", "-1");
-    QueryBuilder builder = resourceResolver.adaptTo(QueryBuilder.class);
-    SearchResult result = null;
-    if (builder != null) {
-      Query query =
-          builder.createQuery(PredicateGroup.create(predicateMap),
-              resourceResolver.adaptTo(Session.class));
-      result = query.getResult();
-    }
+    predicateMap.put(PATH, CONTENT);
+    predicateMap.put(PROPERTY, SLING_RESOURCE_TYPE);
+    predicateMap.put(PROPERTY_VALUE, resourceTypeValue);
+    predicateMap.put(P_LIMIT, "-1");
+
+    QueryBuilderUtilImpl queryBuilderUtil= new QueryBuilderUtilImpl();
+    SearchResult result=queryBuilderUtil.getQueryuilderResult(resourceResolver, predicateMap);
+
     if (result != null) {
       List<Hit> hits = result.getHits();
       for (Hit hit : hits) {
@@ -73,7 +74,7 @@ public class ComponentReportServlet extends SlingAllMethodsServlet {
             String path = pageResource.getPath();
             String pagePath = path.split("/jcr:content")[0];
             ValueMap valueMap = pageResource.getValueMap();
-            String title = valueMap.get("jcr:title", "");
+            String title = valueMap.get(JCR_TITLE, "");
             String pagePathAndTitle = pagePath + "#" + title;
             logger.info("this is page and title : {}", pagePathAndTitle);
             paths.add(pagePathAndTitle);

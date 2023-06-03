@@ -17,12 +17,13 @@ public class ComponentReportModel {
   @OSGiService
   private ComponentReportService componentReportService;
    private List<ComponentReport> comopnentHierachyList;
-  private final Logger logger= LoggerFactory.getLogger(ComponentReportModel.class);
+  private static  final Logger logger= LoggerFactory.getLogger(ComponentReportModel.class);
   @PostConstruct
   protected void init(){
     comopnentHierachyList = new ArrayList<>();
-    logger.info("inside the init method");
+    logger.info("============inside the init method===========");
     comopnentHierachyList=componentReportService.comopnentList();
+    logger.info("============init method end ===========comopnentHierachyList : {}",comopnentHierachyList);
 
   }
   public List<ComponentReport> comopnentHierachyList(){
