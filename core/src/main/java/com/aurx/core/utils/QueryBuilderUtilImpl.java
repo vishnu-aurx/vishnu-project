@@ -8,12 +8,20 @@ import com.day.cq.search.result.SearchResult;
 import java.util.Map;
 import javax.jcr.Session;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Component(service = QueryBuilderUtil.class, immediate = true)
 public class QueryBuilderUtilImpl implements QueryBuilderUtil {
-private static final Logger LOGGER = LoggerFactory.getLogger(QueryBuilderUtilImpl.class);
+
   /**
+   * LOGGER - Logger Object
+   */
+  private static final Logger LOGGER = LoggerFactory.getLogger(QueryBuilderUtilImpl.class);
+
+  /**
+   * this method is used to generate the search result
    *
    * @param resourceResolver
    * @param predicateMap
@@ -22,15 +30,17 @@ private static final Logger LOGGER = LoggerFactory.getLogger(QueryBuilderUtilImp
   @Override
   public SearchResult getQueryuilderResult(ResourceResolver resourceResolver,
       Map<String, String> predicateMap) {
-LOGGER.info("========SearchResult method start ========== resourceResolver : {} ,predicateMap :{}",resourceResolver,predicateMap);
+    LOGGER.info("SearchResult method start   resourceResolver : {} ,predicateMap :{}",
+        resourceResolver, predicateMap);
     QueryBuilder builder = resourceResolver.adaptTo(QueryBuilder.class);
     SearchResult result = null;
     if (builder != null) {
       Query query =
-          builder.createQuery(PredicateGroup.create(predicateMap), resourceResolver.adaptTo(Session.class));
+          builder.createQuery(PredicateGroup.create(predicateMap),
+              resourceResolver.adaptTo(Session.class));
       result = query.getResult();
     }
-    LOGGER.info("===========SearchResult Method ends Result : {}",result);
+    LOGGER.info("SearchResult Method ends Result : {}", result);
     return result;
 
   }
