@@ -32,6 +32,23 @@
                               setTimeout(function() { alert("please enter the details first")}, 50);
                                }
       }
-               });
+
+     var sendMailUrl="/bin/sendemail.email.json?username="+username+"&email="+email+"";
+
+             $.ajax({
+                      method: "get",
+                      url: sendMailUrl,
+                      id :id,
+                      success: function (result) {
+
+                         console.info(result)
+
+                         },
+                      error: function (error) {
+                          console.log("in error");
+                      }
+                  });
+
+              });
 
 
