@@ -1,5 +1,5 @@
 {
     "scripts": [
-        "create service user content-reader-vishnu-project\nset ACL on /apps/vishnu-project, /conf/vishnu-project ,/etc/api-data\nallow jcr:all for content-reader-vishnu-project\nend"
+        "create service user content-reader-vishnu-project\nset ACL on /apps/vishnu-project, /conf/vishnu-project ,/etc/api-data, /content/vishnu-project\nallow jcr:all for content-reader-vishnu-project\nend"
     ]
 }
