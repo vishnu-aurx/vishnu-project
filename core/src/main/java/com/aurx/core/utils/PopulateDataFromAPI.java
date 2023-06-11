@@ -29,7 +29,7 @@ public class PopulateDataFromAPI {
    * @param baseURL
    *  @return
    */
-  public static JsonArray populateData(String baseURL) {
+  public static String populateData(String baseURL) {
     String response = "";
     JsonArray jsonElements = null;
       URL url = null;
@@ -39,13 +39,11 @@ public class PopulateDataFromAPI {
         connection.setRequestProperty("accept", "application/json");
         InputStream responseStream = connection.getInputStream();
         response = IOUtils.toString(responseStream, StandardCharsets.UTF_8);
-        if (response != null && !response.trim().equals("")) {
-           jsonElements = JsonParser.parseString(response).getAsJsonArray();
-        }
+
       } catch (IOException e) {
         LOGGER.error("Exception : {}", e.getMessage());
       }
-    return jsonElements;
+    return response;
   }
 
 }

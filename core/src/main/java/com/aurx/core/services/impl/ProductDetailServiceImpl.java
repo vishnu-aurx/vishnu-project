@@ -3,9 +3,9 @@ package com.aurx.core.services.impl;
 import com.aurx.core.services.MoviesService;
 import com.aurx.core.services.ProductDetailService;
 import com.aurx.core.services.config.ProductDetailsConfiguration;
+import com.aurx.core.utils.PopulateDataFromAPI;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
-import org.apache.commons.io.IOUtils;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
@@ -14,68 +14,73 @@ import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-
+/**
+ * This class used to fetch product details from api response
+ */
 @Designate(ocd = ProductDetailsConfiguration.class)
 @Component(service = ProductDetailService.class, immediate = true)
 public class ProductDetailServiceImpl implements ProductDetailService {
+
+    /**
+     * jsonElements - JsonArray Object
+     */
     private JsonArray jsonElements = new JsonArray();
 
-
+    /**
+     * moviesService - MoviesService object
+     */
     @Reference
     private MoviesService moviesService;
+    /**
+     * configuration - ProductDetailsConfiguration object
+     */
     private ProductDetailsConfiguration configuration;
+    /**
+     * logger - Logger object
+     */
+    private static final Logger logger = LoggerFactory.getLogger(ProductDetailServiceImpl.class);
 
-    private final Logger logger = LoggerFactory.getLogger(ProductDetailServiceImpl.class);
-
+    /**
+     * this method used to fetch data to activation of bundle
+     * @param configuration
+     */
     @Activate
     protected void activate(ProductDetailsConfiguration configuration) {
         logger.info("activate method start");
         this.configuration = configuration;
-        try {
-            populateProductDetails();
+            fetchProductDetails();
 
-        } catch (IOException e) {
-            logger.error(e.getMessage());
-        }
     }
 
+    /**
+     * this method used to fetch data to modification of bundle
+     *
+     * @param configuration
+     */
     @Modified
     protected void modified(ProductDetailsConfiguration configuration) {
         logger.info("modified method start");
         this.configuration = configuration;
-        try {
-            populateProductDetails();
-        } catch (IOException e) {
-            logger.error(e.getMessage());
+            fetchProductDetails();
 
-        }
     }
 
-    private void populateProductDetails() throws IOException {
-
-        String response = "";
+    /**
+     * this method is used to fetch product details form api response
+     */
+    private void fetchProductDetails()  {
         String baseURL = configuration.url();
-        logger.info("populateProductDetails method start url :{}",baseURL);
-        if(baseURL.startsWith("https")||baseURL.startsWith("http")) {
-            URL url = new URL(baseURL);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestProperty("accept", "application/json");
-            InputStream responseStream = connection.getInputStream();
-            response = IOUtils.toString(responseStream, StandardCharsets.UTF_8);
+        String response = PopulateDataFromAPI.populateData(baseURL);
+        logger.info("product res ==================== {}",response);
             if (response!= null && !response.trim().equals("")) {
-                JsonParser parser = new JsonParser();
-                jsonElements = parser.parse(response).getAsJsonObject().get("products").getAsJsonArray();
+                jsonElements= JsonParser.parseString(response).getAsJsonObject().get("products").getAsJsonArray();
             }
         }
-    }
 
+    /**
+     * this method return the jsonElements of products
+     * @return
+     */
     @Override
     public JsonArray fetchAllProducts() {
         return jsonElements;
