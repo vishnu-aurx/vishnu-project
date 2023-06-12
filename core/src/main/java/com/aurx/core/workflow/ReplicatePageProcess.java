@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 @Component(service = WorkflowProcess.class, immediate = true, property = {
     "process.label=Replicate Page"
 })
-public class ReplicatPageProcess implements WorkflowProcess {
+public class ReplicatePageProcess implements WorkflowProcess {
 
   /**
    * resourceResolverFactory - ResourceResolverFactory object
@@ -40,14 +40,14 @@ public class ReplicatPageProcess implements WorkflowProcess {
   /**
    * LOGGER - Logger object
    */
-  private static final Logger LOGGER = LoggerFactory.getLogger(ReplicatPageProcess.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(ReplicatePageProcess.class);
 
   /**
-   * This method execute when wrokflow model run
+   * This method execute when workflow model run
    *
-   * @param workItem
-   * @param workflowSession
-   * @param metaDataMap
+   * @param workItem        - WorkItem object
+   * @param workflowSession - WorkflowSession object
+   * @param metaDataMap     - MetaDataMap object
    * @throws WorkflowException
    */
   @Override
@@ -68,7 +68,7 @@ public class ReplicatPageProcess implements WorkflowProcess {
   /**
    * This method publish the page
    *
-   * @param pagePath
+   * @param pagePath - String object
    */
   private void pageReplicateToPublish(String pagePath) {
     try {

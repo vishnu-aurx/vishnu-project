@@ -14,14 +14,14 @@ public @interface SchedulerConfig {
    */
   @AttributeDefinition(name = "cron expression",
       type = AttributeType.STRING)
-  public String cronExpression() default "0 0/1 * 1/1 * ? *";
+  public String cronExpression() default "0 0/5 * 1/1 * ? *";
 
   /**
    * @return - schedulerName
    */
   @AttributeDefinition(name = "scheduler name",
       type = AttributeType.STRING)
-  public String schedulerName()default " custom scheduler name" ;
+  public String schedulerName()default " creating Page" ;
 
   /**
    * @return - scheduler isEnable in boolean type

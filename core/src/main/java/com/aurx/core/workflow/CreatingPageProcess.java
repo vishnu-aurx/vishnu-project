@@ -1,5 +1,6 @@
 package com.aurx.core.workflow;
 
+import static com.aurx.core.constant.ApplicationConstants.JCR_CONTENT;
 import static com.aurx.core.constant.ApplicationConstants.TEMPLATE;
 
 import com.adobe.granite.workflow.WorkflowException;
@@ -54,6 +55,7 @@ public class CreatingPageProcess implements WorkflowProcess {
 
   /**
    * This method used to set the parentPagePath
+   *
    * @param config
    */
   @Activate
@@ -62,42 +64,39 @@ public class CreatingPageProcess implements WorkflowProcess {
   }
 
   /**
-   * This method execute when wrokflow model run
+   * This method execute when workflow model run
    *
-   * @param workItem
-   * @param workflowSession
-   * @param metaDataMap
+   * @param workItem        - WorkItem object
+   * @param workflowSession - WorkflowSession object
+   * @param metaDataMap     - MetaDataMap Object
    * @throws WorkflowException
    */
   @Override
   public void execute(WorkItem workItem, WorkflowSession workflowSession, MetaDataMap metaDataMap)
       throws WorkflowException {
-     try {
+    try {
       ResourceResolver resolver = ResolverUtils.getResourceResolver(resourceResolverFactory);
-       String carCode = workItem.getWorkflow().getMetaDataMap().get("carCode").toString();
-       String carTitle = workItem.getWorkflow().getMetaDataMap().get("carTitle").toString();
-       String pageTitle = workItem.getWorkflow().getMetaDataMap().get("pageTitle").toString();
-       String pageDescription = workItem.getWorkflow().getMetaDataMap().get("pageDescription").toString();
-       String id = workItem.getWorkflow().getMetaDataMap().get("id").toString();
-
-       createPage(resolver,workItem,carCode,carTitle,pageTitle,pageDescription,id);
+      String carCode = workItem.getWorkflow().getMetaDataMap().get("carCode").toString();
+      String carTitle = workItem.getWorkflow().getMetaDataMap().get("carTitle").toString();
+      String pageTitle = workItem.getWorkflow().getMetaDataMap().get("pageTitle").toString();
+      createPage(resolver, workItem, carCode, carTitle, pageTitle);
       LOGGER.info("Page created successfully==============");
     } catch (Exception e) {
       LOGGER.error("LoginException : {}", e.getMessage());
     }
   }
+
   /**
    * This method create the page in AEM
    *
-   * @param resolver
-   * @param carCode
-   * @param carTitle
-   * @param pageTitle
-   * @param pageDescription
-   * @param id
+   * @param resolver  - ResourceResolver object
+   * @param carCode   - WorkItem object
+   * @param carTitle  - String object
+   * @param pageTitle - String object
    * @throws Exception
    */
-  private void createPage(ResourceResolver resolver,WorkItem workItem, String carCode,String carTitle, String pageTitle, String pageDescription, String id) {
+  private void createPage(ResourceResolver resolver, WorkItem workItem, String carCode,
+      String carTitle, String pageTitle) {
 
     Page prodPage = null;
     Session session = resolver.adaptTo(Session.class);
@@ -106,21 +105,20 @@ public class CreatingPageProcess implements WorkflowProcess {
         PageManager pageManager = resolver.adaptTo(PageManager.class);
         if (pageManager != null) {
           LOGGER.info("pageManager is not null==========");
-
-          String pageName = pageTitle.replace(" ","-");
-          pageName=pageName.toLowerCase();
-          prodPage = pageManager.create(parentPagePath,pageName,TEMPLATE, pageTitle);
-          if (prodPage.hasContent()) {
-            String nodePath = prodPage.getPath();
-            Resource resource = resolver.getResource(nodePath + "/jcr:content");
-            ModifiableValueMap modifiableValueMap = resource.adaptTo(ModifiableValueMap.class);
-            modifiableValueMap.put("carTitle", carTitle);
-            modifiableValueMap.put("carCode", carCode);
-            modifiableValueMap.put("id", id);
-            modifiableValueMap.put("pageDescription", pageDescription);
-            MetaDataMap wfd = workItem.getWorkflow().getMetaDataMap();
-            wfd.put("nodePath",nodePath);
-            resolver.commit();
+          if (pageTitle != null) {
+            String pageName = pageTitle.replace(" ", "-");
+            pageName = pageName.toLowerCase();
+            prodPage = pageManager.create(parentPagePath, pageName, TEMPLATE, pageTitle);
+            if (prodPage.hasContent()) {
+              String nodePath = prodPage.getPath();
+              Resource resource = resolver.getResource(nodePath +JCR_CONTENT);
+              ModifiableValueMap modifiableValueMap = resource.adaptTo(ModifiableValueMap.class);
+              modifiableValueMap.put("carTitle", carTitle);
+              modifiableValueMap.put("carCode", carCode);
+              MetaDataMap wfd = workItem.getWorkflow().getMetaDataMap();
+              wfd.put("nodePath", nodePath);
+              resolver.commit();
+            }
           }
         }
         session.save();

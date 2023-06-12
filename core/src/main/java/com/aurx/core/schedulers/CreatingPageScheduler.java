@@ -1,6 +1,5 @@
 package com.aurx.core.schedulers;
 
-import static com.aurx.core.constant.ApplicationConstants.CART_PNG;
 import static com.aurx.core.constant.ApplicationConstants.PAGE_CREATION_MODEL_PATH;
 
 import com.aurx.core.services.config.SchedulerConfig;
@@ -13,6 +12,7 @@ import com.day.cq.workflow.exec.WorkflowData;
 import com.day.cq.workflow.model.WorkflowModel;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import java.util.HashMap;
 import java.util.Map;
 import javax.jcr.RepositoryException;
@@ -70,7 +70,7 @@ public class CreatingPageScheduler implements Runnable {
   /**
    * This method is used to activate the scheduler
    *
-   * @param schedulerConfig
+   * @param schedulerConfig - SchedulerConfig object
    */
   @Activate
   @Modified
@@ -82,7 +82,7 @@ public class CreatingPageScheduler implements Runnable {
     this.url = schedulerConfig.url();
     logger.info("=================================this is URL : {}",
         schedulerConfig.url());
-
+    removeScheduler();
     addScheduler(schedulerConfig);
 
   }
@@ -90,7 +90,7 @@ public class CreatingPageScheduler implements Runnable {
   /**
    * This method is used to Deactivate the scheduler
    *
-   * @param schedulerConfig
+   * @param schedulerConfig - SchedulerConfig object
    */
   @Deactivate
   protected void deactivate(SchedulerConfig schedulerConfig) {
@@ -104,13 +104,13 @@ public class CreatingPageScheduler implements Runnable {
   public void run() {
 
     logger.info("===============run methode of scheduler===========");
-    setData();
+    fetchDataFromResponse();
   }
 
   /**
    * This method add the scheduler
    *
-   * @param schedulerConfig
+   * @param schedulerConfig - SchedulerConfig object
    */
   private void addScheduler(SchedulerConfig schedulerConfig) {
     logger.info("==============this is cron expression : {}, isEnable : {}",
@@ -136,29 +136,31 @@ public class CreatingPageScheduler implements Runnable {
 
   /**
    * This method is used to getData from populateData() util method and pass the param to
-   * createPageUsingModel() method
+   * createPageUsingModel(carTitle, carCode, pageTitle, pageDescription, id) method
    */
-  private void setData() {
-    JsonArray jsonElements = PopulateDataFromAPI.populateData(url);
-    for (JsonElement jsonElement : jsonElements) {
-      String carTitle = jsonElement.getAsJsonObject().get("carTitle").getAsString();
-      String carCode = jsonElement.getAsJsonObject().get("carCode").getAsString();
-      String pageTitle = jsonElement.getAsJsonObject().get("pageTitle").getAsString();
-      String pageDescription = jsonElement.getAsJsonObject().get("pageDescription").getAsString();
-      String id = jsonElement.getAsJsonObject().get("id").getAsString();
-
-      createPageUsingModel(carTitle, carCode, pageTitle, pageDescription, id);
+  private void fetchDataFromResponse() {
+    String responseData = PopulateDataFromAPI.populateData(url);
+    if (responseData != null && !responseData.trim().equals("")) {
+      JsonArray jsonElements = JsonParser.parseString(responseData).getAsJsonArray();
+      for (JsonElement jsonElement : jsonElements) {
+        String carTitle = jsonElement.getAsJsonObject().get("carTitle").getAsString();
+        String carCode = jsonElement.getAsJsonObject().get("carCode").getAsString();
+        String pageTitle = jsonElement.getAsJsonObject().get("pageTitle").getAsString();
+        String pageDescription = jsonElement.getAsJsonObject().get("pageDescription").getAsString();
+        String id = jsonElement.getAsJsonObject().get("id").getAsString();
+        createPageUsingModel(carTitle, carCode, pageTitle, pageDescription, id);
+      }
     }
   }
 
   /**
    * This method call the workflow process and create the page
    *
-   * @param carTitle
-   * @param carCode
-   * @param pageTitle
-   * @param pageDescription
-   * @param id
+   * @param carTitle        - String object
+   * @param carCode         - String object
+   * @param pageTitle       - String object
+   * @param pageDescription - String object
+   * @param id              -String object
    */
   private void createPageUsingModel(String carTitle, String carCode, String pageTitle,
       String pageDescription, String id) {
@@ -186,7 +188,7 @@ public class CreatingPageScheduler implements Runnable {
         try {
           wfModel = wfSession.getModel(PAGE_CREATION_MODEL_PATH);
           logger.info("wfSession ========= {}", wfSession);
-          WorkflowData wfData = wfSession.newWorkflowData("JCR_PATH", CART_PNG);
+          WorkflowData wfData = wfSession.newWorkflowData("JCR_PATH", wfModel.getId());
           logger.info("wfData ========= {}", wfData);
           wfSession.startWorkflow(wfModel, wfData, workflowMetadata);
           session.save();
