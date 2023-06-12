@@ -16,16 +16,34 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * LinkExtractModel is used to extract the link into html code
+ */
 @Model(adaptables = Resource.class,defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class LinkExtractModel {
 
+    /**
+     * htmlTextfield - String object
+     */
     @Inject
     String htmlTextfield;
 
+    /**
+     * resource - Resource object
+     */
     @SlingObject
     Resource resource;
-    Logger logger= LoggerFactory.getLogger(LinkExtractModel.class);
-    List<String> linksList;
+    /**
+     * logger - Logger object
+     */
+    private static final Logger logger= LoggerFactory.getLogger(LinkExtractModel.class);
+    /**
+     * linksList - List of String object
+     */
+   private List<String> linksList;
+    /**
+     * this method invoke when page is load
+     */
     @PostConstruct
     protected void init(){
         logger.info("start init method");
@@ -33,7 +51,6 @@ public class LinkExtractModel {
         if(htmlTextfield !=null) {
             Document doc = Jsoup.parse(htmlTextfield);
             Elements links = doc.select("a[href]");
-
             for (Element link : links) {
                 String href = link.attr("href");
                 this.linksList.add(href);
@@ -42,7 +59,12 @@ public class LinkExtractModel {
         logger.info("end init method");
 
     }
-    public List getLinks(){
+
+    /**
+     * This method return the linksList
+     * @return - linksList
+     */
+    public List<String> getLinks(){
         return this.linksList;
     }
 }
