@@ -15,5 +15,7 @@ public final class ApplicationConstants {
   public static final String TYPE = "type";
   public static final String COMPONENT_PATH = "/apps/vishnu-project/components";
   public static final String JCR_TITLE = "jcr:title";
+  public static final String jcrContent="jcr:content";
+  public static final String pageTitleListPath= "vishnu-project/components/pageTitleList";
 
 }
