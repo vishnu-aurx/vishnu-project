@@ -20,7 +20,7 @@
                        var obj = $.parseJSON(result);
                           console.info(obj);
                          $(".fetch-container[id='"+this.id+"']").find('.massage').html('');
-                         $(".fetch-container[id='"+this.id+"']").find(".prop").val(obj.value);
+                         $(".fetch-container[id='"+this.id+"']").find(".prop").val(obj.propValue);
 
                           if(obj.msg==1){
                            $(".fetch-container[id='"+this.id+"']").find('.save') .removeAttr('disabled');
@@ -34,7 +34,8 @@
                       error: function (error) {
                           console.log("in error");
                           $(".fetch-container[id='"+this.id+"']").append("<div class='massage'><h3>"+errorMsg+"</h3></div>")
-                      }
+                          $(".fetch-container[id='"+this.id+"']").find('.massage').html('');
+                     }
                   });
 
                }
@@ -62,7 +63,7 @@
                        var obj = $.parseJSON(result);
                           console.info(obj);
                           $(".fetch-container[id='"+this.id+"']").find('.massage').html('');
-                          $(".fetch-container[id='"+this.id+"']").find(".prop").val(obj.value);
+                          $(".fetch-container[id='"+this.id+"']").find(".prop").val(obj.propValue);
                           if(obj.msg==1){
                           $(".fetch-container[id='"+this.id+"']").append("<div class='massage'><h3>"+saveDataMsg+"</h3></div>")
                           }else{
@@ -71,6 +72,8 @@
                          },
                       error: function (error) {
                           $(".fetch-container[id='"+this.id+"']").append("<div class='massage'><h3>"+errorMsg+"</h3></div>")
+                          $(".fetch-container[id='"+this.id+"']").find('.massage').html('');
+
                           console.log("in error");
                       }
                   });
