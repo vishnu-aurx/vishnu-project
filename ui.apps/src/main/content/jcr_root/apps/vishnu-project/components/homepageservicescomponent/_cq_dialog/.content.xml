@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:primaryType="nt:unstructured"
-    jcr:title="Home-Page-services-component"
-    sling:resourceType="cq/gui/components/authoring/dialog">
+  jcr:primaryType="nt:unstructured"
+  jcr:title="Home-Page-services-component"
+  sling:resourceType="cq/gui/components/authoring/dialog">
     <content
-        jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/container">
+      jcr:primaryType="nt:unstructured"
+      sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
             <tabs
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/tabs">
+              jcr:primaryType="nt:unstructured"
+              sling:resourceType="granite/ui/components/coral/foundation/tabs">
                 <items jcr:primaryType="nt:unstructured">
                     <content
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Home-Page-Services-Component"
-                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                      jcr:primaryType="nt:unstructured"
+                      jcr:title="Home-Page-Services-Component"
+                      sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <column
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                                 <items jcr:primaryType="nt:unstructured">
                                     <content
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                      jcr:primaryType="nt:unstructured"
+                                      sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <textfield
-                                                jcr:primaryType="nt:unstructured"
-                                                jcr:title="Title"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Title"
-                                                maxlength="{Long}1000"
-                                                name="./title"
-                                                required="{Boolean}true"/>
+                                              jcr:primaryType="nt:unstructured"
+                                              jcr:title="Title"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                              fieldLabel="Title"
+                                              maxlength="{Long}1000"
+                                              name="./title"
+                                              required="{Boolean}true"/>
                                             <multifield
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                                composite="{Boolean}true">
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                              composite="{Boolean}true">
                                                 <field
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                    name="./fieldData">
+                                                  jcr:primaryType="nt:unstructured"
+                                                  sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                  name="./fieldData">
                                                     <items jcr:primaryType="nt:unstructured">
                                                         <imagepicker
-                                                            granite:class="cmp-image__editor-file-upload"
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
-                                                            class="cq-droptarget"
-                                                            fileNameParameter="./fileName"
-                                                            fileReferenceParameter="./fileReference"
-                                                            mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
-                                                            name="./image"
-                                                            required="{Boolean}true"/>
+                                                          granite:class="cmp-image__editor-file-upload"
+                                                          jcr:primaryType="nt:unstructured"
+                                                          sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                          class="cq-droptarget"
+                                                          fileNameParameter="./fileName"
+                                                          fileReferenceParameter="./fileReference"
+                                                          mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                          name="./image"
+                                                          required="{Boolean}true"/>
                                                         <textfield
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                            fieldLabel="Image Label"
-                                                            name="./imageLabel"
-                                                            required="{Boolean}true"/>
+                                                          jcr:primaryType="nt:unstructured"
+                                                          sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                          fieldLabel="Image Label"
+                                                          name="./imageLabel"
+                                                          required="{Boolean}true"/>
                                                     </items>
                                                 </field>
                                             </multifield>
@@ -66,6 +66,142 @@
                             </column>
                         </items>
                     </content>
+                    <hidefieldcheckbox
+                      jcr:primaryType="nt:unstructured"
+                      jcr:title="hide text filed using checkbox"
+                      sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <content
+                                      jcr:primaryType="nt:unstructured"
+                                      sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <checkbox
+                                              granite:class="cq-dialog-checkbox-showhide"
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                              name="./isChecked1"
+                                              text="show Text Field"
+                                              value="{Boolean}true">
+                                                <granite:data
+                                                  jcr:primaryType="nt:unstructured"
+                                                  cq-dialog-checkbox-showhide-target=".togglefield"/>
+                                            </checkbox>
+                                            <toggle
+                                              granite:class="togglefield"
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <title
+                                                      jcr:primaryType="nt:unstructured"
+                                                      jcr:title="text-field1"
+                                                      sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                      fieldLabel="text field"
+                                                      maxlength="{Long}1000"
+                                                      name="./title1"/>
+                                                </items>
+                                            </toggle>
+                                            <dropdown
+                                              granite:class="cq-dialog-dropdown-showhide"
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                              emptyText="select option"
+                                              fieldLabel="Drop down fields"
+                                              name="./dropdown">
+                                                <granite:data
+                                                  jcr:primaryType="nt:unstructured"
+                                                  cq-dialog-dropdown-showhide-target=".gender"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <male
+                                                      jcr:primaryType="nt:unstructured"
+                                                      text="male"
+                                                      value="male"/>
+                                                    <female
+                                                      jcr:primaryType="nt:unstructured"
+                                                      text="female"
+                                                      value="female"/>
+                                                </items>
+                                            </dropdown>
+                                            <container1
+                                              granite:class="gender"
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <male
+                                                      jcr:primaryType="nt:unstructured"
+                                                      jcr:title="male"
+                                                      sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                      fieldLabel="MaleName"
+                                                      maxlength="{Long}1000"
+                                                      name="./maleName"/>
+                                                </items>
+                                                <granite:data
+                                                  jcr:primaryType="nt:unstructured"
+                                                  showhidetargetvalue="male"/>
+                                            </container1>
+                                            <container2
+                                              granite:class="gender"
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <female
+                                                      jcr:primaryType="nt:unstructured"
+                                                      jcr:title="female"
+                                                      sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                      fieldLabel="Female Name"
+                                                      maxlength="{Long}1000"
+                                                      name="./femaleName"/>
+                                                </items>
+                                                <granite:data
+                                                  jcr:primaryType="nt:unstructured"
+                                                  showhidetargetvalue="female"/>
+                                            </container2>
+                                            <multifield
+                                              jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                              composite="{Boolean}true">
+                                                <field
+                                                  jcr:primaryType="nt:unstructured"
+                                                  sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                  name="./multiCheckbox">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <secondcheckbox
+                                                          granite:class="cq-dialog-checkbox-showhide"
+                                                          jcr:primaryType="nt:unstructured"
+                                                          sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                          name="./isChecked"
+                                                          text="show Text Field"
+                                                          value="{Boolean}true">
+                                                            <granite:data
+                                                              jcr:primaryType="nt:unstructured"
+                                                              cq-dialog-checkbox-showhide-target=".textfield"/>
+                                                        </secondcheckbox>
+                                                        <textfield
+                                                          granite:class="textfield"
+                                                          jcr:primaryType="nt:unstructured"
+                                                          sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <title
+                                                                  jcr:primaryType="nt:unstructured"
+                                                                  jcr:title="text-field2"
+                                                                  sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                  fieldLabel="text field"
+                                                                  maxlength="{Long}1000"
+                                                                  name="./tittle2"/>
+                                                            </items>
+                                                        </textfield>
+                                                    </items>
+                                                </field>
+                                            </multifield>
+                                        </items>
+                                    </content>
+                                </items>
+                            </column>
+                        </items>
+                    </hidefieldcheckbox>
                 </items>
             </tabs>
         </items>
