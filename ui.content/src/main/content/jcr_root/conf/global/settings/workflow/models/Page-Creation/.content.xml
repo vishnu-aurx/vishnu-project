@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:designPath="/libs/settings/wcm/designs/default"
+        cq:lastModified="{Date}2023-06-12T14:55:10.614+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/libs/cq/workflow/templates/model"
+        jcr:primaryType="cq:PageContent"
+        jcr:title=" Page-Creation-workflow-Model"
+        sling:resourceType="cq/workflow/components/pages/model">
+        <flow
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="foundation/components/parsys">
+            <process
+                jcr:created="{Date}2023-06-07T21:56:23.564+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2023-06-07T21:56:49.291+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Creating Page"
+                sling:resourceType="cq/workflow/components/model/process">
+                <metaData
+                    jcr:primaryType="nt:unstructured"
+                    PROCESS="com.aurx.core.workflow.CreatingPageProcess"
+                    PROCESS_AUTO_ADVANCE="true"/>
+            </process>
+            <process_990866644
+                jcr:created="{Date}2023-06-07T21:56:58.778+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2023-06-12T13:16:19.230+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="drop image component"
+                sling:resourceType="cq/workflow/components/model/process">
+                <metaData
+                    jcr:primaryType="nt:unstructured"
+                    PROCESS="com.aurx.core.workflow.DropImageComponentProcess"
+                    PROCESS_AUTO_ADVANCE="true"/>
+            </process_990866644>
+            <process_1149476435
+                jcr:created="{Date}2023-06-07T21:57:38.258+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2023-06-12T13:16:41.436+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="drop product details component"
+                sling:resourceType="cq/workflow/components/model/process">
+                <metaData
+                    jcr:primaryType="nt:unstructured"
+                    PROCESS="com.aurx.core.workflow.DropProductDetailComponentsProcess"
+                    PROCESS_AUTO_ADVANCE="true"/>
+            </process_1149476435>
+            <process_656685394
+                jcr:created="{Date}2023-06-12T13:23:48.516+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2023-06-12T14:55:10.610+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Replication"
+                sling:resourceType="cq/workflow/components/model/process">
+                <metaData
+                    jcr:primaryType="nt:unstructured"
+                    PROCESS="com.aurx.core.workflow.ReplicatePageProcess"
+                    PROCESS_AUTO_ADVANCE="true"/>
+            </process_656685394>
+        </flow>
+    </jcr:content>
+</jcr:root>

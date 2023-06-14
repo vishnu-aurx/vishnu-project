@@ -9,6 +9,8 @@
     <filter root="/content/dam/vishnu-project/asset.jpg" mode="merge"/>
     <filter root="/content/experience-fragments/vishnu-project" mode="merge"/>
     <filter root="/var/workflow/models/vishnu-test-workflow" mode="merge"/>
+    <filter root="/var/workflow/models/Page-Creation" mode="merge"/>
+    <filter root="/conf/global/settings/workflow/models/Page-Creation" mode="merge"/>
     <filter root="/conf/global/settings/workflow/launcher/config/1380038357" mode="merge"/>
     <filter root="/conf/global/settings/workflow/models/vishnu-test-workflow" mode="merge"/>
 </workspaceFilter>
