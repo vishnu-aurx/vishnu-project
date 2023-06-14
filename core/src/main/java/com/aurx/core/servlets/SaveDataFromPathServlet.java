@@ -1,5 +1,7 @@
 package com.aurx.core.servlets;
 
+import static com.aurx.core.constant.ApplicationConstants.jcrContent;
+
 import com.aurx.core.pojo.FetchDataFromPage;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -31,11 +33,10 @@ public class SaveDataFromPathServlet extends SlingSafeMethodsServlet {
   private static final Logger log = LoggerFactory.getLogger(SaveDataFromPathServlet.class);
 
   /**
-   * this method is used to getting parameter and send responses in this method save the pathValue
-   * to the path and generate the response
+   * this method is used to Save data to path location
    *
-   * @param request  - SlingHttpServletRequest object
-   * @param response - SlingHttpServletResponse object
+   * @param request  - the request
+   * @param response -the response
    * @throws ServletException
    * @throws IOException
    */
@@ -48,7 +49,7 @@ public class SaveDataFromPathServlet extends SlingSafeMethodsServlet {
     ResourceResolver resourceResolver = request.getResourceResolver();
     Resource resource = resourceResolver.getResource(path);
     if (resource != null) {
-      Resource saveResource = resource.getChild("jcr:content");
+      Resource saveResource = resource.getChild(jcrContent);
       ModifiableValueMap modifiableValueMap = saveResource.adaptTo(ModifiableValueMap.class);
       if (modifiableValueMap != null) {
         modifiableValueMap.put("prop", pathValue);

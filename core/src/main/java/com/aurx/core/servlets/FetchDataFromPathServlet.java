@@ -1,5 +1,7 @@
 package com.aurx.core.servlets;
 
+import static com.aurx.core.constant.ApplicationConstants.jcrContent;
+
 import com.aurx.core.pojo.FetchDataFromPage;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -31,11 +33,10 @@ public class FetchDataFromPathServlet extends SlingSafeMethodsServlet {
   private static final Logger log = LoggerFactory.getLogger(FetchDataFromPathServlet.class);
 
   /**
-   * this method is used to getting parameter and send responses in this method fetch the prop value
-   * from the path and generate the response
+   * this method is used to fetch data from jcr
    *
-   * @param request  - SlingHttpServletRequest object
-   * @param response - SlingHttpServletResponse object
+   * @param request  - the request
+   * @param response - the response
    * @throws ServletException
    * @throws IOException
    */
@@ -47,7 +48,7 @@ public class FetchDataFromPathServlet extends SlingSafeMethodsServlet {
     ResourceResolver resourceResolver = request.getResourceResolver();
     Resource resource = resourceResolver.getResource(path);
     if (resource != null) {
-      Resource childResource = resource.getChild("jcr:content");
+      Resource childResource = resource.getChild(jcrContent);
       if (childResource != null) {
         ValueMap valueMap = childResource.getValueMap();
         String value = valueMap.get("prop", "");

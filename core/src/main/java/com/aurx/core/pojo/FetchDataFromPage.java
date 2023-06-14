@@ -16,8 +16,8 @@ public class FetchDataFromPage {
 
   /**
    * This constructor is used to set the propValue and msg
-   * @param propValue -String object
-   * @param msg -String object
+   * @param propValue -the propValue
+   * @param msg -the msg
    */
   public FetchDataFromPage(String propValue, String msg) {
     this.propValue = propValue;
@@ -34,7 +34,7 @@ public class FetchDataFromPage {
 
   /**
    * this method set the propValue
-   * @param propValue - String object
+   * @param propValue - the propValue
    */
   public void setPropValue(String propValue) {
     this.propValue = propValue;
@@ -50,7 +50,7 @@ public class FetchDataFromPage {
 
   /**
    * this method set the msg
-   * @param msg - String object
+   * @param msg - the msg
    */
   public void setMsg(String msg) {
     this.msg = msg;
