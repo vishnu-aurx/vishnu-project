@@ -95,7 +95,7 @@ public class PagePropertieDetailsModel {
 
     /**
      * this method used to set page title into a list
-     * @param pageResource - Resource object
+     * @param pageResource - the pageResource
      */
     private void setPageTitle(Resource pageResource){
         Iterator<Resource> resourceIterator = pageResource.listChildren();
