@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * LinkExtractModel is used to extract the link into html code
+ * This is used to extract the links from the html code
  */
 @Model(adaptables = Resource.class,defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class LinkExtractModel {
