@@ -33,16 +33,19 @@ public class LinkExtractModel {
      */
     @SlingObject
     Resource resource;
+    
     /**
      * logger - Logger object
      */
     private static final Logger logger= LoggerFactory.getLogger(LinkExtractModel.class);
+    
     /**
      * linksList - List of String object
      */
    private List<String> linksList;
+    
     /**
-     * this method invoke when page is load
+     * This method is invoked on object initialization.
      */
     @PostConstruct
     protected void init(){
@@ -62,6 +65,7 @@ public class LinkExtractModel {
 
     /**
      * This method return the linksList
+     *
      * @return - linksList
      */
     public List<String> getLinks(){
