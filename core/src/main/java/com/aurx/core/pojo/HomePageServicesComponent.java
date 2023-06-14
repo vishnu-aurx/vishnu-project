@@ -17,8 +17,8 @@ public class HomePageServicesComponent {
 
     /**
      * this constructor used to set the values of image and imageLabel
-     * @param image - String object
-     * @param imageLabel -String object
+     * @param image - the image
+     * @param imageLabel -the imageLabel
      */
     public HomePageServicesComponent(String image, String imageLabel) {
         this.image = image;
@@ -35,7 +35,7 @@ public class HomePageServicesComponent {
 
     /**
      * this method set the image path
-     * @param image - String object
+     * @param image - the image
      */
     public void setImage(String image) {
         this.image = image;
@@ -51,7 +51,7 @@ public class HomePageServicesComponent {
 
     /**
      * this method set the imageLabel
-     * @param imageLabel - String object
+     * @param imageLabel - the imageLabel
      */
     public void setImageLabel(String imageLabel) {
         this.imageLabel = imageLabel;
