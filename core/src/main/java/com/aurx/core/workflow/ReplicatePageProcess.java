@@ -43,11 +43,11 @@ public class ReplicatePageProcess implements WorkflowProcess {
   private static final Logger LOGGER = LoggerFactory.getLogger(ReplicatePageProcess.class);
 
   /**
-   * This method execute when workflow model run
+   * This method execute when Replicate Page invoked
    *
-   * @param workItem        - WorkItem object
-   * @param workflowSession - WorkflowSession object
-   * @param metaDataMap     - MetaDataMap object
+   * @param workItem        - the workItem
+   * @param workflowSession - the workflowSession
+   * @param metaDataMap     - the metaDataMap
    * @throws WorkflowException
    */
   @Override
@@ -68,7 +68,7 @@ public class ReplicatePageProcess implements WorkflowProcess {
   /**
    * This method publish the page
    *
-   * @param pagePath - String object
+   * @param pagePath - the pagePath is used to publishing the page
    */
   private void pageReplicateToPublish(String pagePath) {
     try {

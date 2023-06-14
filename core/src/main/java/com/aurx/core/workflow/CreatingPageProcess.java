@@ -64,11 +64,11 @@ public class CreatingPageProcess implements WorkflowProcess {
   }
 
   /**
-   * This method execute when workflow model run
+   * This method execute when Creating Page Process invoked
    *
-   * @param workItem        - WorkItem object
-   * @param workflowSession - WorkflowSession object
-   * @param metaDataMap     - MetaDataMap Object
+   * @param workItem        - the workItem
+   * @param workflowSession - the workflowSession
+   * @param metaDataMap     - the metaDataMap
    * @throws WorkflowException
    */
   @Override
@@ -89,10 +89,10 @@ public class CreatingPageProcess implements WorkflowProcess {
   /**
    * This method create the page in AEM
    *
-   * @param resolver  - ResourceResolver object
-   * @param carCode   - WorkItem object
-   * @param carTitle  - String object
-   * @param pageTitle - String object
+   * @param resolver  - the resolver
+   * @param carCode   - the carCode
+   * @param carTitle  - the carTitle
+   * @param pageTitle - the pageTitle
    * @throws Exception
    */
   private void createPage(ResourceResolver resolver, WorkItem workItem, String carCode,

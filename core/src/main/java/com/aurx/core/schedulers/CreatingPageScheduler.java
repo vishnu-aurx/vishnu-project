@@ -70,7 +70,7 @@ public class CreatingPageScheduler implements Runnable {
   /**
    * This method is used to activate the scheduler
    *
-   * @param schedulerConfig - SchedulerConfig object
+   * @param schedulerConfig - the schedulerConfig object used to fetch url and schedulerName
    */
   @Activate
   @Modified
@@ -89,16 +89,14 @@ public class CreatingPageScheduler implements Runnable {
 
   /**
    * This method is used to Deactivate the scheduler
-   *
-   * @param schedulerConfig - SchedulerConfig object
    */
   @Deactivate
-  protected void deactivate(SchedulerConfig schedulerConfig) {
+  protected void deactivate() {
     removeScheduler();
   }
 
   /**
-   * This is method run when scheduler is call
+   * This is method run when scheduler is invoked
    */
   @Override
   public void run() {
@@ -110,7 +108,7 @@ public class CreatingPageScheduler implements Runnable {
   /**
    * This method add the scheduler
    *
-   * @param schedulerConfig - SchedulerConfig object
+   * @param schedulerConfig - the schedulerConfig fetch the cron expression
    */
   private void addScheduler(SchedulerConfig schedulerConfig) {
     logger.info("==============this is cron expression : {}, isEnable : {}",
@@ -135,8 +133,7 @@ public class CreatingPageScheduler implements Runnable {
   }
 
   /**
-   * This method is used to getData from populateData() util method and pass the param to
-   * createPageUsingModel(carTitle, carCode, pageTitle, pageDescription, id) method
+   * This method hit the APi and fetch data from response
    */
   private void fetchDataFromResponse() {
     String responseData = PopulateDataFromAPI.populateData(url);
@@ -156,11 +153,11 @@ public class CreatingPageScheduler implements Runnable {
   /**
    * This method call the workflow process and create the page
    *
-   * @param carTitle        - String object
-   * @param carCode         - String object
-   * @param pageTitle       - String object
-   * @param pageDescription - String object
-   * @param id              -String object
+   * @param carTitle        - the carTitle
+   * @param carCode         - the carCode
+   * @param pageTitle       - the pageTitle
+   * @param pageDescription - the pageDescription
+   * @param id              - the id
    */
   private void createPageUsingModel(String carTitle, String carCode, String pageTitle,
       String pageDescription, String id) {

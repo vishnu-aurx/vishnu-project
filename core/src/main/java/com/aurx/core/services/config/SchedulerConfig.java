@@ -21,7 +21,7 @@ public @interface SchedulerConfig {
    */
   @AttributeDefinition(name = "scheduler name",
       type = AttributeType.STRING)
-  public String schedulerName()default " creating Page" ;
+  public String schedulerName()default "Car Page Creation Scheduler" ;
 
   /**
    * @return - scheduler isEnable in boolean type

@@ -45,11 +45,11 @@ public class DropProductDetailComponentsProcess implements WorkflowProcess {
       DropProductDetailComponentsProcess.class);
 
   /**
-   * This method execute when workflow model run
+   * This method execute when Drop Product Detail Component process invoked
    *
-   * @param workItem        - WorkItem object
-   * @param workflowSession - WorkflowSession object
-   * @param metaDataMap     - MetaDataMap object
+   * @param workItem        - the workItem
+   * @param workflowSession - the workflowSession
+   * @param metaDataMap     - the metaDataMap
    * @throws WorkflowException
    */
   @Override
@@ -71,8 +71,8 @@ public class DropProductDetailComponentsProcess implements WorkflowProcess {
   /**
    * This Method is used to drop the product-detail  component on the page
    *
-   * @param resourceResolver - ResourceResolver object
-   * @param nodePath         - String Object
+   * @param resourceResolver - the resourceResolver
+   * @param nodePath         -  the nodePath used to get the resource object
    */
   private void dropProductDetailComponents(ResourceResolver resourceResolver, String nodePath) {
     Resource resource = resourceResolver.getResource(nodePath + CONTAINER);

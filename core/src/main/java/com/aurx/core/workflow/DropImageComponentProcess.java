@@ -44,11 +44,11 @@ public class DropImageComponentProcess implements WorkflowProcess {
   private static final Logger LOGGER = LoggerFactory.getLogger(DropImageComponentProcess.class);
 
   /**
-   * This method execute when workflow model run
+   * This method execute when Drop Image Component process invoked
    *
-   * @param workItem        - WorkItem object
-   * @param workflowSession - WorkflowSession object
-   * @param metaDataMap     - MetaDataMap object
+   * @param workItem        - the workItem
+   * @param workflowSession - the workflowSession
+   * @param metaDataMap     - the metaDataMap
    * @throws WorkflowException
    */
   @Override
@@ -71,8 +71,8 @@ public class DropImageComponentProcess implements WorkflowProcess {
   /**
    * This method is used to Drop the image component on page
    *
-   * @param resourceResolver - ResourceResolver object
-   * @param nodePath - String object
+   * @param resourceResolver - the resourceResolver
+   * @param nodePath         -  the nodePath used to get the resource object
    */
   private void dropImageComponents(ResourceResolver resourceResolver, String nodePath) {
     Resource resource = resourceResolver.getResource(nodePath + CONTAINER);
