@@ -26,5 +26,9 @@ public final class ApplicationConstants {
   public static final String JCR_CONTENT = "/jcr:content";
   public static final String IMAGE="image";
   public static final String PRODUCT_DETAILS = "product_details";
+  public static final String jcrContent="jcr:content";
+  public static final String PAGE_TITLE_LIST_COMPONENT_RESOURCE_TYPE= "vishnu-project/components/pageTitleList";
+  public static final String PATH_DATA="pathData";
+
 
 }
