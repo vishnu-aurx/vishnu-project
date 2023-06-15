@@ -30,5 +30,17 @@ public final class ApplicationConstants {
   public static final String PAGE_TITLE_LIST_COMPONENT_RESOURCE_TYPE= "vishnu-project/components/pageTitleList";
   public static final String PATH_DATA="pathData";
 
+  public static final String AUTHOR="admin:admin";
+
+  public static final String ACCEPT = "accept";
+
+  public static final String APPLICATION_JSON="application/json";
+
+  public static final String BASIC="Basic";
+
+  public static final String AUTHORIZATION="Authorization";
+
+  public static final String TOKEN_API_URL="http://localhost:4502/bin/token.gettoken.json?appkey=user5597994";
+
 
 }
