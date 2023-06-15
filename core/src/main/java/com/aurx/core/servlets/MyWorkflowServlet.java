@@ -32,7 +32,7 @@ public class MyWorkflowServlet extends SlingSafeMethodsServlet {
 
   private static final Logger log = LoggerFactory.getLogger(MyWorkflowServlet.class);
   @Reference
-   private static  WorkflowService workflowService;
+   private  WorkflowService workflowService;
   @Override
   protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
       throws ServletException, IOException {
