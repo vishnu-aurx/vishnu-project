@@ -1,7 +1,9 @@
 package com.aurx.core.servlets;
 
+import static com.aurx.core.constant.ApplicationConstants.ONE;
 import static com.aurx.core.constant.ApplicationConstants.PATH;
 import static com.aurx.core.constant.ApplicationConstants.PROP;
+import static com.aurx.core.constant.ApplicationConstants.TWO;
 import static com.aurx.core.constant.ApplicationConstants.VALUE;
 import static com.day.cq.commons.jcr.JcrConstants.JCR_CONTENT;
 
@@ -61,7 +63,7 @@ public class SaveDataFromPathServlet extends SlingSafeMethodsServlet {
           log.info("modifiableValueMap is not null");
           modifiableValueMap.put(PROP, pathValue);
           resourceResolver.commit();
-          FetchDataFromPage dataFromPage = new FetchDataFromPage(pathValue, "1");
+          FetchDataFromPage dataFromPage = new FetchDataFromPage(pathValue, ONE);
           Gson gson = new Gson();
           response.getWriter().write(gson.toJson(dataFromPage));
         }
@@ -69,7 +71,7 @@ public class SaveDataFromPathServlet extends SlingSafeMethodsServlet {
 
     } else {
       log.info("resource is null");
-      FetchDataFromPage dataFromPage = new FetchDataFromPage(pathValue, "2");
+      FetchDataFromPage dataFromPage = new FetchDataFromPage(pathValue, TWO);
       Gson gson = new Gson();
       response.getWriter().write(gson.toJson(dataFromPage));
     }
