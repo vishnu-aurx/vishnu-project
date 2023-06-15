@@ -5,11 +5,12 @@ import static com.aurx.core.constant.ApplicationConstants.APPLICATION_JSON;
 import static com.aurx.core.constant.ApplicationConstants.AUTHOR;
 import static com.aurx.core.constant.ApplicationConstants.AUTHORIZATION;
 import static com.aurx.core.constant.ApplicationConstants.BASIC;
+import static com.aurx.core.constant.ApplicationConstants.HTTP;
+import static com.aurx.core.constant.ApplicationConstants.HTTPS;
 import static org.apache.commons.lang.StringUtils.EMPTY;
-import static org.apache.http.HttpVersion.HTTP;
-import static org.eclipse.jetty.util.URIUtil.HTTPS;
 
 import com.aurx.core.services.CryptoUtil;
+import com.aurx.core.services.PopulateDataFromAPI;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -28,6 +29,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.protocol.BasicHttpContext;
+import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,18 +37,15 @@ import org.slf4j.LoggerFactory;
 /**
  * This is utility class
  */
-
-public class PopulateDataFromAPI {
-
-  private PopulateDataFromAPI() {
-  }
+@Component(service = PopulateDataFromAPI.class, immediate = true)
+public class PopulateDataFromAPIImpl implements PopulateDataFromAPI {
 
   @Reference
   private CryptoUtil cryptoUtil;
   /**
    * LOGGER - Logger object
    */
-  private static final Logger LOGGER = LoggerFactory.getLogger(PopulateDataFromAPI.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(PopulateDataFromAPIImpl.class);
 
   /**
    * This method populates data from the API and returns a response.
@@ -54,7 +53,7 @@ public class PopulateDataFromAPI {
    * @param baseURL - The baseURL
    * @return -response
    */
-  public static String populateData(String baseURL) {
+  public String populateData(String baseURL) {
     LOGGER.info("Start of populateData method with baseURL :{}", baseURL);
     String response = EMPTY;
     URL url = null;
@@ -77,6 +76,14 @@ public class PopulateDataFromAPI {
   }
 
 
+  /**
+   * This method populates data from the API and returns a httpResponse.
+   *
+   * @param apiURL       - The apiURL.
+   * @param userName     - The userName.
+   * @param userPassword - The userPassword.
+   * @return - httpResponse.
+   */
   public HttpResponse getAPIResponseWithUserPassword(String apiURL, String userName,
       String userPassword) {
     LOGGER.info("Start of getAPIResponse method with apiURL is : {}", apiURL);
@@ -98,7 +105,6 @@ public class PopulateDataFromAPI {
         BasicHttpContext localContext = new BasicHttpContext();
         httpResponse = client.execute(request, localContext);
         LOGGER.info("get response from client.execute() method : {}", httpResponse);
-        LOGGER.info("End of getAPIResponse with httpResponse: {}", httpResponse);
       } catch (URISyntaxException | IOException e) {
         LOGGER.error("Invalid URL Exception : {}", e.getMessage());
       }

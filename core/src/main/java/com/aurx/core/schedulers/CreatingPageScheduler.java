@@ -2,8 +2,9 @@ package com.aurx.core.schedulers;
 
 import static com.aurx.core.constant.ApplicationConstants.PAGE_CREATION_MODEL_PATH;
 
+import com.aurx.core.services.PopulateDataFromAPI;
 import com.aurx.core.services.config.SchedulerConfig;
-import com.aurx.core.utils.PopulateDataFromAPI;
+import com.aurx.core.utils.PopulateDataFromAPIImpl;
 import com.aurx.core.utils.ResolverUtils;
 import com.day.cq.workflow.WorkflowException;
 import com.day.cq.workflow.WorkflowService;
@@ -66,6 +67,8 @@ public class CreatingPageScheduler implements Runnable {
    * url -String object
    */
   private String url;
+  @Reference
+  private PopulateDataFromAPI populateDataFromAPI;
 
   /**
    * This method is used to activate the scheduler
@@ -136,7 +139,7 @@ public class CreatingPageScheduler implements Runnable {
    * This method hit the APi and fetch data from response
    */
   private void fetchDataFromResponse() {
-    String responseData = PopulateDataFromAPI.populateData(url);
+    String responseData = populateDataFromAPI.populateData(url);
     if (responseData != null && !responseData.trim().equals("")) {
       JsonArray jsonElements = JsonParser.parseString(responseData).getAsJsonArray();
       for (JsonElement jsonElement : jsonElements) {
