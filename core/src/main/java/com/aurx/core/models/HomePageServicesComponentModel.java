@@ -1,5 +1,9 @@
 package com.aurx.core.models;
 
+import static com.aurx.core.constant.ApplicationConstants.FILE_REFERENCE;
+import static com.aurx.core.constant.ApplicationConstants.IMAGE_LABEL;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+
 import com.aurx.core.pojo.HomePageServicesComponent;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -7,20 +11,19 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * this class is used to fetch image path and image label
+ * This class is used to fetch the image path and image label.
  */
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class HomePageServicesComponentModel {
 
   /**
-   * title - String object
+   * title - The title.
    */
   @Inject
   private String title;
@@ -30,49 +33,50 @@ public class HomePageServicesComponentModel {
   @ChildResource(name = "fieldData")
   private List<Resource> multiFieldResourceList;
   /**
-   * logger - Logger object
+   * logger - Logger object.
    */
-  private static final Logger logger = LoggerFactory.getLogger(HomePageServicesComponentModel.class);
+  private static final Logger logger = LoggerFactory.getLogger(
+      HomePageServicesComponentModel.class);
   /**
-   * homePageServicesComponentList - List of HomePageServicesComponent object
+   * homePageServicesComponentList - List of HomePageServicesComponent object.
    */
   private List<HomePageServicesComponent> homePageServicesComponentList;
 
   /**
-   * this method is invoked when page is loaded
+   * This method is invoked on the object initialization.
    */
   @PostConstruct
   protected void init() {
-    logger.info("init method start");
+    logger.info("Start of init method");
     setHomePageServicesComponents();
     setHomePageServicesComponents();
-
+    logger.info("End of init method");
   }
 
   /**
-   * this method set HomePageServicesComponent object  into list
+   * This method sets the HomePageServicesComponent object into a list.
    */
   public void setHomePageServicesComponents() {
-    logger.info(" setHomePageServicesComponents method start ");
+    logger.info("Start of setHomePageServicesComponents");
     String image;
     String imageLabel;
     homePageServicesComponentList = new ArrayList<>();
-
     if (multiFieldResourceList != null) {
       logger.info("resource is not null");
       for (Resource eachResource : multiFieldResourceList) {
-        image = eachResource.getValueMap().get("fileReference", "");
-        imageLabel = eachResource.getValueMap().get("imageLabel", "");
+        image = eachResource.getValueMap().get(FILE_REFERENCE, EMPTY);
+        imageLabel = eachResource.getValueMap().get(IMAGE_LABEL, EMPTY);
         HomePageServicesComponent homePageServicesComponent = new HomePageServicesComponent(image,
             imageLabel);
         homePageServicesComponentList.add(homePageServicesComponent);
       }
     }
-    logger.info("setHomePageServicesComponents method end ");
+    logger.info("End of setHomePageServicesComponents method with homePageServicesComponentList : {}",homePageServicesComponentList);
   }
 
   /**
-   * this method return homePageServicesComponentList
+   * This method returns the homePageServicesComponentList.
+   *
    * @return - homePageServicesComponentList
    */
   public List<HomePageServicesComponent> getHomePageServicesComponentList() {
@@ -80,7 +84,8 @@ public class HomePageServicesComponentModel {
   }
 
   /**
-   * this method return String object
+   * This method return title.
+   *
    * @return - title
    */
   public String getTitle() {
