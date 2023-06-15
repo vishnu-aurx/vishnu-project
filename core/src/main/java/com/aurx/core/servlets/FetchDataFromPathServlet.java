@@ -1,7 +1,10 @@
 package com.aurx.core.servlets;
 
+import static com.aurx.core.constant.ApplicationConstants.ONE;
 import static com.aurx.core.constant.ApplicationConstants.PATH;
 import static com.aurx.core.constant.ApplicationConstants.PROP;
+import static com.aurx.core.constant.ApplicationConstants.THREE;
+import static com.aurx.core.constant.ApplicationConstants.TWO;
 import static com.day.cq.commons.jcr.JcrConstants.JCR_CONTENT;
 import static org.apache.commons.lang.StringUtils.EMPTY;
 
@@ -60,12 +63,12 @@ public class FetchDataFromPathServlet extends SlingSafeMethodsServlet {
         log.info("prop value is : {}", value);
         if (value.isEmpty()) {
           log.info("value is not isEmpty :{} ", value);
-          FetchDataFromPage dataFromPage = new FetchDataFromPage(value, "2");
+          FetchDataFromPage dataFromPage = new FetchDataFromPage(value, TWO);
           Gson gson = new Gson();
           response.getWriter().write(gson.toJson(dataFromPage));
         } else {
           log.info("prop value is empty");
-          FetchDataFromPage dataFromPage = new FetchDataFromPage(value, "1");
+          FetchDataFromPage dataFromPage = new FetchDataFromPage(value, ONE);
           Gson gson = new Gson();
           response.getWriter().write(gson.toJson(dataFromPage));
         }
@@ -73,7 +76,7 @@ public class FetchDataFromPathServlet extends SlingSafeMethodsServlet {
       }
     } else {
       log.info("resource is null");
-      FetchDataFromPage dataFromPage = new FetchDataFromPage(EMPTY, "3");
+      FetchDataFromPage dataFromPage = new FetchDataFromPage(EMPTY, THREE);
       Gson gson = new Gson();
       response.getWriter().write(gson.toJson(dataFromPage));
     }

@@ -73,6 +73,12 @@ public final class ApplicationConstants {
 
   public static final String DROPDOWN_KEY_3= "KEY3";
 
+  public static final String ONE="1";
+
+  public static final String TWO="2";
+
+  public static final String THREE="3";
+
 
 
 
