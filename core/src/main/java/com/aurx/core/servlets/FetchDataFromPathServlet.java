@@ -1,6 +1,9 @@
 package com.aurx.core.servlets;
 
-import static com.aurx.core.constant.ApplicationConstants.jcrContent;
+import static com.aurx.core.constant.ApplicationConstants.PATH;
+import static com.aurx.core.constant.ApplicationConstants.PROP;
+import static com.day.cq.commons.jcr.JcrConstants.JCR_CONTENT;
+import static org.apache.commons.lang.StringUtils.EMPTY;
 
 import com.aurx.core.pojo.FetchDataFromPage;
 import com.google.gson.Gson;
@@ -18,7 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * this class is used to fetch data from path
+ * This class is used to fetch data from a path.
  */
 @Component(service = Servlet.class, immediate = true, property = {
     "sling.servlet.methods=GET",
@@ -33,38 +36,44 @@ public class FetchDataFromPathServlet extends SlingSafeMethodsServlet {
   private static final Logger log = LoggerFactory.getLogger(FetchDataFromPathServlet.class);
 
   /**
-   * this method is used to fetch data from jcr
+   * This method is used to fetch prop value from the jcr.
    *
-   * @param request  - the request
-   * @param response - the response
+   * @param request  - The request
+   * @param response - The response
    * @throws ServletException
    * @throws IOException
    */
   @Override
   protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
       throws ServletException, IOException {
-    String path = request.getParameter("path");
-    log.info("path is : {}", path);
+    String path = request.getParameter(PATH);
+    log.info("Start of doGet method path is : {}", path);
     ResourceResolver resourceResolver = request.getResourceResolver();
     Resource resource = resourceResolver.getResource(path);
     if (resource != null) {
-      Resource childResource = resource.getChild(jcrContent);
+      log.info("resource in not null");
+      Resource childResource = resource.getChild(JCR_CONTENT);
       if (childResource != null) {
+        log.info("childResource is not null");
         ValueMap valueMap = childResource.getValueMap();
-        String value = valueMap.get("prop", "");
+        String value = valueMap.get(PROP, EMPTY);
+        log.info("prop value is : {}", value);
         if (value.isEmpty()) {
+          log.info("value is not isEmpty :{} ", value);
           FetchDataFromPage dataFromPage = new FetchDataFromPage(value, "2");
           Gson gson = new Gson();
           response.getWriter().write(gson.toJson(dataFromPage));
         } else {
+          log.info("prop value is empty");
           FetchDataFromPage dataFromPage = new FetchDataFromPage(value, "1");
           Gson gson = new Gson();
           response.getWriter().write(gson.toJson(dataFromPage));
         }
-        log.info("{}-value", value);
+        log.info("prop value : {}", value);
       }
     } else {
-      FetchDataFromPage dataFromPage = new FetchDataFromPage("", "3");
+      log.info("resource is null");
+      FetchDataFromPage dataFromPage = new FetchDataFromPage(EMPTY, "3");
       Gson gson = new Gson();
       response.getWriter().write(gson.toJson(dataFromPage));
     }

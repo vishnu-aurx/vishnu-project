@@ -22,7 +22,7 @@
                          $(".fetch-container[id='"+this.id+"']").find('.massage').html('');
                          $(".fetch-container[id='"+this.id+"']").find(".prop").val(obj.propValue);
 
-                          if(obj.msg==1){
+                          if(obj.message==1){
                            $(".fetch-container[id='"+this.id+"']").find('.save') .removeAttr('disabled');
                            $(".fetch-container[id='"+this.id+"']").find('.prop') .removeAttr('disabled');
 
@@ -64,7 +64,7 @@
                           console.info(obj);
                           $(".fetch-container[id='"+this.id+"']").find('.massage').html('');
                           $(".fetch-container[id='"+this.id+"']").find(".prop").val(obj.propValue);
-                          if(obj.msg==1){
+                          if(obj.message==1){
                           $(".fetch-container[id='"+this.id+"']").append("<div class='massage'><h3>"+saveDataMsg+"</h3></div>")
                           }else{
                           $(".fetch-container[id='"+this.id+"']").append("<div class='massage'><h3>"+invalidPathMsg+"</h3></div>")

@@ -30,5 +30,9 @@ public final class ApplicationConstants {
   public static final String PAGE_TITLE_LIST_COMPONENT_RESOURCE_TYPE= "vishnu-project/components/pageTitleList";
   public static final String PATH_DATA="pathData";
 
+  public static final String PROP="prop";
+
+  public static final String VALUE="value";
+
 
 }

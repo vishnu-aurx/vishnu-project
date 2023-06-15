@@ -1,31 +1,33 @@
 package com.aurx.core.pojo;
 
 /**
- * this is a pojo class
+ * This is a pojo class.
  */
 public class FetchDataFromPage {
 
   /**
-   * propValue - String object
+   * propValue - The propValue.
    */
   private String propValue;
   /**
-   * msg - String object
+   * msg - The message
    */
-  private String msg;
+  private String message;
 
   /**
-   * This constructor is used to set the propValue and msg
+   * This constructor is used to set the propValue and message.
+   *
    * @param propValue -the propValue
-   * @param msg -the msg
+   * @param message   -the message
    */
-  public FetchDataFromPage(String propValue, String msg) {
+  public FetchDataFromPage(String propValue, String message) {
     this.propValue = propValue;
-    this.msg = msg;
+    this.message = message;
   }
 
   /**
-   * this method return the propValue
+   * This method returns the propValue.
+   *
    * @return - propValue
    */
   public String getPropValue() {
@@ -33,38 +35,42 @@ public class FetchDataFromPage {
   }
 
   /**
-   * this method set the propValue
-   * @param propValue - the propValue
+   * This method sets the propValue.
+   *
+   * @param propValue - The propValue
    */
   public void setPropValue(String propValue) {
     this.propValue = propValue;
   }
 
   /**
-   * this method return the msg
-   * @return - msg
+   * This method returns the message.
+   *
+   * @return - message
    */
-  public String getMsg() {
-    return msg;
+  public String getMessage() {
+    return message;
   }
 
   /**
-   * this method set the msg
-   * @param msg - the msg
+   * This method sets the message.
+   *
+   * @param message - The message
    */
-  public void setMsg(String msg) {
-    this.msg = msg;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
   /**
-   * this method convert class object to String
-   * @return String
+   * This method converts class objects to string format.
+   *
+   * @return String value
    */
   @Override
   public String toString() {
     return "FetchDataFromPage{" +
         "propValue='" + propValue + '\'' +
-        ", msg='" + msg + '\'' +
+        ", msg='" + message + '\'' +
         '}';
   }
 }
