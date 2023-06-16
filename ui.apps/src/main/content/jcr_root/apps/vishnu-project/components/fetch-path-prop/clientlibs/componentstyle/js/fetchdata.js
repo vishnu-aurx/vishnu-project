@@ -8,7 +8,6 @@
           var errorMsg=$(this).closest('.fetch-container').data("error-msg")
           var url = $(location).attr('href');
           url = url.replace(".html", "/jcr:content.fetch.json");
-          console.info("this is fetch path : "+path);
           url = url.replace("?", "?path=" + path +"&");
           let id = $(this).closest('.fetch-container').attr("id");
            $.ajax({
@@ -18,11 +17,10 @@
 
                       success: function (result) {
                        var obj = $.parseJSON(result);
-                          console.info(obj);
                          $(".fetch-container[id='"+this.id+"']").find('.massage').html('');
-                         $(".fetch-container[id='"+this.id+"']").find(".prop").val(obj.value);
+                         $(".fetch-container[id='"+this.id+"']").find(".prop").val(obj.propValue);
 
-                          if(obj.msg==1){
+                          if(obj.message==1){
                            $(".fetch-container[id='"+this.id+"']").find('.save') .removeAttr('disabled');
                            $(".fetch-container[id='"+this.id+"']").find('.prop') .removeAttr('disabled');
 
@@ -32,9 +30,9 @@
                           }
                          },
                       error: function (error) {
-                          console.log("in error");
                           $(".fetch-container[id='"+this.id+"']").append("<div class='massage'><h3>"+errorMsg+"</h3></div>")
-                      }
+                          $(".fetch-container[id='"+this.id+"']").find('.massage').html('');
+                     }
                   });
 
                }
@@ -50,7 +48,6 @@
           var massage=$(this).closest('.fetch-container').data("massage")
           var url = $(location).attr('href');
           url = url.replace(".html", "/jcr:content.save.json")
-          console.info("this path :"+path);
           url = url.replace("?", "?path=" + path+ "&value=" + document.querySelector('.prop').value +"&")
           let id= $(this).closest('.fetch-container').attr("id");
              $.ajax({
@@ -60,10 +57,9 @@
 
                       success: function (result) {
                        var obj = $.parseJSON(result);
-                          console.info(obj);
                           $(".fetch-container[id='"+this.id+"']").find('.massage').html('');
-                          $(".fetch-container[id='"+this.id+"']").find(".prop").val(obj.value);
-                          if(obj.msg==1){
+                          $(".fetch-container[id='"+this.id+"']").find(".prop").val(obj.propValue);
+                          if(obj.message==1){
                           $(".fetch-container[id='"+this.id+"']").append("<div class='massage'><h3>"+saveDataMsg+"</h3></div>")
                           }else{
                           $(".fetch-container[id='"+this.id+"']").append("<div class='massage'><h3>"+invalidPathMsg+"</h3></div>")
@@ -71,7 +67,8 @@
                          },
                       error: function (error) {
                           $(".fetch-container[id='"+this.id+"']").append("<div class='massage'><h3>"+errorMsg+"</h3></div>")
-                          console.log("in error");
+                          $(".fetch-container[id='"+this.id+"']").find('.massage').html('');
+
                       }
                   });
              }

@@ -1,5 +1,10 @@
 package com.aurx.core.models;
 
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -11,38 +16,60 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
-
-@Model(adaptables = Resource.class,defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+/**
+ * This is used to extract the links from the html code
+ */
+@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class LinkExtractModel {
 
-    @Inject
-    String htmlTextfield;
+  /**
+   * htmlCode - The htmlCode
+   */
+  @Inject
+  String htmlCode;
 
-    @SlingObject
-    Resource resource;
-    Logger logger= LoggerFactory.getLogger(LinkExtractModel.class);
-    List<String> linksList;
-    @PostConstruct
-    protected void init(){
-        logger.info("start init method");
-       linksList =new ArrayList<>();
-        if(htmlTextfield !=null) {
-            Document doc = Jsoup.parse(htmlTextfield);
-            Elements links = doc.select("a[href]");
+  /**
+   * resource - Resource object
+   */
+  @SlingObject
+  Resource resource;
 
-            for (Element link : links) {
-                String href = link.attr("href");
-                this.linksList.add(href);
-            }
-        }
-        logger.info("end init method");
+  /**
+   * logger - Logger object
+   */
+  private static final Logger logger = LoggerFactory.getLogger(LinkExtractModel.class);
+
+  /**
+   * linksList - List of String object
+   */
+  private List<String> links;
+
+  /**
+   * This method is used to extract links from HTML code.
+   */
+  @PostConstruct
+  protected void init() {
+    logger.info("Start of init method htmlCode : {}",htmlCode);
+    links = new ArrayList<>();
+    if (htmlCode != null) {
+      logger.info("Inside the init method htmlCode is not null");
+      Document doc = Jsoup.parse(htmlCode);
+      Elements elements = doc.select("a[href]");
+      for (Element link : elements) {
+        String href = link.attr("href");
+        this.links.add(href);
+      }
+    }
+    logger.info("End fo init method with linksList :{}", links);
 
     }
-    public List getLinks(){
-        return this.linksList;
-    }
+
+  /**
+   * This method return the linksList
+   *
+   * @return - linksList
+   */
+  public List<String> getLinks() {
+    return this.links;
+  }
 }

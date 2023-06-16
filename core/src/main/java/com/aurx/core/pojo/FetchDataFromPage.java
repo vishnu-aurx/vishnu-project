@@ -1,34 +1,76 @@
 package com.aurx.core.pojo;
 
+/**
+ * This is a pojo class.
+ */
 public class FetchDataFromPage {
-private String value;
-private String msg;
 
-    public FetchDataFromPage(String value, String msg) {
-    this.value = value;
-    this.msg = msg;
+  /**
+   * propValue - The propValue.
+   */
+  private String propValue;
+  /**
+   * msg - The message
+   */
+  private String message;
+
+  /**
+   * This constructor is used to set the propValue and message.
+   *
+   * @param propValue -the propValue
+   * @param message   -the message
+   */
+  public FetchDataFromPage(String propValue, String message) {
+    this.propValue = propValue;
+    this.message = message;
   }
 
-  public String getValue() {
-    return value;
+  /**
+   * This method returns the propValue.
+   *
+   * @return - propValue
+   */
+  public String getPropValue() {
+    return propValue;
   }
 
-  public void setValue(String value) {
-    this.value = value;
+  /**
+   * This method sets the propValue.
+   *
+   * @param propValue - The propValue
+   */
+  public void setPropValue(String propValue) {
+    this.propValue = propValue;
   }
 
-  public String getMsg() {
-    return msg;
-  }
-  public void setMsg(String msg) {
-    this.msg = msg;
+  /**
+   * This method returns the message.
+   *
+   * @return - message
+   */
+  public String getMessage() {
+    return message;
   }
 
+  /**
+   * This method sets the message.
+   *
+   * @param message - The message
+   */
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  /**
+   * This method converts class objects to string format.
+   *
+   * @return String value
+   */
   @Override
   public String toString() {
     return "FetchDataFromPage{" +
-        "value='" + value + '\'' +
-        ", msg='" + msg + '\'' +
+        "propValue='" + propValue + '\'' +
+        ", msg='" + message + '\'' +
         '}';
   }
 }
