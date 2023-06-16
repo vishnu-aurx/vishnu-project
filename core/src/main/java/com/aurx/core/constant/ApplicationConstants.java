@@ -57,6 +57,8 @@ public final class ApplicationConstants {
 
   public static final String TEXT="text";
 
+  public static final String PROP="prop";
+
   public static final String VALUE="value";
 
   public static final String DROPDOWN_VALUE_1= "dropdown-value-1";
@@ -70,6 +72,12 @@ public final class ApplicationConstants {
   public static final String DROPDOWN_KEY_2= "KEY2";
 
   public static final String DROPDOWN_KEY_3= "KEY3";
+
+  public static final String ONE="1";
+
+  public static final String TWO="2";
+
+  public static final String THREE="3";
 
 
 
