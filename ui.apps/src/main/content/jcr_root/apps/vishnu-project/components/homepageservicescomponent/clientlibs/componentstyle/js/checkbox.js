@@ -48,12 +48,8 @@
     }
 
     function showHide(component, element) {
-        console.log('showing');
-        console.log("elements : "+$(component).closest(element).data("cqDialogCheckboxShowhideTarget"))
         // get the selector to find the target elements. its stored as data-.. attribute
         var target = $(element).closest(component).data("cqDialogCheckboxShowhideTarget");
-        console.info("el :"+element);
-        console.info("el :"+target);
         //var $target = $(target);
         var $target = $(element).closest("coral-multifield-item").find(target);
         if (target) {
