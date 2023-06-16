@@ -5,6 +5,10 @@ package com.aurx.core.constant;
  */
 public final class ApplicationConstants {
 
+  private ApplicationConstants() {
+
+  }
+
   public static final String SLING_RESOURCE_TYPE = "sling:resourceType";
 
   public static final String CONTENT = "/content";
@@ -46,9 +50,9 @@ public final class ApplicationConstants {
   public static final String IMAGE="image";
 
   public static final String PRODUCT_DETAILS = "product_details";
-  public static final String jcrContent="jcr:content";
-  public static final String PAGE_TITLE_LIST_COMPONENT_RESOURCE_TYPE= "vishnu-project/components/pageTitleList";
-  public static final String PATH_DATA="pathData";
+  public static final String jcrContent = "jcr:content";
+  public static final String PAGE_TITLE_LIST_COMPONENT_RESOURCE_TYPE = "vishnu-project/components/pageTitleList";
+  public static final String PATH_DATA = "pathData";
 
   public static final String FILE_REFERENCE="fileReference";
 
@@ -80,6 +84,26 @@ public final class ApplicationConstants {
   public static final String THREE="3";
 
 
+
+  public static final String AUTHOR = "admin:admin";
+
+  public static final String ACCEPT = "accept";
+
+  public static final String APPLICATION_JSON = "application/json";
+
+  public static final String BASIC = "Basic";
+
+  public static final String AUTHORIZATION = "Authorization";
+
+  public static final String TOKEN_API_URL = "http://localhost:4502/bin/token.gettoken.json?appkey=user5597994";
+
+  public static final String USERNAME = "{0f3be3b01842132c630c4d5a80d5c4d402a530910f5cf9ed62ded2ca9894278e}";
+
+  public static final String PASSWORD = "{0f3be3b01842132c630c4d5a80d5c4d402a530910f5cf9ed62ded2ca9894278e}";
+
+  public static final String HTTP = "http";
+
+  public static final String HTTPS = "https";
 
 
 }

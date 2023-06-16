@@ -2,8 +2,8 @@ package com.aurx.core.schedulers;
 
 import static com.aurx.core.constant.ApplicationConstants.PAGE_CREATION_MODEL_PATH;
 
+import com.aurx.core.services.PopulateDataFromAPI;
 import com.aurx.core.services.config.SchedulerConfig;
-import com.aurx.core.utils.PopulateDataFromAPI;
 import com.aurx.core.utils.ResolverUtils;
 import com.day.cq.workflow.WorkflowException;
 import com.day.cq.workflow.WorkflowService;
@@ -32,7 +32,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This Scheduler is used to run the workflow process that create the page
+ * This scheduler is used to run the workflow process that creates the page.
  */
 @Component(service = Runnable.class, immediate = true)
 @Designate(ocd = SchedulerConfig.class)
@@ -43,34 +43,44 @@ public class CreatingPageScheduler implements Runnable {
    */
   @Reference
   Scheduler scheduler;
+
   /**
    * workflowService -WorkflowService object
    */
   @Reference
   private WorkflowService workflowService;
+
   /**
    * resourceResolverFactory - ResourceResolverFactory object
    */
   @Reference
   private ResourceResolverFactory resourceResolverFactory;
+
   /**
-   * logger -Logger object
+   * logger -Logger object.
    */
   private static final Logger logger = LoggerFactory.getLogger(CreatingPageScheduler.class);
 
   /**
-   * schedulerId - int type schedulerId
+   * schedulerId - The schedulerId.
    */
   private int schedulerId;
+
   /**
-   * url -String object
+   * url - The url.
    */
   private String url;
 
   /**
-   * This method is used to activate the scheduler
+   * populateDataFromAPI - PopulateDataFromAPI object.
+   */
+  @Reference
+  private PopulateDataFromAPI populateDataFromAPI;
+
+  /**
+   * This method is used to activate the scheduler.
    *
-   * @param schedulerConfig - the schedulerConfig object used to fetch url and schedulerName
+   * @param schedulerConfig - the schedulerConfig object used to fetch the url and schedulerName.
    */
   @Activate
   @Modified
@@ -88,7 +98,7 @@ public class CreatingPageScheduler implements Runnable {
   }
 
   /**
-   * This method is used to Deactivate the scheduler
+   * This method is used to Deactivate the scheduler.
    */
   @Deactivate
   protected void deactivate() {
@@ -96,7 +106,7 @@ public class CreatingPageScheduler implements Runnable {
   }
 
   /**
-   * This is method run when scheduler is invoked
+   * This is the method that is run when the scheduler is invoked.
    */
   @Override
   public void run() {
@@ -106,9 +116,9 @@ public class CreatingPageScheduler implements Runnable {
   }
 
   /**
-   * This method add the scheduler
+   * This method adds the scheduler.
    *
-   * @param schedulerConfig - the schedulerConfig fetch the cron expression
+   * @param schedulerConfig - the schedulerConfig fetch the cron expression.
    */
   private void addScheduler(SchedulerConfig schedulerConfig) {
     logger.info("==============this is cron expression : {}, isEnable : {}",
@@ -126,17 +136,17 @@ public class CreatingPageScheduler implements Runnable {
   }
 
   /**
-   * This method remove the Scheduler
+   * This method removes the scheduler.
    */
   private void removeScheduler() {
     scheduler.unschedule(String.valueOf(schedulerId));
   }
 
   /**
-   * This method hit the APi and fetch data from response
+   * This method hits the API and fetches data from the response.
    */
   private void fetchDataFromResponse() {
-    String responseData = PopulateDataFromAPI.populateData(url);
+    String responseData = populateDataFromAPI.populateData(url);
     if (responseData != null && !responseData.trim().equals("")) {
       JsonArray jsonElements = JsonParser.parseString(responseData).getAsJsonArray();
       for (JsonElement jsonElement : jsonElements) {
@@ -151,17 +161,19 @@ public class CreatingPageScheduler implements Runnable {
   }
 
   /**
-   * This method call the workflow process and create the page
+   * This method calls the workflow process and creates the page.
    *
-   * @param carTitle        - the carTitle
-   * @param carCode         - the carCode
-   * @param pageTitle       - the pageTitle
-   * @param pageDescription - the pageDescription
-   * @param id              - the id
+   * @param carTitle        - The carTitle
+   * @param carCode         - The carCode
+   * @param pageTitle       - The pageTitle
+   * @param pageDescription - The pageDescription
+   * @param id              - The id
    */
   private void createPageUsingModel(String carTitle, String carCode, String pageTitle,
       String pageDescription, String id) {
-    logger.info("createPageUsingModel Method start");
+    logger.info(
+        "Start of createPageUsingModel with carTitle : {}, carCode :{}, pageTitle : {},pageDescription : {},id :{}",
+        carTitle, carCode, pageTitle, pageDescription, id);
     ResourceResolver resourceResolver = null;
     Map<String, Object> workflowMetadata = new HashMap<>();
     workflowMetadata.put("carTitle", carTitle);
