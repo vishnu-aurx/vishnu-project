@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This class is used to decrypt the text.
+ *  This class is used to decrypt the text.
  */
 @Component(service = CryptoUtil.class, immediate = true)
 public class CryptoUtilImpl implements CryptoUtil {

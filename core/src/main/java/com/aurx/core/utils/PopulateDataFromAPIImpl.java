@@ -41,7 +41,7 @@ import org.slf4j.LoggerFactory;
 public class PopulateDataFromAPIImpl implements PopulateDataFromAPI {
 
   /**
-   * cryptoUtil - CryptoUtil object
+   * cryptoUtil - CryptoUtil object.
    */
   @Reference
   private CryptoUtil cryptoUtil;

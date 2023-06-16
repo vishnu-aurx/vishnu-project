@@ -57,22 +57,22 @@ public class CreatingPageScheduler implements Runnable {
   private ResourceResolverFactory resourceResolverFactory;
 
   /**
-   * logger -Logger object
+   * logger -Logger object.
    */
   private static final Logger logger = LoggerFactory.getLogger(CreatingPageScheduler.class);
 
   /**
-   * schedulerId - int type schedulerId
+   * schedulerId - The schedulerId.
    */
   private int schedulerId;
 
   /**
-   * url -String object
+   * url - The url.
    */
   private String url;
 
   /**
-   * populateDataFromAPI - PopulateDataFromAPI object
+   * populateDataFromAPI - PopulateDataFromAPI object.
    */
   @Reference
   private PopulateDataFromAPI populateDataFromAPI;
