@@ -3,9 +3,9 @@
 <sly data-sly-test.linksList="${linkExtractModel.getLinks}"/>
 
 <sly data-sly-test="${linksList}">
-    <div data-sly-list.links="${linksList}">
-        <h4>${links}</h4>
-    </div>
+  <div data-sly-list.links="${linksList}">
+    <h4>${links}</h4>
+  </div>
 </sly>
 
 <sly data-sly-call="${templates.placeholder @ isEmpty = !linksList, classAppend='cmp-text'}"></sly>
