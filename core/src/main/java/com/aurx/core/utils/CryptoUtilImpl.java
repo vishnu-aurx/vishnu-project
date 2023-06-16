@@ -9,6 +9,9 @@ import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * This class is used to decrypt the text.
+ */
 @Component(service = CryptoUtil.class, immediate = true)
 public class CryptoUtilImpl implements CryptoUtil {
 
@@ -34,9 +37,9 @@ public class CryptoUtilImpl implements CryptoUtil {
     String decryptedText = StringUtils.EMPTY;
     logger.info("Start of getDecryptedValue method with encryptedText is : {}", encryptedText);
     try {
-      decryptedText = cryptoSupport.isProtected(encryptedText)
-          ? cryptoSupport.unprotect(encryptedText)
-          : encryptedText;
+      decryptedText =
+          cryptoSupport.isProtected(encryptedText) ? cryptoSupport.unprotect(encryptedText)
+              : encryptedText;
     } catch (CryptoException e) {
       logger.error("CryptoException : {}", e.getMessage());
     }

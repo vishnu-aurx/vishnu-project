@@ -35,11 +35,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This is utility class
+ * This class hits the API and populates data from the API.
  */
 @Component(service = PopulateDataFromAPI.class, immediate = true)
 public class PopulateDataFromAPIImpl implements PopulateDataFromAPI {
 
+  /**
+   * cryptoUtil - CryptoUtil object
+   */
   @Reference
   private CryptoUtil cryptoUtil;
   /**
@@ -59,6 +62,7 @@ public class PopulateDataFromAPIImpl implements PopulateDataFromAPI {
     URL url = null;
     try {
       if (baseURL != null) {
+        LOGGER.info("baseURL is not null");
         url = new URL(baseURL);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestProperty(ACCEPT, APPLICATION_JSON);
