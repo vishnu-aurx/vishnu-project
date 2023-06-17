@@ -28,7 +28,7 @@ public class QueryBuilderUtilImpl implements QueryBuilderUtil {
    * @return = SearchResult object
    */
   @Override
-  public SearchResult getQueryuilderResult(ResourceResolver resourceResolver,
+  public SearchResult getQueryBuilderResult(ResourceResolver resourceResolver,
       Map<String, String> predicateMap) {
     LOGGER.info("SearchResult method start   resourceResolver : {} ,predicateMap :{}",
         resourceResolver, predicateMap);
