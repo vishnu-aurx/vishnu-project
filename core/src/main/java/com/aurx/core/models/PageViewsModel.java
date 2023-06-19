@@ -15,6 +15,9 @@ import org.apache.sling.settings.SlingSettingsService;
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PageViewsModel {
 
+  /**
+   * slingSettingsService - The slingSettingsService.
+   */
   @OSGiService
   private SlingSettingsService slingSettingsService;
 

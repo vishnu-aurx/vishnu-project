@@ -5,6 +5,7 @@ import static com.aurx.core.constant.ApplicationConstants.API_USER_NAME;
 import static com.aurx.core.constant.ApplicationConstants.APP_ID;
 import static com.aurx.core.constant.ApplicationConstants.APP_ID_PATH;
 import static com.aurx.core.constant.ApplicationConstants.APP_ID_TIME_PATH;
+import static com.aurx.core.constant.ApplicationConstants.COLUMN;
 import static com.aurx.core.constant.ApplicationConstants.DATE_FORMAT;
 import static com.aurx.core.constant.ApplicationConstants.ERROR;
 import static com.aurx.core.constant.ApplicationConstants.EXPIRE;
@@ -118,7 +119,7 @@ public class GetUserFromToken extends SlingSafeMethodsServlet {
         LOGGER.info("apiKeyResource is not null");
         ValueMap apiKeyValueMap = apiKeyResource.getValueMap();
         String user = apiKeyValueMap.get(tokenKey, EMPTY);
-        user = user.split(":")[0];
+        user = user.split(COLUMN)[0];
         LOGGER.info("User : {}", user);
         if (user.isEmpty()) {
           jsonObject.addProperty(ERROR, INVALID_API_KEY);
@@ -141,17 +142,22 @@ public class GetUserFromToken extends SlingSafeMethodsServlet {
   private String getTokenKey(String appid, ResourceResolver resourceResolver) {
     LOGGER.info("Start of getTokenKey method with appId : {}, resourceResolver : {}", appid,
         resourceResolver);
-    String tokenKey = "";
+    String tokenKey = EMPTY;
     Resource appIdResource = resourceResolver.getResource(APP_ID_PATH);
-    ValueMap appIdValueMap = appIdResource.getValueMap();
-    Set<Entry<String, Object>> entries = appIdValueMap.entrySet();
-    LOGGER.info("Entries : {} ", entries);
-    for (Entry<String, Object> entry : entries) {
-      if (appid.equals(entry.getValue())) {
-        tokenKey = entry.getKey();
+    if (appIdResource != null) {
+      ValueMap appIdValueMap = appIdResource.getValueMap();
+
+      Set<Entry<String, Object>> entries = appIdValueMap.entrySet();
+
+      LOGGER.info("Entries : {} ", entries);
+      for (Entry<String, Object> entry : entries) {
+        if (appid.equals(entry.getValue())) {
+          tokenKey = entry.getKey();
+        }
       }
     }
     LOGGER.info("End of getTokenKey with tokenKey : {}", tokenKey);
     return tokenKey;
   }
+
 }

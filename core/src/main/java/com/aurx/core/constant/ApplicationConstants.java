@@ -209,4 +209,6 @@ public final class ApplicationConstants {
 
   public static final String ZERO= "0";
 
+  public static final String COLUMN= ":";
+
 }

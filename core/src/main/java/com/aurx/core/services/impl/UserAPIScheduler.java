@@ -104,9 +104,9 @@ public class UserAPIScheduler implements Runnable {
       scheduleOptions.name(String.valueOf(schedulerId));
       scheduleOptions.canRunConcurrently(false);
       scheduler.schedule(this, scheduleOptions);
-      logger.info("=======this is scheduler add methode");
+      logger.info("This is scheduler add methode");
     } else {
-      logger.info("============Schedule Service is disable===========");
+      logger.info("Schedule Service is disable");
     }
     logger.info("End of addScheduler");
   }
@@ -133,6 +133,7 @@ public class UserAPIScheduler implements Runnable {
         if (modifiableValueMap != null) {
           logger.info("modifiableValueMap is not null");
           Set<Entry<String, Object>> entries = valueMap.entrySet();
+          logger.info("entries : {}",entries);
           for (Entry<String, Object> entry : entries) {
             if (!entry.getKey().equals(JCR_PRIMARY_TYPE)) {
               modifiableValueMap.remove(entry.getKey());

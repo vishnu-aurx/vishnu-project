@@ -2,6 +2,7 @@ package com.aurx.core.servlets;
 
 import static com.aurx.core.constant.ApplicationConstants.APIKEY;
 import static com.aurx.core.constant.ApplicationConstants.API_KEY;
+import static com.aurx.core.constant.ApplicationConstants.COLUMN;
 import static com.aurx.core.constant.ApplicationConstants.EMAIL;
 import static com.aurx.core.constant.ApplicationConstants.ERROR_MASSAGE;
 import static com.aurx.core.constant.ApplicationConstants.INVALID_EMAIL;
@@ -117,7 +118,7 @@ public class GenerateUserAPIKey extends SlingSafeMethodsServlet {
         String apiKey = entry.getKey();
         String apiKeyValue = entry.getValue().toString();
         if (!apiKey.equals(JCR_PRIMARY_TYPE) && !apiKey.equals(JCR_MIXIN_TYPES)) {
-          String[] apiValue = apiKeyValue.split(":");
+          String[] apiValue = apiKeyValue.split(COLUMN);
           if (apiValue[1].equals(email)) {
             isAuthor = true;
             jsonObject.addProperty(APIKEY, apiKey);
