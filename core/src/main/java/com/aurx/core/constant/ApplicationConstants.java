@@ -105,9 +105,7 @@ public final class ApplicationConstants {
 
   public static final String HTTPS = "https";
 
-  public static final String USERNAME_CONSTANT= "username";
-
-  public static final String NUMBER_CONSTANT = "number";
+    public static final String NUMBER_CONSTANT = "number";
 
   public static final String LOCAL_DB_TEST = "localDBTest";
 

@@ -5,7 +5,7 @@ import static com.aurx.core.constant.ApplicationConstants.LOCAL_DB_TEST;
 import static com.aurx.core.constant.ApplicationConstants.NUMBER_CONSTANT;
 import static com.aurx.core.constant.ApplicationConstants.STATUS;
 import static com.aurx.core.constant.ApplicationConstants.SUCCESSFUL;
-import static com.aurx.core.constant.ApplicationConstants.USERNAME_CONSTANT;
+import static com.aurx.core.constant.ApplicationConstants.USER_NAME;
 
 import com.day.commons.datasource.poolservice.DataSourceNotFoundException;
 import com.day.commons.datasource.poolservice.DataSourcePool;
@@ -57,7 +57,7 @@ public class SaveDataInMySQLServlet extends SlingSafeMethodsServlet {
       SlingHttpServletResponse response)
       throws ServletException, IOException {
     LOGGER.info("doGetMethod start");
-    String name = request.getParameter(USERNAME_CONSTANT);
+    String name = request.getParameter(USER_NAME);
     String number = request.getParameter(NUMBER_CONSTANT);
     LOGGER.info("Name : {} , Number : {}", name, number);
     if (StringUtils.isNotBlank(number) && StringUtils.isNotBlank(name)) {
