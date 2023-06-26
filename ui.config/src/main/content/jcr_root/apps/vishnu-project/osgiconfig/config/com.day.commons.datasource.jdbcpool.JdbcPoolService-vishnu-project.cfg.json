@@ -1,0 +1,10 @@
+{
+  "jdbc.driver.class" : "com.mysql.cj.jdbc.Driver",
+  "jdbc.connection.uri" : "jdbc:mysql://localhost:3306/otp",
+  "jdbc.username" : "root",
+  "jdbc.password" : "root",
+  "default.autocommit" : true,
+  "pool.size" : 10,
+  "pool.max.wait.msec" : 1000,
+  "datasource.name" : "localDBTest"
+}
