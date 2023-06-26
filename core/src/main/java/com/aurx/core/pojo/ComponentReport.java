@@ -3,42 +3,47 @@ package com.aurx.core.pojo;
 import java.util.Comparator;
 
 /**
- * This class to set property of components
+ * This is a ComponentReport POJO class.
  */
 public class ComponentReport implements Comparator<ComponentReport> {
 
   /**
-   * pagePath - String object
+   * pagePath - The pagePath.
    */
   private String pagePath;
+
   /**
-   * page - String Object
+   * page - The page.
    */
   private String page;
+
   /**
-   * title - String Object
+   * title - The title.
    */
   private String title;
+
   /**
-   * group - String Object
+   * group - The group.
    */
   private String group;
+
   /**
-   * pathOfComponent - String object
+   * pathOfComponent - The pathOfComponent.
    */
   private String pathOfComponent;
 
   /**
-   * Default Constructor - ComponentReport
+   * Default constructor of ComponentReport.
    */
   public ComponentReport() {
   }
 
   /**
-   * This Constructor used to set the properties
-   * @param title
-   * @param group
-   * @param pathOfComponent
+   * This constructor is used to set the properties.
+   *
+   * @param title           - The title.
+   * @param group           - The group.
+   * @param pathOfComponent - The pageOfComponent.
    */
   public ComponentReport(String title, String group, String pathOfComponent) {
     this.title = title;
@@ -48,7 +53,8 @@ public class ComponentReport implements Comparator<ComponentReport> {
 
 
   /**
-   * This method return the pagePath
+   * This method returns the page path.
+   *
    * @return - pagePath
    */
   public String getPagePath() {
@@ -56,7 +62,8 @@ public class ComponentReport implements Comparator<ComponentReport> {
   }
 
   /**
-   * This method set the pagePath
+   * This method sets the page Path
+   *
    * @param pagePath
    */
   public void setPagePath(String pagePath) {
@@ -64,7 +71,8 @@ public class ComponentReport implements Comparator<ComponentReport> {
   }
 
   /**
-   * This method return the page
+   * This method returns the page.
+   *
    * @return - page
    */
   public String getPage() {
@@ -72,7 +80,8 @@ public class ComponentReport implements Comparator<ComponentReport> {
   }
 
   /**
-   * This method set the page
+   * This method sets the page.
+   *
    * @param page
    */
   public void setPage(String page) {
@@ -80,7 +89,8 @@ public class ComponentReport implements Comparator<ComponentReport> {
   }
 
   /**
-   * This method return the title
+   * This method returns the title.
+   *
    * @return - title
    */
   public String getTitle() {
@@ -88,7 +98,8 @@ public class ComponentReport implements Comparator<ComponentReport> {
   }
 
   /**
-   * This method set the title
+   * This method sets the title.
+   *
    * @param title
    */
   public void setTitle(String title) {
@@ -96,7 +107,8 @@ public class ComponentReport implements Comparator<ComponentReport> {
   }
 
   /**
-   * This method return the group
+   * This method returns the group.
+   *
    * @return - group
    */
   public String getGroup() {
@@ -104,7 +116,8 @@ public class ComponentReport implements Comparator<ComponentReport> {
   }
 
   /**
-   * This method set the group
+   * This method sets the group.
+   *
    * @param group
    */
   public void setGroup(String group) {
@@ -112,20 +125,28 @@ public class ComponentReport implements Comparator<ComponentReport> {
   }
 
   /**
-   * This method return the pathOfComponent
+   * This method returns the pathOfComponent.
+   *
    * @return - pathOfComponent
    */
   public String getPathOfComponent() {
     return pathOfComponent;
   }
 
-  /** This method set the  pathOfComponent
+  /**
+   * This method sets the pathOfComponent.
+   *
    * @param pathOfComponent
    */
   public void setPathOfComponent(String pathOfComponent) {
     this.pathOfComponent = pathOfComponent;
   }
 
+  /**
+   * Method to convert class object into string format.
+   *
+   * @return - string value of object
+   */
   @Override
   public String toString() {
     return "ComponentReport{" +
@@ -138,10 +159,12 @@ public class ComponentReport implements Comparator<ComponentReport> {
   }
 
   /**
-   * This method compare group and title for sorting
-   * @param componentReport1 the first object to be compared.
-   * @param componentReport2 the second object to be compared.
-   * @return
+   * Compares two ComponentReport objects based on their group and title. The comparison is
+   * case-insensitive.
+   *
+   * @param componentReport1 The first ComponentReport object to compare.
+   * @param componentReport2 The second ComponentReport object to compare.
+   * @return An integer value indicating the comparison result:
    */
   @Override
   public int compare(ComponentReport componentReport1, ComponentReport componentReport2) {

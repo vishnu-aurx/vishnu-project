@@ -86,7 +86,7 @@ public class ComponentReportServlet extends SlingAllMethodsServlet {
     predicateMap.put(PROPERTY, SLING_RESOURCE_TYPE);
     predicateMap.put(PROPERTY_VALUE, resourceTypeValue);
     predicateMap.put(P_LIMIT, "-1");
-    SearchResult result = queryBuilderUtil.getQueryuilderResult(resourceResolver, predicateMap);
+    SearchResult result = queryBuilderUtil.getQueryBuilderResult(resourceResolver, predicateMap);
     if (result != null) {
       List<Hit> hits = result.getHits();
       for (Hit hit : hits) {

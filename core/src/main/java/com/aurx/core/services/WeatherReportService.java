@@ -1,8 +1,21 @@
 package com.aurx.core.services;
 
-import com.aurx.core.services.config.WeatherConfiguration;
-
+/**
+ * Interface WeatherReportService.
+ */
 public interface WeatherReportService {
- String getWeatherUrl();
- String getWeatherAppId();
+
+  /**
+   * This method return the weather API URL.
+   *
+   * @return - The weather API URL
+   */
+  String getWeatherUrl();
+
+  /**
+   * This method return the AppID.
+   *
+   * @return - the appId.
+   */
+  String getWeatherAppId();
 }

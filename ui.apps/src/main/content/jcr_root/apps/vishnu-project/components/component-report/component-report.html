@@ -1,15 +1,15 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-use.componentReportModel="com.aurx.core.models.ComponentReportModel"/>
-<sly data-sly-test.comopnentHierachyList="${componentReportModel.comopnentHierachyList}"/>
+<sly data-sly-test.componentReportList="${componentReportModel.componentReportList}"/>
 <sly data-sly-test.isAuthored="${properties.dropdownlable}"/>
 
 <sly data-sly-test="${isAuthored}">
   <div class="component-report-container" data-path="${resource.path}"
        id="${resource.path.hashCode}" data-no-component-error-msg="${properties.nocomponentfound}"
        data-default-selection-error-msg="${properties.defaulterrormsg}">
-    <sly data-sly-test="${comopnentHierachyList}">
+    <sly data-sly-test="${componentReportList}">
       <h2 class="dropdown-lable">${properties.dropdownlable}</h2>
-      <select class="select-component" data-sly-list.components="${comopnentHierachyList}">
+      <select class="select-component" data-sly-list.components="${componentReportList}">
         <option value="none" selected disabled hidden>${properties.dropdownvalue}</option>
         <option value=${components.pathOfComponent}> ${components.group} | ${components.title}
         </option>

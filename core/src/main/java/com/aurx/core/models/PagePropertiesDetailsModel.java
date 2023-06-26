@@ -3,7 +3,6 @@ package com.aurx.core.models;
 import static com.aurx.core.constant.ApplicationConstants.PAGE_TITLE_LIST_COMPONENT_RESOURCE_TYPE;
 import static com.aurx.core.constant.ApplicationConstants.PATH;
 import static com.aurx.core.constant.ApplicationConstants.PATH_DATA;
-import static com.aurx.core.constant.ApplicationConstants.jcrContent;
 import static com.day.cq.commons.jcr.JcrConstants.JCR_CONTENT;
 import static com.day.cq.commons.jcr.JcrConstants.JCR_TITLE;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
