@@ -5,6 +5,16 @@ import com.google.gson.JsonObject;
 
 import java.io.IOException;
 
+/**
+ * Interface ProductDetailService.
+ */
 public interface ProductDetailService {
-    JsonArray fetchAllProducts() throws IOException;
+
+
+  /**
+   * This method returns all products in a JSON array.
+   *
+   * @return - The JsonArray
+   */
+  JsonArray fetchAllProducts();
 }

@@ -13,37 +13,43 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This model generate the ComponentReport
+ * This model generates the component report.
  */
-@Model(adaptables =  Resource.class,defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ComponentReportModel {
 
   /**
-   * The ComponentReportService object of {@link ComponentReportService}
+   * componentReportService - The componentReportService.
    */
   @OSGiService
   private ComponentReportService componentReportService;
   /**
-   * The comopnentHierachyList - it used to returning the pojo class object into slightly
+   * componentReportList - The componentReportList.
    */
-   private List<ComponentReport> comopnentHierachyList;
+  private List<ComponentReport> componentReportList;
   /**
-   * The logger - logger  object
+   * The logger - logger  object.
    */
-  private static  final Logger logger= LoggerFactory.getLogger(ComponentReportModel.class);
+  private static final Logger logger = LoggerFactory.getLogger(ComponentReportModel.class);
 
   /**
-   * The method is used to add
+   * The method is used to add.
    */
   @PostConstruct
-  protected void init(){
-    comopnentHierachyList = new ArrayList<>();
+  protected void init() {
+    componentReportList = new ArrayList<>();
     logger.info("inside the init method");
-    comopnentHierachyList=componentReportService.comopnentList();
-    logger.info("init method end comopnentHierachyList : {}",comopnentHierachyList);
+    componentReportList = componentReportService.comopnentList();
+    logger.info("init method end comopnentHierachyList : {}", componentReportList);
 
   }
-  public List<ComponentReport> comopnentHierachyList(){
-    return comopnentHierachyList;
+
+  /**
+   * This method return the list of componentReport.
+   *
+   * @return List of componentReport.
+   */
+  public List<ComponentReport> getComponentReportList() {
+    return componentReportList;
   }
-  }
+}
