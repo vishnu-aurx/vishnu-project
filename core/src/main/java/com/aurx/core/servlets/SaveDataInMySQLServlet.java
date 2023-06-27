@@ -2,13 +2,12 @@ package com.aurx.core.servlets;
 
 import static com.aurx.core.constant.ApplicationConstants.EMPTY_PARAM;
 import static com.aurx.core.constant.ApplicationConstants.ERROR;
-import static com.aurx.core.constant.ApplicationConstants.LOCAL_DB_TEST;
 import static com.aurx.core.constant.ApplicationConstants.NUMBER_CONSTANT;
 import static com.aurx.core.constant.ApplicationConstants.STATUS;
 import static com.aurx.core.constant.ApplicationConstants.SUCCESSFUL;
 import static com.aurx.core.constant.ApplicationConstants.USER_NAME;
 
-import com.day.commons.datasource.poolservice.DataSourceNotFoundException;
+import com.aurx.core.services.DataBaseService;
 import com.day.commons.datasource.poolservice.DataSourcePool;
 import com.google.gson.JsonObject;
 import java.io.IOException;
@@ -17,7 +16,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
-import javax.sql.DataSource;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -44,6 +42,12 @@ public class SaveDataInMySQLServlet extends SlingSafeMethodsServlet {
    * LOGGER - The Logger object.
    */
   private static final Logger LOGGER = LoggerFactory.getLogger(SaveDataInMySQLServlet.class);
+
+  /**
+   * mySQLConnectionUtilService - The MySQLConnectionUtilService object.
+   */
+  @Reference
+  DataBaseService mySQLConnectionUtilService;
 
   /**
    * This method is used to get username and number from a URL.
@@ -88,36 +92,28 @@ public class SaveDataInMySQLServlet extends SlingSafeMethodsServlet {
    */
   private JsonObject saveDataInMySQL(String name, int userNumber) throws SQLException {
     LOGGER.info("saveDataInMySQL method Start with name : {} , userNumber : {}", name, userNumber);
-
-    DataSource dataSource = null;
     Connection connection = null;
     try {
-      dataSource = (DataSource) dataSourcePool.getDataSource(LOCAL_DB_TEST);
-      if (dataSource != null) {
-        LOGGER.info("dataSource is not null");
-        connection = dataSource.getConnection();
-        if (connection != null) {
-          LOGGER.info("connection is not null");
-          try (final Statement statement = connection.createStatement();) {
-            if (statement != null) {
-              statement.executeQuery("CALL setdata(" + userNumber + ",'" + name + "')");
-              jsonObject.addProperty(STATUS, SUCCESSFUL);
-            }
-            LOGGER.info("data save successfully");
+      connection = mySQLConnectionUtilService.getConnection();
+      if (connection != null) {
+        LOGGER.info("connection is not null");
+        try (final Statement statement = connection.createStatement();) {
+          if (statement != null) {
+            statement.executeQuery("CALL setdata(" + userNumber + ",'" + name + "')");
+            jsonObject.addProperty(STATUS, SUCCESSFUL);
           }
-        } else {
-          jsonObject.addProperty(STATUS, ERROR);
+          LOGGER.info("data save successfully");
         }
       } else {
         jsonObject.addProperty(STATUS, ERROR);
       }
-    } catch (SQLException | DataSourceNotFoundException e) {
+    } catch (SQLException e) {
       jsonObject.addProperty(STATUS, ERROR);
       LOGGER.error("Exception {}", e.getMessage());
     } finally {
-      if (connection != null) {
+      if (connection != null && !connection.isClosed()) {
         connection.close();
-        LOGGER.info("Connection is closed");
+        LOGGER.info("Connection is closed successfully");
       }
     }
     LOGGER.info("END of saveDataInMySQL method");
