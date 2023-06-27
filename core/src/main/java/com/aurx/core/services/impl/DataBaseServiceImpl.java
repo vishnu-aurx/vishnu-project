@@ -15,6 +15,9 @@ import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * This class establishes a connection to a MySQL database.
+ */
 @Component(service = DataBaseService.class, immediate = true)
 @Designate(ocd = DataBaseNameConfiguration.class)
 public class DataBaseServiceImpl implements DataBaseService {
