@@ -1,12 +1,12 @@
 package com.aurx.core.servlets;
 
+import static com.adobe.aem.formsndocuments.util.FMConstants.JCR_MIXIN_TYPES;
 import static com.aurx.core.constant.ApplicationConstants.APIKEY;
 import static com.aurx.core.constant.ApplicationConstants.API_KEY;
 import static com.aurx.core.constant.ApplicationConstants.COLUMN;
 import static com.aurx.core.constant.ApplicationConstants.EMAIL;
 import static com.aurx.core.constant.ApplicationConstants.ERROR_MASSAGE;
 import static com.aurx.core.constant.ApplicationConstants.INVALID_EMAIL;
-import static com.aurx.core.constant.ApplicationConstants.JCR_MIXIN_TYPES;
 import static com.aurx.core.constant.ApplicationConstants.JCR_PRIMARY_TYPE;
 import static com.aurx.core.constant.ApplicationConstants.USER_NAME;
 

@@ -214,6 +214,11 @@ Import-Package: javax.annotation;version=0.0.0,*
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.sling/org.apache.sling.datasource -->
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.datasource</artifactId>
+        </dependency>
 
     </dependencies>
 </project>

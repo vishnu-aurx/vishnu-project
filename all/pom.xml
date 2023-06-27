@@ -100,6 +100,12 @@
                             <type>jar</type>
                             <target>/apps/vishnu-project-vendor-packages/application/install</target>
                         </embedded>
+                        <embedded>
+                            <groupId>mysql</groupId>
+                            <artifactId>mysql-connector-java</artifactId>
+                            <target>/apps/vishnu-project-vendor-packages/application/install</target>
+                            <type>jar</type>
+                        </embedded>
                     </embeddeds>
                 </configuration>
             </plugin>
@@ -224,6 +230,10 @@
             <artifactId>jsoup</artifactId>
             <type>jar</type>
         </dependency>
-
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>

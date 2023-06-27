@@ -1515,6 +1515,21 @@ Bundle-DocURL:
         <version>1.15.4</version>
       </dependency>
 
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.30</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.apache.sling/org.apache.sling.datasource -->
+      <dependency>
+        <groupId>org.apache.sling</groupId>
+        <artifactId>org.apache.sling.datasource</artifactId>
+        <version>1.0.4</version>
+      </dependency>
+
+
     </dependencies>
         
   </dependencyManagement>
