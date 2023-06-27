@@ -84,7 +84,7 @@ public final class ApplicationConstants {
   public static final String THREE = "3";
 
 
-  public static final String AUTHOR = "admin:admin";
+  public static final String AUTHOR_CREDENTIALS = "admin:admin";
 
   public static final String ACCEPT = "accept";
 

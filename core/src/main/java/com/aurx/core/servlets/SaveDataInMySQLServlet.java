@@ -25,6 +25,9 @@ import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * This servlet is used to insert the data into MySQL.
+ */
 @Component(service = Servlet.class, immediate = true, property = {"sling.servlet.methods=GET",
     "sling.servlet.paths=/bin/mysql", "sling.servlet.selectors=save",
     "sling.servlet.extensions=json"})
@@ -36,7 +39,7 @@ public class SaveDataInMySQLServlet extends SlingSafeMethodsServlet {
   @Reference
   private transient DataSourcePool dataSourcePool;
 
-  private transient JsonObject jsonObject;
+
 
   /**
    * LOGGER - The Logger object.
@@ -47,7 +50,7 @@ public class SaveDataInMySQLServlet extends SlingSafeMethodsServlet {
    * mySQLConnectionUtilService - The MySQLConnectionUtilService object.
    */
   @Reference
-  DataBaseService mySQLConnectionUtilService;
+  private transient DataBaseService mySQLConnectionUtilService;
 
   /**
    * This method is used to get username and number from a URL.
@@ -61,7 +64,7 @@ public class SaveDataInMySQLServlet extends SlingSafeMethodsServlet {
   protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
       throws ServletException, IOException {
     LOGGER.info("doGetMethod start");
-    jsonObject = new JsonObject();
+    JsonObject jsonObject = new JsonObject();
     String name = request.getParameter(USER_NAME);
     String number = request.getParameter(NUMBER_CONSTANT);
     LOGGER.info("Name : {} , Number : {}", name, number);
@@ -69,7 +72,7 @@ public class SaveDataInMySQLServlet extends SlingSafeMethodsServlet {
       int userNumber = Integer.parseInt(number);
       JsonObject saveDataInMySQL = null;
       try {
-        saveDataInMySQL = saveDataInMySQL(name, userNumber);
+        saveDataInMySQL = insertDataIntoMySQL(name, userNumber,jsonObject);
       } catch (SQLException e) {
         LOGGER.error("Exception {}", e.getMessage());
       }
@@ -90,7 +93,7 @@ public class SaveDataInMySQLServlet extends SlingSafeMethodsServlet {
    * @param name       - The name.
    * @param userNumber - The userNumber.
    */
-  private JsonObject saveDataInMySQL(String name, int userNumber) throws SQLException {
+  private JsonObject insertDataIntoMySQL(String name, int userNumber,JsonObject jsonObject) throws SQLException {
     LOGGER.info("saveDataInMySQL method Start with name : {} , userNumber : {}", name, userNumber);
     Connection connection = null;
     try {

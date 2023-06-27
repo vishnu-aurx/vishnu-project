@@ -2,7 +2,7 @@ package com.aurx.core.utils;
 
 import static com.aurx.core.constant.ApplicationConstants.ACCEPT;
 import static com.aurx.core.constant.ApplicationConstants.APPLICATION_JSON;
-import static com.aurx.core.constant.ApplicationConstants.AUTHOR;
+import static com.aurx.core.constant.ApplicationConstants.AUTHOR_CREDENTIALS;
 import static com.aurx.core.constant.ApplicationConstants.AUTHORIZATION;
 import static com.aurx.core.constant.ApplicationConstants.BASIC;
 import static com.aurx.core.constant.ApplicationConstants.HTTP;
@@ -66,7 +66,7 @@ public class PopulateDataFromAPIImpl implements PopulateDataFromAPI {
         url = new URL(baseURL);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestProperty(ACCEPT, APPLICATION_JSON);
-        byte[] encodedAuth = Base64.encodeBase64(AUTHOR.getBytes(StandardCharsets.UTF_8));
+        byte[] encodedAuth = Base64.encodeBase64(AUTHOR_CREDENTIALS.getBytes(StandardCharsets.UTF_8));
         String authHeaderValue = BASIC + new String(encodedAuth);
         connection.setRequestProperty(AUTHORIZATION, authHeaderValue);
         InputStream responseStream = connection.getInputStream();
