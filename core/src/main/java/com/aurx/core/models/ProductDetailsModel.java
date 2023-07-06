@@ -17,24 +17,26 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * ProductDetailsModel fetches the product details.
  */
-@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = {Resource.class, SlingHttpServletRequest.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ProductDetailsModel {
 
   /**
    * numberOfProducts - The numberOfProducts.
    */
-  @Inject
+  @ValueMapValue
   @Named("numberOfProducts")
   int numberOfProducts;
 
@@ -116,7 +118,6 @@ public class ProductDetailsModel {
       logger.info("moviesService isEnable");
       moviesName = moviesService.fetchAllMoviesName();
     }
-    logger.info("End of getMovieName method with moviesName: {}", moviesName);
     return moviesName;
   }
 

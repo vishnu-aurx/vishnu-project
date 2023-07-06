@@ -1,10 +1,14 @@
 package com.aurx.core.pojo;
 
+import com.adobe.cq.wcm.core.components.internal.DataLayerConfig;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Comparator;
+import lombok.Data;
 
 /**
  * This is a ComponentReport POJO class.
  */
+@Data
 public class ComponentReport implements Comparator<ComponentReport> {
 
   /**
@@ -20,16 +24,19 @@ public class ComponentReport implements Comparator<ComponentReport> {
   /**
    * title - The title.
    */
+  @JsonProperty
   private String title;
 
   /**
    * group - The group.
    */
+  @JsonProperty("componentGroup")
   private String group;
 
   /**
    * pathOfComponent - The pathOfComponent.
    */
+  @JsonProperty("slingResourceType")
   private String pathOfComponent;
 
   /**

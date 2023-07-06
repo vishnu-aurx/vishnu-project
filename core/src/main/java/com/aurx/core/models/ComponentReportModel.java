@@ -5,6 +5,7 @@ import com.aurx.core.services.ComponentReportService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -15,7 +16,8 @@ import org.slf4j.LoggerFactory;
 /**
  * This model generates the component report.
  */
-@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = {Resource.class,
+    SlingHttpServletRequest.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ComponentReportModel {
 
   /**
@@ -23,10 +25,12 @@ public class ComponentReportModel {
    */
   @OSGiService
   private ComponentReportService componentReportService;
+
   /**
    * componentReportList - The componentReportList.
    */
   private List<ComponentReport> componentReportList;
+
   /**
    * The logger - logger  object.
    */
