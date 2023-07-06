@@ -5,27 +5,29 @@ import static com.aurx.core.constant.ApplicationConstants.IMAGE_LABEL;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 import com.aurx.core.pojo.HomePageServicesComponent;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class is used to fetch the image path and image label.
  */
-@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = {Resource.class,
+    SlingHttpServletRequest.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class HomePageServicesComponentModel {
 
   /**
    * title - The title.
    */
-  @Inject
+  @ValueMapValue
   private String title;
   /**
    * multiFieldResourceList - List of Resources
@@ -49,7 +51,6 @@ public class HomePageServicesComponentModel {
   protected void init() {
     logger.info("Start of init method");
     setHomePageServicesComponents();
-    setHomePageServicesComponents();
     logger.info("End of init method");
   }
 
@@ -71,7 +72,9 @@ public class HomePageServicesComponentModel {
         homePageServicesComponentList.add(homePageServicesComponent);
       }
     }
-    logger.info("End of setHomePageServicesComponents method with homePageServicesComponentList : {}",homePageServicesComponentList);
+    logger.info(
+        "End of setHomePageServicesComponents method with homePageServicesComponentList : {}",
+        homePageServicesComponentList);
   }
 
   /**
