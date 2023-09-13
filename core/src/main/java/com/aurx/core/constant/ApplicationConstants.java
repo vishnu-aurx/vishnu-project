@@ -211,4 +211,17 @@ public final class ApplicationConstants {
 
   public static final String COLUMN= ":";
 
+  public static final String STATUS = "Status";
+
+  public static final String SUCCESSFUL = "successful";
+
+  public static final String MASSAGE = "message";
+
+  public static final String PROP_VALUE= "propValue";
+
+  public static final String WE_RETAIL_TEASER_SLING_RESOURCE= "weretail/components/content/teaser";
+
+
+
+
 }

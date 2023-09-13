@@ -1,0 +1,167 @@
+{
+  "jcr:primaryType": "cq:Component",
+  "jcr:createdBy": "admin",
+  "jcr:title": "student details",
+  "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+  "componentGroup": "Student  details",
+  "ClintLibs": {
+    "jcr:primaryType": "nt:folder",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+    "componentStyle": {
+      "jcr:primaryType": "cq:ClientLibraryFolder",
+      "jcr:createdBy": "admin",
+      "allowProxy": true,
+      "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+      "categories": [
+        "student-style"
+      ],
+      "css": {
+        "jcr:primaryType": "nt:folder",
+        "jcr:createdBy": "admin",
+        "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+        "style.css": {
+          "jcr:primaryType": "nt:file",
+          "jcr:createdBy": "admin",
+          "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+          "jcr:content": {
+            "jcr:primaryType": "nt:resource",
+            "jcr:lastModifiedBy": "Administrator",
+            "jcr:mimeType": "text/css",
+            "jcr:lastModified": "Mon Jun 26 2023 12:27:55 GMT+0530",
+            ":jcr:data": 144,
+            "jcr:uuid": "032c1f42-c923-4e5e-aaa0-fb17f90ca383"
+          }
+        }
+      },
+      "css.txt": {
+        "jcr:primaryType": "nt:file",
+        "jcr:createdBy": "admin",
+        "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+        "jcr:content": {
+          "jcr:primaryType": "nt:resource",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:mimeType": "text/plain",
+          "jcr:lastModified": "Fri Jun 02 2023 11:45:52 GMT+0530",
+          ":jcr:data": 20,
+          "jcr:uuid": "afa1d9aa-79df-4c63-affb-9ec39e2cd3f9"
+        }
+      }
+    }
+  },
+  "cq:editConfig": {
+    "jcr:primaryType": "cq:EditConfig",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530"
+  },
+  "cq:dialog": {
+    "jcr:primaryType": "nt:unstructured",
+    "jcr:title": "student details",
+    "sling:resourceType": "cq/gui/components/authoring/dialog",
+    "content": {
+      "jcr:primaryType": "nt:unstructured",
+      "sling:resourceType": "granite/ui/components/coral/foundation/container",
+      "items": {
+        "jcr:primaryType": "nt:unstructured",
+        "tabs": {
+          "jcr:primaryType": "nt:unstructured",
+          "sling:resourceType": "granite/ui/components/coral/foundation/tabs",
+          "items": {
+            "jcr:primaryType": "nt:unstructured",
+            "content": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:title": "List Of Student",
+              "sling:resourceType": "granite/ui/components/coral/foundation/container",
+              "items": {
+                "jcr:primaryType": "nt:unstructured",
+                "column": {
+                  "jcr:primaryType": "nt:unstructured",
+                  "sling:resourceType": "granite/ui/components/coral/foundation/fixedcolumns",
+                  "items": {
+                    "jcr:primaryType": "nt:unstructured",
+                    "container": {
+                      "jcr:primaryType": "nt:unstructured",
+                      "sling:resourceType": "granite/ui/components/coral/foundation/container",
+                      "items": {
+                        "jcr:primaryType": "nt:unstructured",
+                        "students": {
+                          "jcr:primaryType": "nt:unstructured",
+                          "composite": true,
+                          "sling:resourceType": "granite/ui/components/coral/foundation/form/multifield",
+                          "field": {
+                            "jcr:primaryType": "nt:unstructured",
+                            "name": "./students",
+                            "sling:resourceType": "granite/ui/components/coral/foundation/container",
+                            "items": {
+                              "jcr:primaryType": "nt:unstructured",
+                              "studentname": {
+                                "jcr:primaryType": "nt:unstructured",
+                                "name": "./studentname",
+                                "fieldLabel": "Student Name",
+                                "sling:resourceType": "granite/ui/components/coral/foundation/form/textfield",
+                                "fieldDescription": "please enter the student name"
+                              },
+                              "studentrollnumber": {
+                                "jcr:primaryType": "nt:unstructured",
+                                "name": "./studentrollnumber",
+                                "fieldLabel": "Student Roll Number",
+                                "sling:resourceType": "granite/ui/components/coral/foundation/form/textfield",
+                                "fieldDescription": "please enter the student roll number"
+                              },
+                              "marks": {
+                                "jcr:primaryType": "nt:unstructured",
+                                "composite": true,
+                                "max": 5,
+                                "sling:resourceType": "granite/ui/components/coral/foundation/form/multifield",
+                                "field": {
+                                  "jcr:primaryType": "nt:unstructured",
+                                  "name": "./marks",
+                                  "sling:resourceType": "granite/ui/components/coral/foundation/container",
+                                  "items": {
+                                    "jcr:primaryType": "nt:unstructured",
+                                    "subjects-marks": {
+                                      "jcr:primaryType": "nt:unstructured",
+                                      "max": 100,
+                                      "name": "./subjectsmarks",
+                                      "fieldLabel": "Student Marks",
+                                      "sling:resourceType": "granite/ui/components/coral/foundation/form/numberfield"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "numberofstudent": {
+                          "jcr:primaryType": "nt:unstructured",
+                          "min": 1,
+                          "name": "./numberofstudent",
+                          "value": 1,
+                          "fieldLabel": "number of Student ",
+                          "sling:resourceType": "granite/ui/components/coral/foundation/form/numberfield"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "Student-details.html": {
+    "jcr:primaryType": "nt:file",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+    "jcr:content": {
+      "jcr:primaryType": "nt:resource",
+      "jcr:lastModifiedBy": "admin",
+      "jcr:mimeType": "text/html",
+      "jcr:lastModified": "Fri Jun 02 2023 11:45:52 GMT+0530",
+      ":jcr:data": 706,
+      "jcr:uuid": "f9f0b34e-aa04-4c02-8066-fc20bf1eab8e"
+    }
+  }
+}

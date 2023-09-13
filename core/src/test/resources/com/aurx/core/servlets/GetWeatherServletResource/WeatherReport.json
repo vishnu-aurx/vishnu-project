@@ -1,0 +1,98 @@
+{
+  "cod": "200",
+  "message": 0,
+  "cnt": 2,
+  "list": [
+    {
+      "dt": 1688374800,
+      "main": {
+        "temp": 306.27,
+        "feels_like": 312.26,
+        "temp_min": 306.27,
+        "temp_max": 307.14,
+        "pressure": 1004,
+        "sea_level": 1004,
+        "grnd_level": 946,
+        "humidity": 58,
+        "temp_kf": -0.87
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10d"
+        }
+      ],
+      "clouds": {
+        "all": 40
+      },
+      "wind": {
+        "speed": 3.26,
+        "deg": 325,
+        "gust": 3.38
+      },
+      "visibility": 10000,
+      "pop": 0.2,
+      "rain": {
+        "3h": 0.13
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-07-03 09:00:00"
+    },
+    {
+      "dt": 1688385600,
+      "main": {
+        "temp": 305.14,
+        "feels_like": 310.51,
+        "temp_min": 302.87,
+        "temp_max": 305.14,
+        "pressure": 1003,
+        "sea_level": 1003,
+        "grnd_level": 946,
+        "humidity": 61,
+        "temp_kf": 2.27
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10d"
+        }
+      ],
+      "clouds": {
+        "all": 55
+      },
+      "wind": {
+        "speed": 4.48,
+        "deg": 245,
+        "gust": 6.34
+      },
+      "visibility": 10000,
+      "pop": 0.39,
+      "rain": {
+        "3h": 0.27
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2023-07-03 12:00:00"
+    }
+  ],
+  "city": {
+    "id": 1275841,
+    "name": "Bhopal",
+    "coord": {
+      "lat": 23.2487,
+      "lon": 77.4066
+    },
+    "country": "IN",
+    "population": 1599914,
+    "timezone": 19800,
+    "sunrise": 1688342898,
+    "sunset": 1688391621
+  }
+}

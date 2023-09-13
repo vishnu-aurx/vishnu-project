@@ -1,0 +1,79 @@
+{
+  "jcr:primaryType": "cq:PageContent",
+  "jcr:createdBy": "admin",
+  "jcr:title": "India",
+  "cq:template": "/conf/vishnu-project/settings/wcm/templates/page-content",
+  "jcr:created": "Fri Jun 16 2023 11:10:47 GMT+0530",
+  "cq:lastModified": "Mon Jul 03 2023 12:06:13 GMT+0530",
+  "sling:resourceType": "vishnu-project/components/page",
+  "cq:lastModifiedBy": "admin",
+  "root": {
+    "jcr:primaryType": "nt:unstructured",
+    "layout": "responsiveGrid",
+    "sling:resourceType": "vishnu-project/components/container",
+    "container": {
+      "jcr:primaryType": "nt:unstructured",
+      "layout": "responsiveGrid",
+      "sling:resourceType": "vishnu-project/components/container",
+      "title": {
+        "jcr:primaryType": "nt:unstructured",
+        "sling:resourceType": "vishnu-project/components/title"
+      },
+      "container": {
+        "jcr:primaryType": "nt:unstructured",
+        "layout": "responsiveGrid",
+        "sling:resourceType": "vishnu-project/components/container",
+        "component_report": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "jcr:lastModifiedBy": "admin",
+          "defaulterrormsg": "please select any component",
+          "jcr:created": "Fri Jun 16 2023 12:14:29 GMT+0530",
+          "nocomponentfound": "there is no component",
+          "jcr:lastModified": "Fri Jun 16 2023 12:14:44 GMT+0530",
+          "sling:resourceType": "vishnu-project/components/component-report",
+          "dropdownlable": "select the component",
+          "dropdownvalue": "select",
+          "btnlable": "submit"
+        },
+        "product_details": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:created": "Fri Jun 16 2023 16:12:30 GMT+0530",
+          "title": "Radhe",
+          "numberOfProducts": "2",
+          "headingType": "h2",
+          "jcr:lastModified": "Fri Jun 16 2023 16:12:39 GMT+0530",
+          "sling:resourceType": "vishnu-project/components/product-details"
+        },
+        "userapikeygenerate": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:created": "Fri Jun 16 2023 20:20:37 GMT+0530",
+          "jcr:lastModified": "Fri Jun 16 2023 20:20:37 GMT+0530",
+          "sling:resourceType": "vishnu-project/components/UserAPIKeyGenerate"
+        },
+        "getweather": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:created": "Sat Jun 17 2023 14:49:42 GMT+0530",
+          "days": "2",
+          "jcr:lastModified": "Sat Jun 17 2023 14:49:49 GMT+0530",
+          "sling:resourceType": "vishnu-project/components/GetWeather"
+        },
+        "getweather_931104326": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:createdBy": "admin",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:created": "Mon Jul 03 2023 12:06:06 GMT+0530",
+          "days": "2",
+          "jcr:lastModified": "Mon Jul 03 2023 12:06:13 GMT+0530",
+          "sling:resourceType": "vishnu-project/components/GetWeather"
+        }
+      }
+    }
+  }
+}

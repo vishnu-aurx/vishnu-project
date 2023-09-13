@@ -130,7 +130,7 @@ public class ComponentReportServiceImpl implements ComponentReportService {
       }
     }
     componentHierarchyList.sort(new ComponentReport());
-    logger.info("================fetch title methode end ====== comopnentHierachyList : {}",
+    logger.info("fetch title methode end  componentHierarchyList : {}",
         componentHierarchyList);
   }
 

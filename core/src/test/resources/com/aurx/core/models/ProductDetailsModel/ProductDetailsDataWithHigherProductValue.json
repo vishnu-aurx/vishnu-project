@@ -1,0 +1,11 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "jcr:createdBy": "admin",
+  "jcr:lastModifiedBy": "admin",
+  "jcr:created": "Wed Jun 28 2023 11:27:46 GMT+0530",
+  "title": "Radhe",
+  "numberOfProducts": "31",
+  "headingType": "h2",
+  "jcr:lastModified": "Wed Jun 28 2023 11:27:57 GMT+0530",
+  "sling:resourceType": "vishnu-project/components/product-details"
+}

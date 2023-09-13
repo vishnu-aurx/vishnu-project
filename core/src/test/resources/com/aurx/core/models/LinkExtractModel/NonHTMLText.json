@@ -1,0 +1,9 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "jcr:createdBy": "admin",
+  "jcr:lastModifiedBy": "admin",
+  "htmlCode": "Vishnu",
+  "jcr:created": "Tue Jun 27 2023 16:42:09 GMT+0530",
+  "jcr:lastModified": "Tue Jun 27 2023 16:42:20 GMT+0530",
+  "sling:resourceType": "vishnu-project/components/linkExtractor"
+}

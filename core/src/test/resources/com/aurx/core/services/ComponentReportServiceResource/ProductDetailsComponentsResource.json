@@ -1,0 +1,189 @@
+{
+  "jcr:primaryType": "cq:Component",
+  "jcr:createdBy": "admin",
+  "jcr:title": "Product Details",
+  "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+  "componentGroup": "Training project",
+  "product-details.html": {
+    "jcr:primaryType": "nt:file",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+    "jcr:content": {
+      "jcr:primaryType": "nt:resource",
+      "jcr:lastModifiedBy": "admin",
+      "jcr:mimeType": "text/html",
+      "jcr:lastModified": "Fri Jun 02 2023 11:45:52 GMT+0530",
+      ":jcr:data": 1064,
+      "jcr:uuid": "698f0011-aa7e-48c5-8fd9-404723b9c641"
+    }
+  },
+  "cq:editConfig": {
+    "jcr:primaryType": "cq:EditConfig",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530"
+  },
+  "cq:dialog": {
+    "jcr:primaryType": "nt:unstructured",
+    "jcr:title": "Product Details",
+    "sling:resourceType": "cq/gui/components/authoring/dialog",
+    "content": {
+      "jcr:primaryType": "nt:unstructured",
+      "sling:resourceType": "granite/ui/components/coral/foundation/container",
+      "items": {
+        "jcr:primaryType": "nt:unstructured",
+        "tabs": {
+          "jcr:primaryType": "nt:unstructured",
+          "sling:resourceType": "granite/ui/components/coral/foundation/tabs",
+          "items": {
+            "jcr:primaryType": "nt:unstructured",
+            "container2": {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:title": "List Of Products ",
+              "sling:resourceType": "granite/ui/components/coral/foundation/container",
+              "items": {
+                "jcr:primaryType": "nt:unstructured",
+                "column": {
+                  "jcr:primaryType": "nt:unstructured",
+                  "sling:resourceType": "granite/ui/components/coral/foundation/fixedcolumns",
+                  "items": {
+                    "jcr:primaryType": "nt:unstructured",
+                    "container": {
+                      "jcr:primaryType": "nt:unstructured",
+                      "sling:resourceType": "granite/ui/components/coral/foundation/container",
+                      "items": {
+                        "jcr:primaryType": "nt:unstructured",
+                        "title": {
+                          "jcr:primaryType": "nt:unstructured",
+                          "jcr:title": "Title",
+                          "required": true,
+                          "name": "./title",
+                          "maxlength": 1000,
+                          "fieldLabel": "Title",
+                          "sling:resourceType": "granite/ui/components/coral/foundation/form/textfield",
+                          "fieldDescription": "Enter the title which will be visible on top of the products"
+                        },
+                        "headingType": {
+                          "jcr:primaryType": "nt:unstructured",
+                          "emptyText": "select the heading type",
+                          "name": "./headingType",
+                          "fieldLabel": "Heading Type",
+                          "sling:resourceType": "granite/ui/components/coral/foundation/form/select",
+                          "fieldDescription": "Select any on the heading type.",
+                          "items": {
+                            "jcr:primaryType": "nt:unstructured",
+                            "H3": {
+                              "jcr:primaryType": "nt:unstructured",
+                              "text": "H3",
+                              "value": "h3"
+                            },
+                            "H2": {
+                              "jcr:primaryType": "nt:unstructured",
+                              "text": "H2",
+                              "value": "h2"
+                            },
+                            "H1": {
+                              "jcr:primaryType": "nt:unstructured",
+                              "text": "H1",
+                              "value": "h1"
+                            }
+                          }
+                        },
+                        "products": {
+                          "jcr:primaryType": "nt:unstructured",
+                          "jcr:title": "Number Field",
+                          "required": true,
+                          "max": 30,
+                          "min": 1,
+                          "name": "./numberOfProducts",
+                          "value": 2,
+                          "fieldLabel": "Number of Products",
+                          "sling:resourceType": "granite/ui/components/coral/foundation/form/numberfield",
+                          "fieldDescription": "Field to enter the number of products to be visible on the page."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "clientLibs": {
+    "jcr:primaryType": "nt:folder",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+    "componentstyle": {
+      "jcr:primaryType": "cq:ClientLibraryFolder",
+      "jcr:createdBy": "admin",
+      "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+      "categories": [
+        "product-details-style"
+      ],
+      "css": {
+        "jcr:primaryType": "nt:folder",
+        "jcr:createdBy": "admin",
+        "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+        "product-detail.css": {
+          "jcr:primaryType": "nt:file",
+          "jcr:createdBy": "admin",
+          "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+          "jcr:content": {
+            "jcr:primaryType": "nt:resource",
+            "jcr:lastModifiedBy": "admin",
+            "jcr:mimeType": "text/css",
+            "jcr:lastModified": "Fri Jun 02 2023 11:45:52 GMT+0530",
+            ":jcr:data": 573,
+            "jcr:uuid": "9ecca813-db1d-4543-9aaf-2c5dadf0f5d7"
+          }
+        }
+      },
+      "css.txt": {
+        "jcr:primaryType": "nt:file",
+        "jcr:createdBy": "admin",
+        "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+        "jcr:content": {
+          "jcr:primaryType": "nt:resource",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:mimeType": "text/plain",
+          "jcr:lastModified": "Fri Jun 02 2023 11:45:52 GMT+0530",
+          ":jcr:data": 31,
+          "jcr:uuid": "81e93f5c-f98c-4041-9bc1-a5efc18d9cc6"
+        }
+      },
+      "js.txt": {
+        "jcr:primaryType": "nt:file",
+        "jcr:createdBy": "admin",
+        "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+        "jcr:content": {
+          "jcr:primaryType": "nt:resource",
+          "jcr:lastModifiedBy": "admin",
+          "jcr:mimeType": "text/plain",
+          "jcr:lastModified": "Fri Jun 02 2023 11:45:52 GMT+0530",
+          ":jcr:data": 30,
+          "jcr:uuid": "e5f2d373-bf46-4f4d-b9ff-d38181de0803"
+        }
+      },
+      "js": {
+        "jcr:primaryType": "nt:folder",
+        "jcr:createdBy": "admin",
+        "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+        "product-details.js": {
+          "jcr:primaryType": "nt:file",
+          "jcr:createdBy": "admin",
+          "jcr:created": "Fri Jun 02 2023 11:45:52 GMT+0530",
+          "jcr:content": {
+            "jcr:primaryType": "nt:resource",
+            "jcr:lastModifiedBy": "Administrator",
+            "jcr:mimeType": "text/javascript",
+            "jcr:lastModified": "Fri Jun 02 2023 11:45:52 GMT+0530",
+            ":jcr:data": 780,
+            "jcr:uuid": "c20d360e-5a96-4080-b8a4-22a6fdc15b60"
+          }
+        }
+      }
+    }
+  }
+}

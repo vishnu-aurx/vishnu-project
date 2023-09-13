@@ -1,5 +1,6 @@
 package com.aurx.core.servlets;
 
+import static com.aurx.core.constant.ApplicationConstants.APPLICATION_JSON;
 import static com.aurx.core.constant.ApplicationConstants.APP_ID_URL;
 import static com.aurx.core.constant.ApplicationConstants.CNT_URL;
 import static com.aurx.core.constant.ApplicationConstants.DAYS;
@@ -26,7 +27,7 @@ import static org.apache.commons.lang.StringUtils.EMPTY;
 import com.aurx.core.pojo.Weather;
 import com.aurx.core.services.PopulateDataFromAPI;
 import com.aurx.core.services.WeatherReportService;
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -70,6 +71,11 @@ public class GetWeatherServlet extends SlingAllMethodsServlet {
   @Reference
   private transient WeatherReportService weatherReportService;
 
+  /**
+   * mapper - The mapper.
+   */
+  private ObjectMapper mapper = new ObjectMapper();
+
 
   /**
    * This method is used to get weather reports
@@ -91,9 +97,13 @@ public class GetWeatherServlet extends SlingAllMethodsServlet {
     log.info("days : {}", days);
     log.info("url : {}", weatherReportService.getWeatherUrl());
     String baseURL = weatherReportService.getWeatherUrl();
-    String report = fetchWeatherReport(baseURL, lat, lon, days, appId);
-    response.getWriter().write(report);
-    log.info("End of doPost method with report : {} ", report);
+    List<Weather> weatherList = fetchWeatherReport(baseURL, lat, lon, days, appId);
+    String responseJson = mapper.writer().withDefaultPrettyPrinter()
+        .writeValueAsString(weatherList);
+    response.setContentLength(responseJson.getBytes().length);
+    response.setContentType(APPLICATION_JSON);
+    response.getOutputStream().write(responseJson.getBytes());
+    log.info("End of doPost method with report : {} ", weatherList);
   }
 
 
@@ -107,7 +117,7 @@ public class GetWeatherServlet extends SlingAllMethodsServlet {
    * @param appId   - The appId.
    * @return
    */
-  private String fetchWeatherReport(String baseURL, String lat, String lon, int days,
+  private List<Weather> fetchWeatherReport(String baseURL, String lat, String lon, int days,
       String appId) {
     log.info(
         "Start of fetchWeatherReport with baseURL : {}, lat : {}, lon : {}, days : {}, appId : {}",
@@ -151,9 +161,11 @@ public class GetWeatherServlet extends SlingAllMethodsServlet {
         }
       }
     }
-    Gson gson = new Gson();
+    /*Gson gson = new Gson();
     log.info("End of fetchWeatherReport with response : {} ", gson.toJson(weatherList));
-    return gson.toJson(weatherList);
+    return gson.toJson(weatherList);*/
+
+    return weatherList;
   }
 }
 

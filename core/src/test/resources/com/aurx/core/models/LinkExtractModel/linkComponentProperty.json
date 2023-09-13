@@ -1,0 +1,9 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "jcr:createdBy": "admin",
+  "jcr:lastModifiedBy": "admin",
+  "htmlCode": "<!DOCTYPE html> <html> <body>  <h2>Absolute URLs</h2> <p><a href=\"https://www.w3.org/\">W3C</a></p> <p><a href=\"https://www.google.com/\">Google</a></p>  <h2>Relative URLs</h2> <p><a href=\"html_images.asp\">HTML Images</a></p> <p><a href=\"/css/default.asp\">CSS Tutorial</a></p>  </body> </html>",
+  "jcr:created": "Tue Jun 27 2023 16:42:09 GMT+0530",
+  "jcr:lastModified": "Tue Jun 27 2023 16:42:20 GMT+0530",
+  "sling:resourceType": "vishnu-project/components/linkExtractor"
+}

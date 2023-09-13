@@ -2,6 +2,7 @@ package com.aurx.core.servlets;
 
 import static com.aurx.core.constant.ApplicationConstants.API_KEY;
 import static com.aurx.core.constant.ApplicationConstants.API_USER_NAME;
+import static com.aurx.core.constant.ApplicationConstants.APPLICATION_JSON;
 import static com.aurx.core.constant.ApplicationConstants.APP_ID;
 import static com.aurx.core.constant.ApplicationConstants.APP_ID_PATH;
 import static com.aurx.core.constant.ApplicationConstants.APP_ID_TIME_PATH;
@@ -66,7 +67,6 @@ public class GetUserFromToken extends SlingSafeMethodsServlet {
     String appId = request.getParameter(APP_ID);
     LOGGER.info("Start of doGet method with appId : {}", appId);
     jsonObject = new JsonObject();
-    Gson gson = new Gson();
     ResourceResolver resourceResolver = request.getResourceResolver();
     if (appId != null) {
       LOGGER.info("appId is not null");
@@ -89,7 +89,9 @@ public class GetUserFromToken extends SlingSafeMethodsServlet {
       LOGGER.info("Invalid API key");
       jsonObject.addProperty(ERROR, INVALID_API_KEY);
     }
-    response.getWriter().write(gson.toJson(jsonObject));
+    response.setContentLength(jsonObject.toString().getBytes().length);
+    response.setContentType(APPLICATION_JSON);
+    response.getOutputStream().write(jsonObject.toString().getBytes());
     LOGGER.info("End of doGet method with jsonObject : {}", jsonObject);
   }
 
@@ -119,11 +121,11 @@ public class GetUserFromToken extends SlingSafeMethodsServlet {
         LOGGER.info("apiKeyResource is not null");
         ValueMap apiKeyValueMap = apiKeyResource.getValueMap();
         String user = apiKeyValueMap.get(tokenKey, EMPTY);
-        user = user.split(COLUMN)[0];
         LOGGER.info("User : {}", user);
         if (user.isEmpty()) {
           jsonObject.addProperty(ERROR, INVALID_API_KEY);
         } else {
+          user = user.split(COLUMN)[0];
           LOGGER.info("user is not empty");
           jsonObject.addProperty(API_USER_NAME, user);
         }

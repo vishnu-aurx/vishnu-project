@@ -28,6 +28,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.osgi.services.HttpClientBuilderFactory;
 import org.apache.http.protocol.BasicHttpContext;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -49,6 +50,13 @@ public class PopulateDataFromAPIImpl implements PopulateDataFromAPI {
    * LOGGER - Logger object
    */
   private static final Logger LOGGER = LoggerFactory.getLogger(PopulateDataFromAPIImpl.class);
+
+
+  /**
+   * httpClientBuilderFactory - The httpClientBuilderFactory.
+   */
+  @Reference
+  protected HttpClientBuilderFactory httpClientBuilderFactory;
 
   /**
    * This method populates data from the API and returns a response.
@@ -93,14 +101,17 @@ public class PopulateDataFromAPIImpl implements PopulateDataFromAPI {
     LOGGER.info("Start of getAPIResponse method with apiURL is : {}", apiURL);
     HttpResponse httpResponse = null;
     if (StringUtils.isNotBlank(apiURL) && (apiURL.startsWith(HTTP) || apiURL.startsWith(HTTPS))
-        && StringUtils.isNotBlank(userName) && StringUtils.isNotBlank(userPassword)) {
+        && StringUtils.isNotBlank(userName) && StringUtils.isNotBlank(userPassword) && httpClientBuilderFactory != null) {
       UsernamePasswordCredentials creds = new UsernamePasswordCredentials(
           cryptoUtil.getDecryptedValue(userName),
           cryptoUtil.getDecryptedValue(userPassword));
       BasicCredentialsProvider provider = new BasicCredentialsProvider();
       provider.setCredentials(AuthScope.ANY, creds);
-      HttpClient client = HttpClientBuilder.create().setDefaultCredentialsProvider(provider)
-          .build();
+//      HttpClient client = HttpClientBuilder.create().setDefaultCredentialsProvider(provider)
+//          .build();
+
+      HttpClientBuilder httpClientBuilder = httpClientBuilderFactory.newBuilder();
+      HttpClient client = httpClientBuilder.setDefaultCredentialsProvider(provider).build();
       LOGGER.info("We create a Client that is  : {}", client);
       HttpGet request = new HttpGet();
       try {

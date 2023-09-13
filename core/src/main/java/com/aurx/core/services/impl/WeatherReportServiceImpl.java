@@ -32,24 +32,13 @@ public class WeatherReportServiceImpl implements WeatherReportService {
    * @param weatherConfiguration - The weatherConfiguration.
    */
   @Activate
+  @Modified
   protected void activate(WeatherConfiguration weatherConfiguration) {
     logger.info("Start of activate method with weatherConfiguration : {}", weatherConfiguration);
     this.weatherConfiguration = weatherConfiguration;
     logger.info("End of activate method ");
 
 
-  }
-
-  /**
-   * This method is invoked when the Configuration is modified.
-   *
-   * @param weatherConfiguration - The weatherConfiguration.
-   */
-  @Modified
-  protected void modified(WeatherConfiguration weatherConfiguration) {
-    logger.info("Start of modified with weatherConfiguration : {}", weatherConfiguration);
-    this.weatherConfiguration = weatherConfiguration;
-    logger.info("End of modified method");
   }
 
   /**

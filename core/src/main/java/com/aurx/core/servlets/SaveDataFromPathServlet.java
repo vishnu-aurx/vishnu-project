@@ -1,14 +1,18 @@
 package com.aurx.core.servlets;
 
+import static com.aurx.core.constant.ApplicationConstants.APPLICATION_JSON;
+import static com.aurx.core.constant.ApplicationConstants.MASSAGE;
 import static com.aurx.core.constant.ApplicationConstants.ONE;
 import static com.aurx.core.constant.ApplicationConstants.PATH;
 import static com.aurx.core.constant.ApplicationConstants.PROP;
+import static com.aurx.core.constant.ApplicationConstants.PROP_VALUE;
 import static com.aurx.core.constant.ApplicationConstants.TWO;
 import static com.aurx.core.constant.ApplicationConstants.VALUE;
 import static com.day.cq.commons.jcr.JcrConstants.JCR_CONTENT;
 
 import com.aurx.core.pojo.FetchDataFromPage;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -48,6 +52,7 @@ public class SaveDataFromPathServlet extends SlingSafeMethodsServlet {
   @Override
   protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
       throws ServletException, IOException {
+    JsonObject jsonObject = new JsonObject();
     String path = request.getParameter(PATH);
     String pathValue = request.getParameter(VALUE);
     log.info("path is : {}", path);
@@ -63,20 +68,20 @@ public class SaveDataFromPathServlet extends SlingSafeMethodsServlet {
           log.info("modifiableValueMap is not null");
           modifiableValueMap.put(PROP, pathValue);
           resourceResolver.commit();
-          FetchDataFromPage dataFromPage = new FetchDataFromPage(pathValue, ONE);
-          Gson gson = new Gson();
-          response.getWriter().write(gson.toJson(dataFromPage));
+          jsonObject.addProperty(PROP_VALUE, pathValue);
+          jsonObject.addProperty(MASSAGE, ONE);
+
         }
       }
 
     } else {
       log.info("resource is null");
-      FetchDataFromPage dataFromPage = new FetchDataFromPage(pathValue, TWO);
-      Gson gson = new Gson();
-      response.getWriter().write(gson.toJson(dataFromPage));
+      jsonObject.addProperty(PROP_VALUE, pathValue);
+      jsonObject.addProperty(MASSAGE, TWO);
     }
-
-
+    response.setContentLength(jsonObject.toString().getBytes().length);
+    response.setContentType(APPLICATION_JSON);
+    response.getOutputStream().write(jsonObject.toString().getBytes());
   }
 
 }

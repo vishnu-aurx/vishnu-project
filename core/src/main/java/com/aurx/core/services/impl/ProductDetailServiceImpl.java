@@ -57,24 +57,12 @@ public class ProductDetailServiceImpl implements ProductDetailService {
    * @param configuration - The configuration.
    */
   @Activate
+  @Modified
   protected void activate(ProductDetailsConfiguration configuration) {
     logger.info("Start of activate method");
     this.configuration = configuration;
     populateProductDetails();
     logger.info("End of activate method");
-  }
-
-  /**
-   * This method is invoked when the Configuration is modified.
-   *
-   * @param configuration - The configuration.
-   */
-  @Modified
-  protected void modified(ProductDetailsConfiguration configuration) {
-    logger.info("Start of modified method");
-    this.configuration = configuration;
-    populateProductDetails();
-    logger.info("End of modified method");
   }
 
   /**

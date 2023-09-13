@@ -1,0 +1,16 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "jcr:createdBy": "admin",
+  "jcr:lastModifiedBy": "admin",
+  "jcr:created": "Wed Jun 28 2023 15:48:20 GMT+0530",
+    "jcr:lastModified": "Wed Jun 28 2023 15:49:22 GMT+0530",
+  "sling:resourceType": "vishnu-project/components/homepageservicescomponent",
+  "fieldData": {
+    "jcr:primaryType": "nt:unstructured",
+    "item0": {
+      "jcr:primaryType": "nt:unstructured",
+      "fileReference": "/content/dam/we-retail/fr/activities/climbing/indoor-practicing.jpg",
+      "imageLabel": "image label"
+    }
+  }
+}

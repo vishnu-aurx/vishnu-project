@@ -1,0 +1,9 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "jcr:createdBy": "admin",
+  "jcr:lastModifiedBy": "admin",
+  "jcr:created": "Sat Jun 17 2023 14:49:42 GMT+0530",
+  "days": "1",
+  "jcr:lastModified": "Sat Jun 17 2023 14:49:49 GMT+0530",
+  "sling:resourceType": "vishnu-project/components/GetWeather"
+}

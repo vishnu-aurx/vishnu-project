@@ -1,0 +1,124 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "jcr:createdBy": "admin",
+  "jcr:lastModifiedBy": "admin",
+  "jcr:created": "Tue Jun 27 2023 17:35:50 GMT+0530",
+  "numberofstudent": "6",
+  "jcr:lastModified": "Tue Jun 27 2023 17:37:35 GMT+0530",
+  "sling:resourceType": "vishnu-project/components/Student-details",
+  "students": {
+    "jcr:primaryType": "nt:unstructured",
+    "item0": {
+      "jcr:primaryType": "nt:unstructured",
+      "studentname": "vishnu",
+      "studentrollnumber": "123123",
+      "marks": {
+        "jcr:primaryType": "nt:unstructured",
+        "item0": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "78"
+        },
+        "item1": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "76"
+        },
+        "item2": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "96"
+        },
+        "item3": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "83"
+        },
+        "item4": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "68"
+        }
+      }
+    },
+    "item1": {
+      "jcr:primaryType": "nt:unstructured",
+      "studentname": "Abhi",
+      "studentrollnumber": "8768",
+      "marks": {
+        "jcr:primaryType": "nt:unstructured",
+        "item0": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "87"
+        },
+        "item1": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "78"
+        },
+        "item2": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "67"
+        },
+        "item3": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "78"
+        },
+        "item4": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "91"
+        }
+      }
+    },
+    "item2": {
+      "jcr:primaryType": "nt:unstructured",
+      "studentname": "Abxb",
+      "studentrollnumber": "8768",
+      "marks": {
+        "jcr:primaryType": "nt:unstructured",
+        "item0": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "87"
+        },
+        "item1": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "78"
+        },
+        "item2": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "67"
+        },
+        "item3": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "78"
+        },
+        "item4": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "91"
+        }
+      }
+    },
+    "item3": {
+      "jcr:primaryType": "nt:unstructured",
+      "studentname": "Abhi",
+      "studentrollnumber": "8768",
+      "marks": {
+        "jcr:primaryType": "nt:unstructured",
+        "item0": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "87"
+        },
+        "item1": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "78"
+        },
+        "item2": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "67"
+        },
+        "item3": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "78"
+        },
+        "item4": {
+          "jcr:primaryType": "nt:unstructured",
+          "subjectsmarks": "91"
+        }
+      }
+    }
+  }
+}

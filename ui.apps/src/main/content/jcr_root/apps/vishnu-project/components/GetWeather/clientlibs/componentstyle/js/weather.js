@@ -17,7 +17,11 @@
                           userLon: lon
                       },
                       success: function (result) {
+                      try{
                           var obj = $.parseJSON(result);
+                          }catch(e){
+                          obj = result;
+                          }
                           var city = data.city;
                           for (i = 0; i < obj.length; i++) {
                               $(".weather-container[id='"+this.id+"']").append("<div class='weather'><br><h1 class='city weatherData'>city : " + city + "</h1>" +

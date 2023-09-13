@@ -2,6 +2,7 @@ package com.aurx.core.servlets;
 
 import static com.aurx.core.constant.ApplicationConstants.APIKEY;
 import static com.aurx.core.constant.ApplicationConstants.API_KEY;
+import static com.aurx.core.constant.ApplicationConstants.APPLICATION_JSON;
 import static com.aurx.core.constant.ApplicationConstants.COLUMN;
 import static com.aurx.core.constant.ApplicationConstants.EMAIL;
 import static com.aurx.core.constant.ApplicationConstants.ERROR_MASSAGE;
@@ -68,11 +69,10 @@ public class GenerateUserAPIKey extends SlingSafeMethodsServlet {
   protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
       throws ServletException, IOException {
     LOGGER.info("Start of doGet method");
-    Gson gson = new Gson();
-    jsonObject = new JsonObject();
+     jsonObject = new JsonObject();
     String user = request.getParameter(USER_NAME);
     String email = request.getParameter(EMAIL);
-    if (email != null) {
+    if (email != null && user != null) {
       LOGGER.info("email is not null  email : {}, user : {}", email, user);
       user = user + ":" + email;
       int keyNumber = rand.nextInt(9999999);
@@ -89,7 +89,9 @@ public class GenerateUserAPIKey extends SlingSafeMethodsServlet {
       LOGGER.info("email is empty or null");
       jsonObject.addProperty(ERROR_MASSAGE, INVALID_EMAIL);
     }
-    response.getWriter().write(gson.toJson(jsonObject));
+    response.setContentLength(jsonObject.toString().getBytes().length);
+    response.setContentType(APPLICATION_JSON);
+    response.getOutputStream().write(jsonObject.toString().getBytes());
     LOGGER.info("End of doGet method");
   }
 

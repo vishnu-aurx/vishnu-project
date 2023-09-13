@@ -1,10 +1,16 @@
 package com.aurx.core.servlets;
 
+import static com.aurx.core.constant.ApplicationConstants.APPLICATION_JSON;
+import static com.aurx.core.constant.ApplicationConstants.ERROR;
 import static com.aurx.core.constant.ApplicationConstants.PASSWORD;
+import static com.aurx.core.constant.ApplicationConstants.STATUS;
+import static com.aurx.core.constant.ApplicationConstants.SUCCESSFUL;
 import static com.aurx.core.constant.ApplicationConstants.TOKEN_API_URL;
 import static com.aurx.core.constant.ApplicationConstants.USERNAME;
 
 import com.aurx.core.services.PopulateDataFromAPI;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import javax.servlet.Servlet;
@@ -36,6 +42,11 @@ public class CallAPIServlet extends SlingSafeMethodsServlet {
   private PopulateDataFromAPI populateDataFromAPI;
 
   /**
+   * mapper - The mapper.
+   */
+  private ObjectMapper mapper = new ObjectMapper();
+
+  /**
    * LOGGER - The Logger object.
    */
   private static final Logger LOGGER = LoggerFactory.getLogger(CallAPIServlet.class);
@@ -54,8 +65,21 @@ public class CallAPIServlet extends SlingSafeMethodsServlet {
     LOGGER.info("Start doGet method of CallAPIServlet  ");
     HttpResponse httpResponse = populateDataFromAPI.getAPIResponseWithUserPassword(
         TOKEN_API_URL, USERNAME, PASSWORD);
-    String data = IOUtils.toString(httpResponse.getEntity().getContent(), StandardCharsets.UTF_8);
-    response.getWriter().write(data);
+    if(httpResponse !=null) {
+      String data = IOUtils.toString(httpResponse.getEntity().getContent(), StandardCharsets.UTF_8);
+      String responseJson = mapper.writer().withDefaultPrettyPrinter()
+          .writeValueAsString(data);
+      response.setContentLength(responseJson.getBytes().length);
+      response.setContentType(APPLICATION_JSON);
+      response.getOutputStream().write(responseJson.getBytes());
+    }else{
+      LOGGER.info("httpResponse is null");
+      JsonObject jsonObject = new JsonObject();
+      jsonObject.addProperty(STATUS,ERROR);
+      response.setContentLength(jsonObject.toString().getBytes().length);
+      response.setContentType(APPLICATION_JSON);
+      response.getOutputStream().write(jsonObject.toString().getBytes());
+    }
     LOGGER.info("End of doGet method");
   }
 }

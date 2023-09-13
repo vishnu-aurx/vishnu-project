@@ -1,0 +1,12 @@
+[
+  {
+    "componentGroup": "Zenetsu",
+    "title": "ThunderGod",
+    "slingResourceType": "/content/akash-test/us/en"
+  },
+  {
+    "componentGroup": "Inosuke",
+    "title": "MountainGod",
+    "slingResourceType": "/content/akash-test/us/en/test"
+  }
+]

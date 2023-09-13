@@ -1,0 +1,16 @@
+{
+  "jcr:primaryType": "cq:PageContent",
+  "jcr:mixinTypes": [
+    "cq:LiveRelationship"
+  ],
+  "jcr:createdBy": "admin",
+  "jcr:title": "English",
+  "cq:template": "/conf/vishnu-project/settings/wcm/templates/page-content",
+  "cq:lastRolledout": "Mon Jun 19 2023 17:46:26 GMT+0530",
+  "jcr:created": "Mon Jun 19 2023 17:46:26 GMT+0530",
+  "cq:lastModified": "Mon Jun 19 2023 17:48:27 GMT+0530",
+  "prop": "",
+  "sling:resourceType": "vishnu-project/components/page",
+  "cq:lastRolledoutBy": "admin",
+  "cq:lastModifiedBy": "admin"
+}

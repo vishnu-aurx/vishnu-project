@@ -1,0 +1,112 @@
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:createdBy": "admin",
+  "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "jcr:createdBy": "admin",
+    "jcr:title": "Experience",
+    "cq:template": "/conf/we-retail/settings/wcm/templates/hero-page",
+    "cq:contextHubSegmentsPath": "/conf/we-retail/settings/wcm/segments",
+    "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+    "cq:lastModified": "Fri Jun 23 2023 18:45:38 GMT+0530",
+    "sling:resourceType": "weretail/components/structure/page",
+    "cq:contextHubPath": "/libs/settings/cloudsettings/legacy/contexthub",
+    "cq:lastModifiedBy": "admin",
+    "hideSubItemsInNav": true
+  },
+  "arctic-surfing-in-lofoten": {
+    "jcr:primaryType": "cq:Page",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+    "jcr:content": {
+      "jcr:primaryType": "cq:PageContent",
+      "jcr:createdBy": "admin",
+      "jcr:title": "Arctic Surfing In Lofoten",
+      "cq:template": "/conf/we-retail/settings/wcm/templates/experience-page",
+      "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+      "cq:lastModified": "Wed Feb 07 2018 18:46:20 GMT+0100",
+      "sling:resourceType": "weretail/components/structure/page",
+      "cq:lastModifiedBy": "admin"
+    }
+  },
+  "hours-of-wilderness": {
+    "jcr:primaryType": "cq:Page",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+    "jcr:content": {
+      "jcr:primaryType": "cq:PageContent",
+      "jcr:createdBy": "admin",
+      "jcr:title": "48 hours of Wilderness",
+      "cq:template": "/conf/we-retail/settings/wcm/templates/experience-page",
+      "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+      "cq:lastModified": "Wed Feb 07 2018 16:58:32 GMT+0100",
+      "sling:resourceType": "weretail/components/structure/page",
+      "cq:lastModifiedBy": "admin"
+    }
+  },
+  "fly-fishing-the-amazon": {
+    "jcr:primaryType": "cq:Page",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+    "jcr:content": {
+      "jcr:primaryType": "cq:PageContent",
+      "jcr:createdBy": "admin",
+      "jcr:title": "Fly-fishing the Amazon",
+      "cq:template": "/conf/we-retail/settings/wcm/templates/experience-page",
+      "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+      "cq:lastModified": "Wed Feb 07 2018 16:52:46 GMT+0100",
+      "sling:resourceType": "weretail/components/structure/page",
+      "cq:lastModifiedBy": "admin"
+    }
+  },
+  "skitouring": {
+    "jcr:primaryType": "cq:Page",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+    "jcr:content": {
+      "jcr:primaryType": "cq:PageContent",
+      "jcr:createdBy": "admin",
+      "jcr:title": "Skitouring",
+      "cq:template": "/conf/we-retail/settings/wcm/templates/experience-page",
+      "jcr:lastModifiedBy": "admin",
+      "cq:contextHubSegmentsPath": "/etc/segmentation/contexthub",
+      "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+      "cq:lastModified": "Wed Feb 07 2018 17:11:15 GMT+0100",
+      "jcr:lastModified": "Thu Nov 03 2016 07:44:39 GMT+0100",
+      "sling:resourceType": "weretail/components/structure/page",
+      "cq:contextHubPath": "/etc/cloudsettings/default/contexthub",
+      "cq:lastModifiedBy": "admin"
+    }
+  },
+  "steelhead-and-spines-in-alaska": {
+    "jcr:primaryType": "cq:Page",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+    "jcr:content": {
+      "jcr:primaryType": "cq:PageContent",
+      "jcr:createdBy": "admin",
+      "jcr:title": "Steelhead and Spines in Alaska",
+      "cq:template": "/conf/we-retail/settings/wcm/templates/experience-page",
+      "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+      "cq:lastModified": "Wed Feb 07 2018 17:17:13 GMT+0100",
+      "sling:resourceType": "weretail/components/structure/page",
+      "cq:lastModifiedBy": "admin"
+    }
+  },
+  "wester-australia-by-camper-van": {
+    "jcr:primaryType": "cq:Page",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+    "jcr:content": {
+      "jcr:primaryType": "cq:PageContent",
+      "jcr:createdBy": "admin",
+      "jcr:title": "Camping in Western Australia",
+      "cq:template": "/conf/we-retail/settings/wcm/templates/experience-page",
+      "jcr:created": "Fri Jun 02 2023 11:38:48 GMT+0530",
+      "cq:lastModified": "Wed Feb 07 2018 17:23:57 GMT+0100",
+      "sling:resourceType": "weretail/components/structure/page",
+      "cq:lastModifiedBy": "admin"
+    }
+  }
+}

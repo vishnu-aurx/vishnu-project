@@ -18,7 +18,11 @@ $(".submit-btn").click(function(){
                          resourceType: resourceType
                       },
                       success: function (result) {
-                       var pagePathObject = $.parseJSON(result);
+                       try{
+                           var pagePathObject = $.parseJSON(result);
+                          }catch(e){
+                                     pagePathObject = result;
+                                    }
                      if(pagePathObject.length>0){
                        for (i = 0; i < pagePathObject.length; i++) {
                                $(".component-report-container[id='"+this.id+"']").append("<div class='report' >"+

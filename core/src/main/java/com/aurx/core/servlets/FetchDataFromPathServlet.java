@@ -1,8 +1,11 @@
 package com.aurx.core.servlets;
 
+import static com.aurx.core.constant.ApplicationConstants.APPLICATION_JSON;
+import static com.aurx.core.constant.ApplicationConstants.MASSAGE;
 import static com.aurx.core.constant.ApplicationConstants.ONE;
 import static com.aurx.core.constant.ApplicationConstants.PATH;
 import static com.aurx.core.constant.ApplicationConstants.PROP;
+import static com.aurx.core.constant.ApplicationConstants.PROP_VALUE;
 import static com.aurx.core.constant.ApplicationConstants.THREE;
 import static com.aurx.core.constant.ApplicationConstants.TWO;
 import static com.day.cq.commons.jcr.JcrConstants.JCR_CONTENT;
@@ -10,6 +13,7 @@ import static org.apache.commons.lang.StringUtils.EMPTY;
 
 import com.aurx.core.pojo.FetchDataFromPage;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -49,6 +53,7 @@ public class FetchDataFromPathServlet extends SlingSafeMethodsServlet {
   @Override
   protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
       throws ServletException, IOException {
+    JsonObject jsonObject = new JsonObject();
     String path = request.getParameter(PATH);
     log.info("Start of doGet method path is : {}", path);
     ResourceResolver resourceResolver = request.getResourceResolver();
@@ -63,24 +68,23 @@ public class FetchDataFromPathServlet extends SlingSafeMethodsServlet {
         log.info("prop value is : {}", value);
         if (value.isEmpty()) {
           log.info("value is not isEmpty :{} ", value);
-          FetchDataFromPage dataFromPage = new FetchDataFromPage(value, TWO);
-          Gson gson = new Gson();
-          response.getWriter().write(gson.toJson(dataFromPage));
+             jsonObject.addProperty(PROP_VALUE,value);
+             jsonObject.addProperty(MASSAGE , TWO);
         } else {
           log.info("prop value is empty");
-          FetchDataFromPage dataFromPage = new FetchDataFromPage(value, ONE);
-          Gson gson = new Gson();
-          response.getWriter().write(gson.toJson(dataFromPage));
+          jsonObject.addProperty(PROP_VALUE,value);
+          jsonObject.addProperty(MASSAGE,ONE);
         }
         log.info("prop value : {}", value);
       }
     } else {
       log.info("resource is null");
-      FetchDataFromPage dataFromPage = new FetchDataFromPage(EMPTY, THREE);
-      Gson gson = new Gson();
-      response.getWriter().write(gson.toJson(dataFromPage));
+      jsonObject.addProperty(PROP_VALUE,EMPTY);
+      jsonObject.addProperty(MASSAGE,THREE);
     }
-
+    response.setContentLength(jsonObject.toString().getBytes().length);
+    response.setContentType(APPLICATION_JSON);
+    response.getOutputStream().write(jsonObject.toString().getBytes());
   }
 
 }

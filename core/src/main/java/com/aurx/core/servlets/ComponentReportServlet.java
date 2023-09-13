@@ -1,5 +1,6 @@
 package com.aurx.core.servlets;
 
+import static com.aurx.core.constant.ApplicationConstants.APPLICATION_JSON;
 import static com.aurx.core.constant.ApplicationConstants.CONTENT;
 import static com.aurx.core.constant.ApplicationConstants.JCR_TITLE;
 import static com.aurx.core.constant.ApplicationConstants.PATH;
@@ -11,6 +12,7 @@ import static com.aurx.core.constant.ApplicationConstants.SLING_RESOURCE_TYPE;
 import com.aurx.core.services.QueryBuilderUtil;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.HashMap;
@@ -44,11 +46,17 @@ public class ComponentReportServlet extends SlingAllMethodsServlet {
    * logger - Logger  object
    */
   private static final Logger logger = LoggerFactory.getLogger(ComponentReportServlet.class);
+
   /**
    * queryBuilderUtil - QueryBuilderUtil Object
    */
   @Reference
-  transient QueryBuilderUtil queryBuilderUtil;
+  private transient QueryBuilderUtil queryBuilderUtil;
+
+  /**
+   * mapper - The mapper.
+   */
+  private ObjectMapper mapper = new ObjectMapper();
 
   /**
    * doPost Method generate response of the page path where the components are used
@@ -65,9 +73,11 @@ public class ComponentReportServlet extends SlingAllMethodsServlet {
     logger.info("this is resource: {}", resourceTypeValue);
     ResourceResolver resourceResolver = request.getResourceResolver();
     Set<String> paths = fetchPageDetails(resourceResolver, resourceTypeValue);
-    Gson gson = new Gson();
-    response.getWriter().write(gson.toJson(paths));
-
+    String responseJson = mapper.writer().withDefaultPrettyPrinter()
+        .writeValueAsString(paths);
+    response.setContentLength(responseJson.getBytes().length);
+    response.setContentType(APPLICATION_JSON);
+    response.getOutputStream().write(responseJson.getBytes());
   }
 
   /**
@@ -79,7 +89,6 @@ public class ComponentReportServlet extends SlingAllMethodsServlet {
    */
   private Set<String> fetchPageDetails(ResourceResolver resourceResolver,
       String resourceTypeValue) {
-
     Set<String> paths = new TreeSet<>();
     Map<String, String> predicateMap = new HashMap<>();
     predicateMap.put(PATH, CONTENT);

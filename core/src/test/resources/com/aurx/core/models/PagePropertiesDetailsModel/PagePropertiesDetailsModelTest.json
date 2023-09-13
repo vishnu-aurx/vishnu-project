@@ -1,0 +1,19 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "jcr:createdBy": "admin",
+  "jcr:lastModifiedBy": "admin",
+  "jcr:created": "Thu Jun 29 2023 12:49:11 GMT+0530",
+  "jcr:lastModified": "Thu Jun 29 2023 13:17:00 GMT+0530",
+  "sling:resourceType": "vishnu-project/components/pageTitleList",
+  "pathData": {
+    "jcr:primaryType": "nt:unstructured",
+    "item0": {
+      "jcr:primaryType": "nt:unstructured",
+      "path": "/content/we-retail/language-masters/en/men"
+    },
+    "item1": {
+      "jcr:primaryType": "nt:unstructured",
+      "path": "/content/we-retail/language-masters/en/women"
+    }
+  }
+}

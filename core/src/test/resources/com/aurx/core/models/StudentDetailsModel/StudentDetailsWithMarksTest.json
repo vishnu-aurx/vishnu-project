@@ -1,0 +1,28 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "jcr:createdBy": "admin",
+  "jcr:lastModifiedBy": "admin",
+  "jcr:created": "Tue Jun 27 2023 17:35:50 GMT+0530",
+  "numberofstudent": "6",
+  "jcr:lastModified": "Tue Jun 27 2023 19:15:00 GMT+0530",
+  "sling:resourceType": "vishnu-project/components/Student-details",
+  "students": {
+    "jcr:primaryType": "nt:unstructured",
+    "item0": {
+      "jcr:primaryType": "nt:unstructured",
+      "studentname": "vishnu",
+      "studentrollnumber": "123123"
+    },
+    "item1": {
+      "jcr:primaryType": "nt:unstructured",
+      "studentname": "Abhi",
+      "studentrollnumber": "8768",
+      "marks": {
+        "jcr:primaryType": "nt:unstructured",
+        "item0": {
+          "jcr:primaryType": "nt:unstructured"
+        }
+      }
+    }
+  }
+}

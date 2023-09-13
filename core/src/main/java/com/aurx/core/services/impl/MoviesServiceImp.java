@@ -42,6 +42,7 @@ public class MoviesServiceImp implements MoviesService {
    * @param moviesConfiguration - The moviesConfiguration.
    */
   @Activate
+  @Modified
   protected void activate(MoviesConfiguration moviesConfiguration) {
     logger.info("activate method start");
     this.moviesConfiguration = moviesConfiguration;
@@ -49,21 +50,6 @@ public class MoviesServiceImp implements MoviesService {
     isEnabled = moviesConfiguration.isEnable();
     logger.info("activate method end");
   }
-
-  /**
-   * This method is invoked when the Configuration is modified.
-   *
-   * @param moviesConfiguration - The moviesConfiguration.
-   */
-  @Modified
-  protected void modified(MoviesConfiguration moviesConfiguration) {
-    logger.info("modified method start");
-    this.moviesConfiguration = moviesConfiguration;
-    isEnabled = moviesConfiguration.isEnable();
-    movies = moviesConfiguration.movies();
-    logger.info("modified method end");
-  }
-
 
   /**
    * This method returns the movies.

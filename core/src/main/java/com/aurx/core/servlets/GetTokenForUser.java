@@ -2,6 +2,7 @@ package com.aurx.core.servlets;
 
 import static com.aurx.core.constant.ApplicationConstants.API_KEY;
 import static com.aurx.core.constant.ApplicationConstants.API_KEY_VALUE;
+import static com.aurx.core.constant.ApplicationConstants.APPLICATION_JSON;
 import static com.aurx.core.constant.ApplicationConstants.APP_ID_PATH;
 import static com.aurx.core.constant.ApplicationConstants.APP_ID_TIME_PATH;
 import static com.aurx.core.constant.ApplicationConstants.APP_KEY;
@@ -10,7 +11,6 @@ import static com.aurx.core.constant.ApplicationConstants.ERROR;
 import static com.aurx.core.constant.ApplicationConstants.INVALID_API_KEY;
 import static com.aurx.core.constant.ApplicationConstants.TOKEN;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -68,7 +68,6 @@ public class GetTokenForUser extends SlingSafeMethodsServlet {
     int tokenNumber = rand.nextInt(1000);
     String appKey = request.getParameter(APP_KEY);
     LOGGER.info("appKey : {} ", appKey);
-    Gson gson = new Gson();
     if (appKey != null) {
       LOGGER.info("appKey is not null");
       String token = "token" + tokenNumber;
@@ -94,7 +93,9 @@ public class GetTokenForUser extends SlingSafeMethodsServlet {
       jsonObject.addProperty(ERROR, INVALID_API_KEY);
       jsonObject.addProperty(API_KEY_VALUE, appKey);
     }
-    response.getWriter().write(gson.toJson(jsonObject));
+    response.setContentLength(jsonObject.toString().getBytes().length);
+    response.setContentType(APPLICATION_JSON);
+    response.getOutputStream().write(jsonObject.toString().getBytes());
   }
 
   /**
@@ -130,6 +131,6 @@ public class GetTokenForUser extends SlingSafeMethodsServlet {
         jsonObject.addProperty(TOKEN, token);
       }
     }
-    LOGGER.info("End of saveToken with jsonObject : {}",jsonObject);
+    LOGGER.info("End of saveToken with jsonObject : {}", jsonObject);
   }
 }

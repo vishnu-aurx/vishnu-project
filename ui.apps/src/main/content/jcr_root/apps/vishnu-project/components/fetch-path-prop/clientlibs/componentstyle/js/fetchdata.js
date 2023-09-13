@@ -16,7 +16,12 @@
                        id:id,
 
                       success: function (result) {
-                       var obj = $.parseJSON(result);
+                            try{
+                           var obj = $.parseJSON(result);
+                          }catch(e){
+                                     obj = result;
+                                    }
+                      console.info(obj);
                          $(".fetch-container[id='"+this.id+"']").find('.massage').html('');
                          $(".fetch-container[id='"+this.id+"']").find(".prop").val(obj.propValue);
 
@@ -26,6 +31,8 @@
 
                           $(".fetch-container[id='"+this.id+"']").append("<div class='massage'><h3>"+dataFetchMsg+"</h3></div>")
                           }else{
+                           $(".fetch-container[id='"+this.id+"']").find('.save') .removeAttr('disabled');
+                              $(".fetch-container[id='"+this.id+"']").find('.prop') .removeAttr('disabled');
                           $(".fetch-container[id='"+this.id+"']").append("<div class='massage'><h3>"+invalidPathMsg+"</h3></div>")
                           }
                          },
@@ -56,7 +63,11 @@
                        id:id,
 
                       success: function (result) {
-                       var obj = $.parseJSON(result);
+                       try{
+                           var obj = $.parseJSON(result);
+                          }catch(e){
+                                     obj = result;
+                                    }
                           $(".fetch-container[id='"+this.id+"']").find('.massage').html('');
                           $(".fetch-container[id='"+this.id+"']").find(".prop").val(obj.propValue);
                           if(obj.message==1){
